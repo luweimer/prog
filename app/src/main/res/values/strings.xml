@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">ThrowScorer</string>
+    <string name="home_start">Spiel starten</string>
+    <string name="home_start_ind">Individuelles Spiel</string>
+    <string name="home_rule">Spielregeln</string>
+    <string name="game_checkout" translatable="false">Checkout:</string>
+    <string name="game_leg">Aktuelles Leg:</string>
+    <string name="game_back">Z</string>
+    <string name="ind_settings">Spieleinstellungen</string>
+    <string name="ind_score">Start-Score:</string>
+    <string name="ind_set">Anzahl Sets:</string>
+    <string name="ind_leg">Anzahl Legs:</string>
+    <string name="ind_player">Spieleranzahl</string>
+    <string name="ind_checkout" translatable="false">Checkout-Type</string>
+    <string name="a_single" translatable="false">Single</string>
+    <string name="a_double" translatable="false">Double</string>
+    <string name="a_triple" translatable="false">Triple</string>
+    <string name="a_submit">Bestätigen</string>
+    <string name="eva_win">Sieger:</string>
+    <string name="eva_avg" translatable="false">AVG:</string>
+    <string name="eva_sum">Summe:</string>
+    <string name="eva_checkout" translatable="false">Checkout:</string>
+    <string name="eva_sumThrouhg">Würfe:</string>
+    <string name="eva_bull" translatable="false">Bull:</string>
+    <string name="eva_sbull" translatable="false">sBull:</string>
+    <string name="eva_o180" translatable="false">>180:</string>
+    <string name="eva_o160" translatable="false">>160</string>
+    <string name="eva_o140" translatable="false">>140</string>
+    <string name="eva_o120" translatable="false">>120</string>
+    <string name="eva_o100" translatable="false">>100</string>
+    <string name="eva_single" translatable="false">S:</string>
+    <string name="eva_double" translatable="false">D:</string>
+    <string name="eva_triple" translatable="false">T:</string>
+    <string name="pn_player">Spieler</string>
+    <string name="pnt_playername">Spielernamen:</string>
+    <string name="eva_save">Spiel speichern</string>
+    <string name="eva_home" translatable="false">Homebildschirm</string>
+    <string name="eva_name">Spielname</string>
+    <string name="err_enter_name">Bitte geben sie einen Namen ein!</string>
+    <string name="ov_game">Spiele</string>
+    <string name="ov_winner">Gewinner</string>
+    <string name="ov_game_name">Spielname</string>
+    <string name="ov_delete">Löschen</string>
+    <string name="ov_show">Anzeigen</string>
+    <string name="ov_clean">Datenbank bereinigen</string>
+    <string name="home_over">Spielübersicht</string>
+</resources>

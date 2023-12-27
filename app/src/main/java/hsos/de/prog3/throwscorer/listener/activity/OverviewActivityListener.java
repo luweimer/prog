@@ -1,0 +1,19 @@
+package hsos.de.prog3.throwscorer.listener.activity;
+
+import java.util.ArrayList;
+
+import hsos.de.prog3.throwscorer.listener.RegisterListener;
+import hsos.de.prog3.throwscorer.model.GameSettings;
+import hsos.de.prog3.throwscorer.model.PlayerStats;
+
+public interface OverviewActivityListener extends RegisterListener {
+
+    public void createGameRows(String[] name, String[] id);
+
+    public void updateGameRows(String name, String id);
+
+    public void showWinner(int player, ArrayList<PlayerStats> playerStats);
+
+
+
+}
