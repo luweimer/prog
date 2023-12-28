@@ -9,6 +9,7 @@ import java.util.List;
 import hsos.de.prog3.throwscorer.database.DatabaseAccess;
 import hsos.de.prog3.throwscorer.listener.activity.OverviewActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.OverviewControllerListener;
+import hsos.de.prog3.throwscorer.listener.controller.PersistentListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
@@ -16,18 +17,20 @@ public class OverviewController implements OverviewControllerListener {
 
     private OverviewActivityListener view;
 
+    private PersistentListener persistent;
+
     public OverviewController(OverviewActivityListener view) {
         this.view = view;
         view.registerController(this);
+
+        this.persistent = new DatabaseController();
+        this.persistent.setContext((Context) this.view);
 
         this.registerTableRows();
     }
 
     private OverviewController registerTableRows(){
-        DatabaseAccess dbAccess = new DatabaseAccess((Context) this.view);
-        dbAccess.open();
-        List<GameDatabase> games = dbAccess.getAllGames();
-        dbAccess.close();
+        List<GameDatabase> games = this.persistent.getAllGames();
         String[] name = new String[games.size()];
         String[] id = new String[games.size()];
         for(int i = 0; i < games.size(); i++){
@@ -43,21 +46,16 @@ public class OverviewController implements OverviewControllerListener {
 
     @Override
     public void showGame(String id) {
-        DatabaseAccess dbAccess = new DatabaseAccess((Context) this.view);
-        dbAccess.open();
-        GameDatabase gd = dbAccess.getGame(id);
-        List<PlayerStats> playerStats = dbAccess.getPlayerStats(id);
-        dbAccess.close();
+
+        GameDatabase gd = this.persistent.getGame(id);
+        List<PlayerStats> playerStats = this.persistent.getPlayerStats(id);
 
         this.view.showWinner(gd.getWinnerInt(), (ArrayList<PlayerStats>) playerStats);
     }
 
     @Override
     public void deleteGame(String id) {
-        DatabaseAccess dbAccess = new DatabaseAccess((Context) this.view);
-        dbAccess.open();
-        dbAccess.deleteGame(id);
-        dbAccess.close();
+        this.persistent.deleteGame(id);
 
         this.registerTableRows();
     }

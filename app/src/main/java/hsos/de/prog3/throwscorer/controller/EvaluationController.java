@@ -8,6 +8,7 @@ import java.util.List;
 import hsos.de.prog3.throwscorer.database.DatabaseAccess;
 import hsos.de.prog3.throwscorer.listener.activity.EvaluationActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.EvaluationControllerListener;
+import hsos.de.prog3.throwscorer.listener.controller.PersistentListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 
 public class EvaluationController implements EvaluationControllerListener {
@@ -16,10 +17,14 @@ public class EvaluationController implements EvaluationControllerListener {
 
     private GameDatabase gameDatabase;
 
+    private PersistentListener persistent;
+
     public EvaluationController(EvaluationActivityListener view, GameDatabase gameDatabase) {
         this.view = view;
         view.registerController(this);
         this.gameDatabase = gameDatabase;
+        this.persistent = new DatabaseController();
+        this.persistent.setContext((Context) this.view);
         this.init();
     }
 
@@ -35,18 +40,9 @@ public class EvaluationController implements EvaluationControllerListener {
             return;
         }
         this.gameDatabase.setGameName(name);
-
-        DatabaseAccess dbAccess = new DatabaseAccess((Context) this.view);
-        dbAccess.open();
-        dbAccess.addGameStats(this.gameDatabase);
-
+        this.persistent.safeGame(this.gameDatabase);
         this.view.showToast("Spiel wurde erfolgreich hinzugefügt!");
-        List<GameDatabase> gd = dbAccess.getAllGames();
-        Log.e("DB", gd.toString());
+
         this.view.handleHome();
-
-        dbAccess.close();
-
-
     }
 }

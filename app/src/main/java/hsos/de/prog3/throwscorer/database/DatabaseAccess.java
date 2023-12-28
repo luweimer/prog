@@ -20,7 +20,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 public class DatabaseAccess {
 
-    private DatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
     private SQLiteDatabase database;
 
     public DatabaseAccess(Context context) {
