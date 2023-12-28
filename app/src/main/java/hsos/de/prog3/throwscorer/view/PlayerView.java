@@ -1,6 +1,6 @@
 package hsos.de.prog3.throwscorer.view;
 
-import static hsos.de.prog3.throwscorer.utility.ConvertView.convertArrayList;
+import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.view.PlayerViewListener;
-import hsos.de.prog3.throwscorer.model.Player;
 
 public class PlayerView implements PlayerViewListener {
 

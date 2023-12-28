@@ -1,18 +1,13 @@
 package hsos.de.prog3.throwscorer.utility;
 
-import static hsos.de.prog3.throwscorer.model.CheckoutType.*;
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 
 import java.util.ArrayList;
 
-import hsos.de.prog3.throwscorer.activity.GameActivity;
 import hsos.de.prog3.throwscorer.model.CheckoutType;
-import hsos.de.prog3.throwscorer.model.GameSettings;
 
-public class ConvertView {
+public class ConvertViewValues {
     public static String convertArrayListCheckout(ArrayList<Integer> list, CheckoutType settingsCheckout){
         StringBuilder output = new StringBuilder();
         list.forEach(p -> {
@@ -46,6 +41,15 @@ public class ConvertView {
                 }
             }
         });
+        return output.toString();
+    }
+
+    public static String convertArrayList(ArrayList<String> list){
+        StringBuilder output = new StringBuilder();
+        list.forEach(p -> {
+            output.append(p).append(" ");
+        });
+
         return output.toString();
     }
 
@@ -90,17 +94,7 @@ public class ConvertView {
     private static boolean checkTriple(int point){
         return point % 3 == 0;
     }
-
-    public static String convertArrayList(ArrayList<String> list){
-        StringBuilder output = new StringBuilder();
-        list.forEach(p -> {
-            output.append(p).append(" ");
-        });
-
-        return output.toString();
-    }
-
-    public static String getStringRessource(Context context, String idName, String defType) {
+    private static String getStringRessource(Context context, String idName, String defType) {
         Resources res = context.getResources();
         return res.getString(res.getIdentifier(idName, defType, context.getPackageName()));
     }

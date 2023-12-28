@@ -1,13 +1,9 @@
 package hsos.de.prog3.throwscorer.activity;
 
-import static hsos.de.prog3.throwscorer.utility.ConvertView.convertArrayListCheckout;
+import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertArrayListCheckout;
 import static hsos.de.prog3.throwscorer.utility.Router.startEvaluationActivity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.sax.TextElementListener;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -18,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -30,7 +25,6 @@ import hsos.de.prog3.throwscorer.listener.view.PlayerViewListener;
 import hsos.de.prog3.throwscorer.model.CheckoutType;
 import hsos.de.prog3.throwscorer.model.GameMultState;
 import hsos.de.prog3.throwscorer.model.GameSettings;
-import hsos.de.prog3.throwscorer.model.Player;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.PlayerView;
 
