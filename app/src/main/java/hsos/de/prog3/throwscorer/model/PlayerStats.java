@@ -58,7 +58,6 @@ public class PlayerStats implements Parcelable{
         this.stats.put("S", 0);
         this.stats.put("D", 0);
         this.stats.put("T", 0);
-        this.stats.put("CHECKOUT", 0);
     }
 
     public PlayerStats updatePoints( ArrayList<Integer> boardPoints ){
@@ -105,11 +104,6 @@ public class PlayerStats implements Parcelable{
         if(this.stats.containsKey(key)){
             this.stats.put(key, this.stats.get(key) + diff);
         }
-        return this;
-    }
-
-    public PlayerStats addCheckout(){
-        this.updateStats("CHECKOUT");
         return this;
     }
     public PlayerStats addPoint(int point){
@@ -247,16 +241,6 @@ public class PlayerStats implements Parcelable{
             return 0;
         }
     }
-    public double getCheckout(){
-        try{
-            int checkout = this.stats.get("CHECKOUT");
-            Log.i("PlayerStats", "getCheckout: " + this.winLegs + " " + checkout);
-            return (checkout == 0) ? 0 : (double) (this.winLegs / checkout) * 100;
-        } catch (Exception e){
-            Log.e("PlayerStats", "Error get Checkout" );
-            return 0;
-        }
-    }
 
     @NonNull
     public String toString(){
@@ -279,7 +263,6 @@ public class PlayerStats implements Parcelable{
         output.append("S: ").append(this.stats.get("S")).append("\n");
         output.append("D: ").append(this.stats.get("D")).append("\n");
         output.append("T: ").append(this.stats.get("T")).append("\n");
-        output.append("CHECKOUT: ").append(this.stats.get("CHECKOUT")).append("\n");
         output.append("AVG: ").append(this.getAvg()).append("\n");
         return output.toString();
     }

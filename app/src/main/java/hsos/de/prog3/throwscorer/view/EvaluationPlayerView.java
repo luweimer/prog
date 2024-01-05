@@ -16,7 +16,6 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
     private TextView name;
     private TextView sumScore;
     private TextView avg;
-    private TextView checkout;
     private TextView sumThrough;
     private TextView bull;
     private TextView sBull;
@@ -43,7 +42,6 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
         this.name = this.gamePlayer.findViewById(R.id.tv_evap_player_name);
         this.sumScore = this.gamePlayer.findViewById(R.id.tv_evap_sum_score);
         this.avg = this.gamePlayer.findViewById(R.id.tv_evap_avg);
-        this.checkout = this.gamePlayer.findViewById(R.id.tv_evap_checkout);
         this.sumThrough = this.gamePlayer.findViewById(R.id.tv_evap_sum_through);
         this.bull = this.gamePlayer.findViewById(R.id.tv_evap_bull);
         this.sBull = this.gamePlayer.findViewById(R.id.tv_evap_sbull);
@@ -63,11 +61,10 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
     }
 
     @Override
-    public void setViewValues(String mame, int sumScore, double avg, double checkout, int sumThrough, int bull, int sBull,int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow) {
+    public void setViewValues(String mame, int sumScore, double avg, int sumThrough, int bull, int sBull,int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow) {
         this.name.setText(mame);
         this.sumScore.setText(String.valueOf(sumScore));
         this.avg.setText(String.valueOf( this.roundTwoDecimal( avg ) ));
-        this.checkout.setText(String.valueOf( this.roundTwoDecimal( checkout) ));
         this.sumThrough.setText(String.valueOf(sumThrough));
         this.bull.setText(String.valueOf(bull));
         this.sBull.setText(String.valueOf(sBull));
@@ -87,7 +84,6 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
                 playerStats.getPlayer(),
                 playerStats.getSumScore(),
                 playerStats.getAvg(),
-                playerStats.getCheckout(),
                 playerStats.getCountSum(),
                 playerStats.getBull(),
                 playerStats.getsBull(),

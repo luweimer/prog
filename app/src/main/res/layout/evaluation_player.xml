@@ -68,23 +68,6 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:text="@string/eva_checkout"/>
-            <TextView
-                android:id="@+id/tv_evap_checkout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:layout_marginStart="10dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textAlignment="center"
                 android:text="@string/eva_sumThrouhg"/>
             <TextView
                 android:id="@+id/tv_evap_sum_through"

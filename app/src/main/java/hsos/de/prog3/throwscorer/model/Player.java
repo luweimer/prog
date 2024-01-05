@@ -237,10 +237,6 @@ public class Player {
         int currentPoints = this.calculateCurrentScore();
         checkout = this.oneThrowOut();
         if(checkout.size() == 1){
-            if(this.score != currentPoints){
-                Log.i("Player", "calculateCheckout: " + checkout.get(0));
-                this.playerStats.addCheckout();
-            }
             return checkout;
         }
 
