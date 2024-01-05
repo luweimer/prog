@@ -177,7 +177,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     @Override
     public void showWinner(int player, ArrayList<PlayerStats> playerStats, GameSettings gameSettings) {
-        startEvaluationActivity(this, player, playerStats);
+        startEvaluationActivity(this, player, playerStats, null);
     }
 
 

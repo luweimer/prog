@@ -57,7 +57,6 @@ public class IndividualGameActivity extends AppCompatActivity {
             leg = Integer.parseInt(this.leg.getText().toString());
         } catch (NumberFormatException e) {
             Toast.makeText(getApplicationContext(), "Please enter a valid number", Toast.LENGTH_SHORT).show();
-            //TODO: Toast wird nicht angezeigt
             return;
         }
         int player = this.getPlayerSize();

@@ -51,7 +51,7 @@ public class OverviewController implements OverviewControllerListener {
         GameDatabase gd = this.persistent.getGame(id);
         List<PlayerStats> playerStats = this.persistent.getPlayerStats(id);
 
-        this.view.showWinner(gd.getWinnerInt(), (ArrayList<PlayerStats>) playerStats);
+        this.view.showWinner(gd.getWinnerInt(), (ArrayList<PlayerStats>) playerStats, gd.getWinnerPic());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package hsos.de.prog3.throwscorer.activity;
 
 import static hsos.de.prog3.throwscorer.utility.Router.startGame;
+import static hsos.de.prog3.throwscorer.utility.Router.startIndividualGame;
+import static hsos.de.prog3.throwscorer.utility.Router.startOverviewActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,8 +50,7 @@ public class HomeActivity extends AppCompatActivity {
      */
     private void handleIndividualGame(){
         Log.i("HomeActivity", "handleIndividualGame");
-        Intent intent = new Intent(this, IndividualGameActivity.class);
-        startActivity(intent);
+        startIndividualGame(this);
     }
 
     /**
@@ -57,7 +58,6 @@ public class HomeActivity extends AppCompatActivity {
      */
     private void handleRules(){
         Log.i("HomeActivity", "handleRules");
-        Intent intent = new Intent(this, OverviewActivity.class);
-        startActivity(intent);
+        startOverviewActivity(this);
     }
 }

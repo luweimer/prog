@@ -1,7 +1,9 @@
 package hsos.de.prog3.throwscorer.activity;
 
 import static hsos.de.prog3.throwscorer.utility.Router.startEvaluationActivity;
+import static hsos.de.prog3.throwscorer.utility.Router.startHomeActivity;
 
+import android.graphics.Bitmap;
 import android.widget.Button;
 import android.widget.TableLayout;
 
@@ -14,7 +16,6 @@ import hsos.de.prog3.throwscorer.controller.OverviewController;
 import hsos.de.prog3.throwscorer.listener.activity.OverviewActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.OverviewControllerListener;
 import hsos.de.prog3.throwscorer.listener.view.OverviewRowListener;
-import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.OverviewRow;
 
@@ -25,6 +26,8 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     private OverviewControllerListener controller;
 
     private Button cleanup;
+
+    private Button home;
 
     private OverviewRowListener[] rows;
 
@@ -46,12 +49,13 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
             return;
         }
         this.cleanup.setOnClickListener(view -> this.controller.cleanDatabase());
+        this.home.setOnClickListener(view -> startHomeActivity(this));
     }
 
-    private OverviewActivity registerViewElements(){
+    private void registerViewElements(){
         this.gameTable = this.findViewById(R.id.tl_ov_games);
         this.cleanup = this.findViewById(R.id.btn_ov_clean);
-        return this;
+        this.home = this.findViewById(R.id.btn_ov_home);
     }
 
     @Override
@@ -87,7 +91,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     }
 
     @Override
-    public void showWinner(int player, ArrayList<PlayerStats> playerStats) {
-        startEvaluationActivity(this, player, playerStats);
+    public void showWinner(int player, ArrayList<PlayerStats> playerStats, Bitmap pic) {
+        startEvaluationActivity(this, player, playerStats, pic);
     }
 }

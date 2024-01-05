@@ -1,5 +1,7 @@
 package hsos.de.prog3.throwscorer.database;
 
+import static hsos.de.prog3.throwscorer.utility.Converter.Base64ToBitmap;
+import static hsos.de.prog3.throwscorer.utility.Converter.BitmapToBase64;
 import static hsos.de.prog3.throwscorer.utility.Converter.hashMapToJson;
 import static hsos.de.prog3.throwscorer.utility.Converter.jsonToHashMap;
 
@@ -8,6 +10,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -37,7 +40,7 @@ public class DatabaseAccess {
 
     @SuppressLint("Range")
     public List<GameDatabase> getAllGames(){
-        String[] columns = {"GameID", "GameName", "WinnerInt", "WinnerName"};
+        String[] columns = {"GameID", "GameName", "WinnerInt", "WinnerName", "Picture"};
         List<GameDatabase> gameDatabaseList = new ArrayList<>();
 
         try(
@@ -49,8 +52,11 @@ public class DatabaseAccess {
                 String gameName = cursor.getString(cursor.getColumnIndex("GameName"));
                 int winnerInt = cursor.getInt(cursor.getColumnIndex("WinnerInt"));
                 String winnerName = cursor.getString(cursor.getColumnIndex("WinnerName"));
+                String picture = cursor.getString(cursor.getColumnIndex("Picture"));
 
-                GameDatabase gameDatabase = new GameDatabase(gameID, gameName, winnerInt, winnerName);
+                Bitmap pic = Base64ToBitmap(picture);
+
+                GameDatabase gameDatabase = new GameDatabase(gameID, gameName, winnerInt, winnerName, pic);
                 gameDatabaseList.add(gameDatabase);
             }
 
@@ -63,7 +69,7 @@ public class DatabaseAccess {
 
     @SuppressLint("Range")
     public GameDatabase getGame(String gameID){
-        String[] columns = {"GameID", "GameName", "WinnerInt", "WinnerName"};
+        String[] columns = {"GameID", "GameName", "WinnerInt", "WinnerName", "Picture"};
         GameDatabase gameDatabase = null;
         try(
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -73,8 +79,11 @@ public class DatabaseAccess {
                 String gameName = cursor.getString(cursor.getColumnIndex("GameName"));
                 int winnerInt = cursor.getInt(cursor.getColumnIndex("WinnerInt"));
                 String winnerName = cursor.getString(cursor.getColumnIndex("WinnerName"));
+                String picture = cursor.getString(cursor.getColumnIndex("Picture"));
 
-                gameDatabase = new GameDatabase(gameID, gameName, winnerInt, winnerName);
+                Bitmap pic = Base64ToBitmap(picture);
+
+                gameDatabase = new GameDatabase(gameID, gameName, winnerInt, winnerName, pic);
             }
 
             cursor.close();
@@ -134,8 +143,9 @@ public class DatabaseAccess {
         }
 
         String gameID = createUUID();
+        String picture = BitmapToBase64(gameDatabase.getWinnerPic());
 
-        this.addGame(gameID, gameDatabase.getGameName(), gameDatabase.getWinnerInt(), gameDatabase.getWinnerName());
+        this.addGame(gameID, gameDatabase.getGameName(), gameDatabase.getWinnerInt(), gameDatabase.getWinnerName(), picture);
 
         for (PlayerStats playerStat : gameDatabase.getPlayerStats()) {
             addPlayerStats(gameID, playerStat);
@@ -168,15 +178,19 @@ public class DatabaseAccess {
         if(gameDatabase.getPlayerStats() == null || gameDatabase.getPlayerStats().isEmpty()){
             return false;
         }
+        if(gameDatabase.getWinnerPic() == null){
+            return false;
+        }
         return true;
     }
 
-    private void addGame(String gameID, String gameName, int winnerInt, String winnerName){
+    private void addGame(String gameID, String gameName, int winnerInt, String winnerName, String picture){
         ContentValues values = new ContentValues();
         values.put( "GameID", gameID );
         values.put( "GameName", gameName );
         values.put( "WinnerInt", winnerInt );
         values.put( "WinnerName", winnerName );
+        values.put( "Picture", picture );
         Log.i("DB", gameID);
         database.insert("Game", null, values);
     }

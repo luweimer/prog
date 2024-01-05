@@ -1,6 +1,7 @@
 package hsos.de.prog3.throwscorer.controller;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -33,19 +34,26 @@ public class EvaluationController implements EvaluationControllerListener {
     private void init(){
         this.view.createPlayerViews( gameDatabase.getPlayerStats() );
         this.view.setWinnerText( gameDatabase.getWinnerName() );
+        if(this.gameDatabase.getWinnerPic() != null) {
+            this.view.setWinnerPic( gameDatabase.getWinnerPic() );
+        }
     };
 
 
     @Override
-    public void handleSave(String name) {
+    public void handleSave(String name, Bitmap pic) {
         if(name.isEmpty()) {
             this.view.showToast("Bitte gib einen Namen ein!");
             return;
         }
+        if(pic == null) {
+            this.view.showToast("Bitte wähle ein Bild aus!");
+            return;
+        }
         this.gameDatabase.setGameName(name);
+        this.gameDatabase.setWinnerPic(pic);
         this.persistent.safeGame(this.gameDatabase);
         this.view.showToast("Spiel wurde erfolgreich hinzugefügt!");
-
         this.view.handleHome();
     }
 
@@ -61,10 +69,6 @@ public class EvaluationController implements EvaluationControllerListener {
                 avg = p.getAvg();
             }
         }
-
-        Log.i("EvaluationController", "shareWinner: " + avg + " " + against.toString());
-        Log.i("EvaluationController", "shareWinner: " + against.toString());
-
         this.view.shareWinner(avg, against);
     }
 }

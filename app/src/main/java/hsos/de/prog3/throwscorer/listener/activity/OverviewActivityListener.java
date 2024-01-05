@@ -1,5 +1,7 @@
 package hsos.de.prog3.throwscorer.listener.activity;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 
 import hsos.de.prog3.throwscorer.listener.RegisterListener;
@@ -12,7 +14,7 @@ public interface OverviewActivityListener extends RegisterListener {
 
     public void updateGameRows(String name, String id);
 
-    public void showWinner(int player, ArrayList<PlayerStats> playerStats);
+    public void showWinner(int player, ArrayList<PlayerStats> playerStats, Bitmap pic);
 
 
 

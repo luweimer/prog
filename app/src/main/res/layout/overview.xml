@@ -14,28 +14,37 @@
         android:background="@drawable/textview"
         android:text="@string/home_over"
         android:layout_marginBottom="10dp"/>
+        <Button
+            android:id="@+id/btn_ov_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@drawable/button"
+            android:layout_marginBottom="10dp"
+            android:text="@string/eva_home" />
 
-    <Button
-        android:id="@+id/btn_ov_clean"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:background="@drawable/button"
-        android:layout_marginBottom="10dp"
-        android:text="@string/ov_clean"/>
+        <Button
+            android:id="@+id/btn_ov_clean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@drawable/button"
+            android:layout_marginBottom="10dp"
+            android:text="@string/ov_clean" />
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TableLayout
-            android:id="@+id/tl_ov_games"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="0">
+            <TableLayout
+                android:id="@+id/tl_ov_games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0">
 
-            <!-- This is where the rows are added dynamically -->
+                <!-- This is where the rows are added dynamically -->
 
-        </TableLayout>
+            </TableLayout>
     </ScrollView>
 
 </LinearLayout>

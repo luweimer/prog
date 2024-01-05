@@ -1,5 +1,7 @@
 package hsos.de.prog3.throwscorer.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,15 +25,14 @@ public class Game implements GameListener {
         this.players = new Player[gameSettings.getNumPlayers()];
         this.winner = -1;
         this.isDone = false;
-        this.init()
-                .initPlayerObjects();
+        this.currentPlayersTurn = 0;
+        this.restart();
+        this.initPlayerObjects();
     }
 
-    private Game init(){
+    private void restart(){
         this.currentPlayMove = 0;
-        this.currentPlayersTurn = 0;
         this.state = GameMultState.NORMAL;
-        return this;
     }
 
     private void initPlayerObjects(){
@@ -41,7 +42,7 @@ public class Game implements GameListener {
     }
 
     private void restartLeg(){
-        this.init();
+        this.restart();
         this.resetPlayers();
     }
 
@@ -117,12 +118,14 @@ public class Game implements GameListener {
             return;
         }
 
+        this.currentPlayMove++;
+
         if(this.isCheckoutPossible()){
             this.checkPartialWin();
             this.checkWin();
         }
 
-        this.currentPlayMove++;
+
         this.checkCurrentPlayMove();
     }
 
@@ -184,6 +187,7 @@ public class Game implements GameListener {
 
     private void checkCurrentPlayMove(){
         if(this.currentPlayMove >= 3){
+            Log.i("Game", "switch player HIER");
             this.switchPlayer();
         }
     }

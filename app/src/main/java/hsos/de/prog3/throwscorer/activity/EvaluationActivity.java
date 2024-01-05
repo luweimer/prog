@@ -1,15 +1,29 @@
 package hsos.de.prog3.throwscorer.activity;
 
+import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertDrawableToBitmap;
+import static hsos.de.prog3.throwscorer.utility.Router.startHomeActivity;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -30,8 +44,12 @@ import hsos.de.prog3.throwscorer.view.EvaluationPlayerView;
 public class EvaluationActivity extends AppCompatActivity implements EvaluationActivityListener {
 
     //private static final int WRITE_STORAGE_PERMISSION_CODE = 24;
+
+    private static final int CAMERA_PERMISSON_CODE = 100;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private TextView winner;
     private EditText gameName;
+
 
 
     private GridLayout statsFirst;
@@ -39,8 +57,13 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
 
     private Button home;
     private Button saveGame;
-
     private Button shareWinner;
+
+    private Button winTakePic;
+
+    private ImageView winPic;
+    private Bitmap winPicBitmap;
+
 
     private EvaluationControllerListener controller;
     private EvaluationPlayerViewListener[] playerViews;
@@ -59,14 +82,13 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
     }
 
     private EvaluationActivity registerButton(){
-        this.home.setOnClickListener(v -> this.handleHome());
-        this.saveGame.setOnClickListener(v -> {
-            //this.useStorage();
-            this.controller.handleSave(String.valueOf(this.gameName.getText()));
-        });
+        this.home.setOnClickListener(v -> this.handleHome() );
+        //Quelle: https://stackoverflow.com/questions/26865787/get-bitmap-from-imageview-in-android-l
+        this.saveGame.setOnClickListener(v -> this.controller.handleSave(this.gameName.getText().toString(), this.getPicture() ) );
+        this.shareWinner.setOnClickListener(v -> this.controller.shareWinner() );
         //TODO: Auslagern? Nur ein View Evenet?!
-        this.home.setOnClickListener(v -> this.handleHome());
-        this.shareWinner.setOnClickListener(v -> this.controller.shareWinner());
+        this.home.setOnClickListener(v -> this.handleHome() );
+        this.winTakePic.setOnClickListener(v ->  this.useCamera());
 
         return this;
     }
@@ -79,8 +101,94 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         this.home = findViewById(R.id.btn_eva_home);
         this.saveGame = findViewById(R.id.btn_eva_save);
         this.shareWinner = findViewById(R.id.btn_eva_share);
+        this.winPic = findViewById(R.id.iv_eva_win_pic);
+        this.winTakePic = findViewById(R.id.btn_eva_take_pic);
 
         return this;
+    }
+
+    private void useCamera(){
+        if(ContextCompat.checkSelfPermission(
+                this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            this.showToast("Camera access already granted");
+            this.takePicture();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA},
+                    EvaluationActivity.CAMERA_PERMISSON_CODE
+            );
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode) {
+            case EvaluationActivity.CAMERA_PERMISSON_CODE:
+                if(permissions.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    this.showToast("Camera access newly granted");
+                    this.takePicture();
+                } else {
+                    this.showToast("Camera access denied");
+                }
+                break;
+            default:
+                this.showToast("Unidentified permission request");
+        }
+    }
+    private void takePicture(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        imageCaptureLauncher.launch(intent);
+    }
+    private final ActivityResultLauncher<Intent> imageCaptureLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null && data.getExtras() != null) {
+                        Bundle extras = data.getExtras();
+                        if (extras.containsKey("data")) {
+                            Bitmap imageBitmap = (Bitmap) extras.get("data");
+                            this.setWinnerPic(imageBitmap);
+                        }
+                    }
+                }
+            }
+    );
+
+    private Bitmap getPicture(){
+        Drawable drawable = this.winPic.getDrawable();
+
+        // Konvertiere die Drawable-Instanz in eine Bitmap
+        Bitmap bitmap;
+        if (drawable instanceof BitmapDrawable) {
+            bitmap = ((BitmapDrawable) drawable).getBitmap();
+        } else {
+            // Wenn es sich nicht um eine BitmapDrawable handelt, versuche es anders
+            bitmap = convertDrawableToBitmap(drawable);
+        }
+        return bitmap;
+    }
+
+    @Override
+    public void setWinnerPic(Bitmap imageBitmap){
+        this.winPic.setImageBitmap(imageBitmap);
+        this.winPicBitmap = imageBitmap;
+        this.winPic.invalidate();
+    }
+
+    @Override
+    public void createPlayerViews(List<PlayerStats> playerStats){
+        playerViews = new EvaluationPlayerViewListener[playerStats.size()];
+        for(int i = 0; i < playerStats.size(); i++){
+            if(i < 2){
+                playerViews[i] = new EvaluationPlayerView(this, this.statsFirst);
+            } else {
+                playerViews[i] = new EvaluationPlayerView(this, this.statsSecond);
+            }
+            playerViews[i].setViewValues(playerStats.get(i));
+        }
+        this.statsFirst.invalidate();
+        this.statsSecond.invalidate();
     }
 
     @Override
@@ -103,57 +211,6 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         startActivity(shareIntent);
     }
 
-
-/* Dont need for sqlLite-Database
-    private void useStorage(){
-        if (ContextCompat.checkSelfPermission(
-                this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                PackageManager.PERMISSION_GRANTED) {
-            Log.i("EvaluationActivity", "Permission granted");
-                Toast.makeText(
-                        this, "Permission granted", Toast.LENGTH_SHORT).show();
-        } else {
-            ActivityCompat.requestPermissions(
-                    this, new String[] { android.Manifest.permission.WRITE_EXTERNAL_STORAGE }, WRITE_STORAGE_PERMISSION_CODE);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch(requestCode){
-            case WRITE_STORAGE_PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(
-                            this, "Write Storage Permission granted", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(
-                            this, "Write Storage Permission denied", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-            default:
-                Toast.makeText(
-                        this, "undefined Permission", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
-*/
-    @Override
-    public void createPlayerViews(List<PlayerStats> playerStats){
-        playerViews = new EvaluationPlayerViewListener[playerStats.size()];
-        for(int i = 0; i < playerStats.size(); i++){
-            if(i < 2){
-                playerViews[i] = new EvaluationPlayerView(this, this.statsFirst);
-            } else {
-                playerViews[i] = new EvaluationPlayerView(this, this.statsSecond);
-            }
-            playerViews[i].setViewValues(playerStats.get(i));
-        }
-        this.statsFirst.invalidate();
-        this.statsSecond.invalidate();
-    }
-
     @Override
     public void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
@@ -168,10 +225,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
 
     @Override
     public void handleHome(){
-        Intent intent = new Intent(EvaluationActivity.this, HomeActivity.class);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        startHomeActivity(this);
     }
 
     @Nullable
@@ -180,9 +234,14 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         int winner = intent_in.getIntExtra("winner", 0);
         List<PlayerStats> playerStats= new ArrayList<>();
         playerStats = intent_in.getParcelableArrayListExtra("PlayerStats");
+        Bitmap pic = intent_in.getParcelableExtra("winnerPic");
         assert playerStats != null;
         String playerWinner = playerStats.get(winner).getPlayer();
-        return new GameDatabase(winner, playerWinner, playerStats);
+        if(pic == null){
+            return new GameDatabase(winner, playerWinner, playerStats);
+        } else {
+            return new GameDatabase(winner, playerWinner, playerStats, pic);
+        }
     }
 
     @Override

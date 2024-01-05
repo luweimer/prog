@@ -21,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "GameName TEXT," +
                 "WinnerInt INTEGER," +
                 "WinnerName TEXT," +
+                "Picture TEXT," +
                 "PRIMARY KEY(GameID)" +
                 ")");
 

@@ -94,11 +94,12 @@ public class PlayerStats implements Parcelable{
         if(this.stats.containsKey(key)){
             try {
                 this.stats.put(key, this.stats.get(key) + 1);
+                return;
             }catch (Exception e){
                 Log.e("GameStats", "updateStats: " + key + " " + this.stats.get(key) );
             }
-            Log.e("GameStats", "updateStats: " + key + " " + this.stats.get(key) );
         }
+        Log.e("GameStats", "updateStats: " + key + " " + this.stats.get(key) );
     }
     private PlayerStats updateStats(String key, int diff){
         if(this.stats.containsKey(key)){
@@ -176,7 +177,8 @@ public class PlayerStats implements Parcelable{
         try{
             return this.stats.get(id);
         } catch (Exception e){
-            return -1;
+            Log.e("PlayerStats", "Error get Value from Hash: " + id);
+            return 0;
         }
     }
 
@@ -217,7 +219,6 @@ public class PlayerStats implements Parcelable{
     public int getTripleThrow(){
         return this.getValueFromHash("T");
     }
-
     public String getPlayer(){
         return this.player;
     }
@@ -241,43 +242,46 @@ public class PlayerStats implements Parcelable{
             int count = this.stats.get("COUNT_SUM");
             int points = this.stats.get("SUM");
             return (count == 0) ? 0 : (double) points / count;
-        } catch (Exception e){
+        } catch (NullPointerException e){
+            Log.e("PlayerStats", "Error get AVG" );
             return 0;
         }
     }
     public double getCheckout(){
         try{
             int checkout = this.stats.get("CHECKOUT");
-            int points = this.stats.get("SUM");
-            return (checkout == 0) ? 0 : (double) points / checkout;
+            Log.i("PlayerStats", "getCheckout: " + this.winLegs + " " + checkout);
+            return (checkout == 0) ? 0 : (double) (this.winLegs / checkout) * 100;
         } catch (Exception e){
+            Log.e("PlayerStats", "Error get Checkout" );
             return 0;
         }
     }
 
+    @NonNull
     public String toString(){
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for(int j = 0; j < 3; j++) {
             String output2 = (j == 0) ? "" : (j == 1) ? "D" : "T";
             for (int i = 0; i <= 20; i++) {
-                output += output2 + i + ": " + this.stats.get(output2 + i) + "\n";
+                output.append(output2).append(i).append(": ").append(this.stats.get(output2 + i)).append("\n");
             }
         }
-        output += "25: " + this.stats.get("25") + "\n";
-        output += "50: " + this.stats.get("50") + "\n";
-        output += "180: " + this.stats.get("180") + "\n";
-        output += "100: " + this.stats.get("100") + "\n";
-        output += "120: " + this.stats.get("120") + "\n";
-        output += "140: " + this.stats.get("140") + "\n";
-        output += "160: " + this.stats.get("160") + "\n";
-        output += "COUNT_SUM: " + this.stats.get("COUNT_SUM") + "\n";
-        output += "SUM: " + this.stats.get("SUM") + "\n";
-        output += "S: " + this.stats.get("S") + "\n";
-        output += "D: " + this.stats.get("D") + "\n";
-        output += "T: " + this.stats.get("T") + "\n";
-        output += "CHECKOUT: " + this.stats.get("CHECKOUT") + "\n";
-        output += "AVG: " + this.getAvg() + "\n";
-        return output;
+        output.append("25: ").append(this.stats.get("25")).append("\n");
+        output.append("50: ").append(this.stats.get("50")).append("\n");
+        output.append("180: ").append(this.stats.get("180")).append("\n");
+        output.append("100: ").append(this.stats.get("100")).append("\n");
+        output.append("120: ").append(this.stats.get("120")).append("\n");
+        output.append("140: ").append(this.stats.get("140")).append("\n");
+        output.append("160: ").append(this.stats.get("160")).append("\n");
+        output.append("COUNT_SUM: ").append(this.stats.get("COUNT_SUM")).append("\n");
+        output.append("SUM: ").append(this.stats.get("SUM")).append("\n");
+        output.append("S: ").append(this.stats.get("S")).append("\n");
+        output.append("D: ").append(this.stats.get("D")).append("\n");
+        output.append("T: ").append(this.stats.get("T")).append("\n");
+        output.append("CHECKOUT: ").append(this.stats.get("CHECKOUT")).append("\n");
+        output.append("AVG: ").append(this.getAvg()).append("\n");
+        return output.toString();
     }
 
     @Override

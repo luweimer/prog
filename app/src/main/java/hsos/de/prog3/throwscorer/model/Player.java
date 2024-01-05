@@ -20,6 +20,7 @@ public class Player {
     private int score;
     private boolean partialWinFlag;
     private int legsWin;
+    private int allLegsWin;
     private int setsWin;
     private boolean win;
 
@@ -33,6 +34,7 @@ public class Player {
         this.score = score;
         this.checkout = checkout;
         this.legsWin = 0;
+        this.allLegsWin = 0;
         this.setsWin = 0;
         this.partialWinFlag = false;
     }
@@ -78,6 +80,7 @@ public class Player {
         int multPoint = multScore(point, state);
 
         if( this.checkUnderZero(multPoint, state) ){
+            Log.i("Player", "addPoint: Overthrow");
             //Case - Overthrow
             this.removeLastBoardPoints();
             return false;
@@ -162,6 +165,7 @@ public class Player {
             return false;
         }
         this.legsWin++;
+        this.allLegsWin++;
         Log.i("Player", "addPartialWin: " + this.legsWin);
         if(this.legsWin >= numLegs){
             this.legsWin = 0;
@@ -230,14 +234,18 @@ public class Player {
         }
 
         ArrayList<Integer> checkout = new ArrayList<>();
+        int currentPoints = this.calculateCurrentScore();
         checkout = this.oneThrowOut();
-        if(checkout.size() > 0){
-            this.playerStats.addCheckout();
+        if(checkout.size() == 1){
+            if(this.score != currentPoints){
+                Log.i("Player", "calculateCheckout: " + checkout.get(0));
+                this.playerStats.addCheckout();
+            }
             return checkout;
         }
 
         List<Integer> possiblePoints = this.getPossiblePoints();
-        int currentPoints = this.calculateCurrentScore();
+
 
         for(int f : possiblePoints){
             if(f == currentPoints && this.checkPossibleCheckout(f)){
@@ -274,6 +282,8 @@ public class Player {
     private ArrayList<Integer> oneThrowOut(){
         ArrayList<Integer> checkout = new ArrayList<>();
         int currentScore = this.calculateCurrentScore();
+        Log.i("Player", "oneThrowOut: " + currentScore);
+        Log.i("Player", "oneThrowOut: " + this.checkout);
 
         if(currentScore == 50){
             checkout.add(50);
@@ -283,21 +293,24 @@ public class Player {
         switch (this.checkout){
             case SINGLE: {
                 if(currentScore < 20){
+                    Log.d("Player", "Single");
                     checkout.add(currentScore);
-                    break;
                 }
+                break;
             }
             case DOUBLE: {
                 if(currentScore % 2 == 0 && currentScore < 40){
+                    Log.d("Player", "Double");
                     checkout.add(currentScore);
-                    break;
                 }
+                break;
             }
             case TRIPLE: {
                 if(currentScore % 3 == 0 && currentScore < 60){
+                    Log.d("Player", "Triple");
                     checkout.add(currentScore);
-                    break;
                 }
+                break;
             }
         }
 
@@ -397,8 +410,9 @@ public class Player {
     }
 
     public void serialize(){
+        Log.i("Player", "serialize: Legs: " + this.legsWin + " Sets: " + this.setsWin + " Win: " + this.win + " Name: " + this.playerName);
         this.playerStats
-                .setWinLegs(this.legsWin)
+                .setWinLegs(this.allLegsWin)
                 .setWinSets(this.setsWin)
                 .setWin(this.win);
 

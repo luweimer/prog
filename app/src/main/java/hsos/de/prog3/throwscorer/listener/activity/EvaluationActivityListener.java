@@ -1,5 +1,7 @@
 package hsos.de.prog3.throwscorer.listener.activity;
 
+import android.graphics.Bitmap;
+
 import androidx.core.content.ContextCompat;
 
 import java.util.List;
@@ -39,8 +41,9 @@ public interface EvaluationActivityListener extends RegisterListener {
      *
      * @param AVG The average of the winner
      * @param against The list of the other players
-     * @param name The name of the winner
      */
     public void shareWinner(double AVG, List<String> against);
+
+    public void setWinnerPic(Bitmap pic);
 
 }

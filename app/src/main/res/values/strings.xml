@@ -48,4 +48,5 @@
     <string name="share_avg_win">Ich habe mit einem AVG von</string>
     <string name="share_against">gegen folgende Gegner:</string>
     <string name="share_win">gewonnen!</string>
+    <string name="eva_pic">Siegerfoto</string>
 </resources>

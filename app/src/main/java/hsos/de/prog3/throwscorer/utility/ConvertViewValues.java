@@ -2,6 +2,10 @@ package hsos.de.prog3.throwscorer.utility;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 
@@ -94,8 +98,22 @@ public class ConvertViewValues {
     private static boolean checkTriple(int point){
         return point % 3 == 0;
     }
-    private static String getStringRessource(Context context, String idName, String defType) {
-        Resources res = context.getResources();
-        return res.getString(res.getIdentifier(idName, defType, context.getPackageName()));
+
+    public static Bitmap convertDrawableToBitmap(Drawable drawable) {
+        Bitmap bitmap;
+
+        if (drawable instanceof BitmapDrawable) {
+            bitmap = ((BitmapDrawable) drawable).getBitmap();
+        } else {
+            int width = drawable.getIntrinsicWidth();
+            int height = drawable.getIntrinsicHeight();
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+        }
+
+        return bitmap;
     }
+
 }

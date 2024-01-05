@@ -31,4 +31,5 @@
     <string name="share_avg_win">I had win with an AVG of</string>
     <string name="share_against">against player:</string>
     <string name="share_win">!</string>
+    <string name="eva_pic">Winning photo</string>
 </resources>
