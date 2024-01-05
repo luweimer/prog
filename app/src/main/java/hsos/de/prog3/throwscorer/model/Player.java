@@ -10,29 +10,25 @@ import java.util.stream.IntStream;
 
 public class Player {
 
+    private final int playerName;
+    private final String player;
+    private final CheckoutType checkout;
+    private final ArrayList<Integer> boardPoints;
+    private final ArrayList<String> boardPointsOutput;
+    private final PlayerStats playerStats;
+
     private int score;
-
-    private ArrayList<Integer> boardPoints;
-
-    private ArrayList<String> boardPointsOutput;
-
-    private CheckoutType checkout;
-    private PlayerStats playerStats;
     private boolean partialWinFlag;
-
     private int legsWin;
     private int setsWin;
-
     private boolean win;
-    private int playerName;
 
-    private String player;
 
     public Player(int score, CheckoutType checkout, int numPlayer, String player){
         this.playerName = numPlayer;
         this.player = player;
-        this.boardPoints = new ArrayList<Integer>();
-        this.boardPointsOutput = new ArrayList<String>();
+        this.boardPoints = new ArrayList<>();
+        this.boardPointsOutput = new ArrayList<>();
         this.playerStats = new PlayerStats(numPlayer, player);
         this.score = score;
         this.checkout = checkout;
@@ -41,11 +37,10 @@ public class Player {
         this.partialWinFlag = false;
     }
 
-    public Player reset(int score){
+    public void reset(int score){
         this.score = score;
         this.partialWinFlag = false;
         this.resetBoardPoints();
-        return this;
     }
 
     public int getScore(){
@@ -74,8 +69,8 @@ public class Player {
     }
 
     /**
-     * @param point
-     * @param state
+     * @param point current point
+     * @param state current state
      * @return Boolean if the point was added, false if Overthrow
      */
     public Boolean addPoint(int point, GameMultState state){
@@ -97,6 +92,7 @@ public class Player {
             this.boardPoints.forEach(p -> {
                 this.score -= p;
             });
+            //Lamda?
             this.boardPointsOutput.forEach(p ->{
                 this.playerStats.updateStats(p);
             });
@@ -111,14 +107,14 @@ public class Player {
         return true;
     }
 
-    private Player addPointOutput(int point, GameMultState state){
+    private void addPointOutput(int point, GameMultState state){
 
         if(point == 25){
             this.boardPointsOutput.add("S");
-            return this;
+            return;
         } else if(point == 50){
             this.boardPointsOutput.add("B");
-            return this;
+            return;
         }
 
         switch(state){
@@ -133,17 +129,16 @@ public class Player {
                 break;
             }
             default : {
-                String output = "" + point;
+                String output = String.valueOf(point);
                 this.boardPointsOutput.add(output);
             }
         }
-        return this;
     }
 
     /**
      * Condition must be fulfilled for function call
      * this.calculateCurrentScore() == 0
-     * @return
+     * @return true if win
      */
     public boolean checkPartialWin(GameMultState state){
         if(this.checkout == CheckoutType.SINGLE){
@@ -187,21 +182,20 @@ public class Player {
     }
 
 
-    public Player removePoint(){
+    public void removePoint(){
         if(this.boardPoints.size() == 0){
-            return this;
+            return;
         }
 
         int removePoint = this.boardPoints.remove(this.boardPoints.size() - 1);
         this.playerStats.removePoint(removePoint).removeState();
         this.boardPointsOutput.remove(this.boardPointsOutput.size() - 1);
-        return this;
     }
 
 
     /**
-     * @param point
-     * @param state
+     * @param point current point
+     * @param state current state
      * @return int
      *
      * This method will multiply the point by the current state.
@@ -275,7 +269,7 @@ public class Player {
 
     /**
      * Prof if checkout with one throw is possible
-     * @return
+     * @return ArrayList<Integer> with one throw checkout
      */
     private ArrayList<Integer> oneThrowOut(){
         ArrayList<Integer> checkout = new ArrayList<>();
@@ -323,18 +317,10 @@ public class Player {
                 return true;
             }
             case DOUBLE : {
-                if(lastPoint < 40 && lastPoint % 2 == 0){
-                    return true;
-                } else {
-                    return false;
-                }
+                return lastPoint < 40 && lastPoint % 2 == 0;
             }
             case TRIPLE : {
-                if(lastPoint < 60 && lastPoint % 3 == 0){
-                    return true;
-                } else {
-                    return false;
-                }
+                return lastPoint < 60 && lastPoint % 3 == 0;
             }
             default : {
                 return false;
@@ -366,8 +352,8 @@ public class Player {
     }
 
     /**
-     *
-     * @param
+     * @param state current state
+     * @param multPoint current point
      * @return true under zero -> false over zero
      */
     private boolean checkUnderZero(int multPoint, GameMultState state){
@@ -392,32 +378,29 @@ public class Player {
         }
     }
 
-    private Player removeLastBoardPoints(){
+    private void removeLastBoardPoints(){
         int size = boardPoints.size();
         if(size != this.boardPointsOutput.size()){
             Log.e("Player", "removeLastBoardPoints: Size not equal");
-            return this;
+            return;
         }
 
         for(int i = 0; i < size; i++){
             this.removePoint();
         }
 
-        return this;
     }
 
-    private Player resetBoardPoints(){
+    private void resetBoardPoints(){
         this.boardPoints.clear();
         this.boardPointsOutput.clear();
-        return this;
     }
 
-    public Player serialize(){
+    public void serialize(){
         this.playerStats
                 .setWinLegs(this.legsWin)
                 .setWinSets(this.setsWin)
                 .setWin(this.win);
 
-        return this;
     }
 }

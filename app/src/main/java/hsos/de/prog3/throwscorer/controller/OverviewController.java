@@ -29,7 +29,10 @@ public class OverviewController implements OverviewControllerListener {
         this.registerTableRows();
     }
 
-    private OverviewController registerTableRows(){
+    /**
+     * Register all Table Rows
+     */
+    private void registerTableRows(){
         List<GameDatabase> games = this.persistent.getAllGames();
         String[] name = new String[games.size()];
         String[] id = new String[games.size()];
@@ -40,9 +43,7 @@ public class OverviewController implements OverviewControllerListener {
 
         this.view.createGameRows( name, id );
 
-        return this;
     };
-
 
     @Override
     public void showGame(String id) {
@@ -62,10 +63,7 @@ public class OverviewController implements OverviewControllerListener {
 
     @Override
     public void cleanDatabase() {
-        DatabaseAccess dbAccess = new DatabaseAccess((Context) this.view);
-        dbAccess.open();
-        dbAccess.cleanDatabase();
-        dbAccess.close();
+        this.persistent.deleteAllGames();
 
         this.registerTableRows();
     }

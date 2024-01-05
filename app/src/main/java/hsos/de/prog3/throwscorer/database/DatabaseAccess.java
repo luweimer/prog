@@ -189,6 +189,7 @@ public class DatabaseAccess {
         values.put( "WinLegs", playerStats.getWinLegs() );
         values.put( "WinSets", playerStats.getWinSets() );
         values.put( "Win", playerStats.getWin() );
+        Log.i("DB", String.valueOf(playerStats.getWin()));
         values.put( "Stats", hashMapToJson(playerStats.getStats()) );
         Log.i("DB", gameID);
         database.insert("PlayerStats", null, values);

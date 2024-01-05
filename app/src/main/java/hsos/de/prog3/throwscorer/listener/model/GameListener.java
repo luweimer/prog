@@ -7,6 +7,9 @@ import hsos.de.prog3.throwscorer.model.GameMultState;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
+/**
+ * Interface for the GameListener
+ */
 public interface GameListener {
 
     public int getLeg();
@@ -22,14 +25,20 @@ public interface GameListener {
     public ArrayList<Integer> getCheckoutSuggestion();
     public GameMultState getGameMultState();
     public CheckoutType getCheckoutType();
-
     public GameSettings getGameSettings();
-
     public ArrayList<PlayerStats> getPlayerStats();
 
     public void setGameMultState(GameMultState state);
 
+    /**
+     * remove the last point of the board from the current player
+     */
     public void removeLastBoardPoint();
+
+    /**
+     * concat the point to the board of the current player
+     * @param point The point to concat
+     */
     public void concatBoardPoints(int point);
 
 

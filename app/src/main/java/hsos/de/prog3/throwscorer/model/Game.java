@@ -1,12 +1,9 @@
 package hsos.de.prog3.throwscorer.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import hsos.de.prog3.throwscorer.controller.GameController;
-import hsos.de.prog3.throwscorer.listener.controller.GameControllerListener;
 import hsos.de.prog3.throwscorer.listener.model.GameListener;
 
 public class Game implements GameListener {
@@ -18,12 +15,10 @@ public class Game implements GameListener {
     private boolean isDone;
     private int winner;
     private GameSettings gameSettings;
-    private Player[] players;
+    private final Player[] players;
 
     public Game(GameController gameController, GameSettings gameSettings){
         this.gameSettings = gameSettings;
-        Log.i("Game", "GameLegs: " + gameSettings.getNumLegs());
-        Log.i("Game", "GameSets: " + gameSettings.getNumSets());
         gameController.registerController(this);
         this.players = new Player[gameSettings.getNumPlayers()];
         this.winner = -1;
@@ -39,24 +34,21 @@ public class Game implements GameListener {
         return this;
     }
 
-    private Game initPlayerObjects(){
+    private void initPlayerObjects(){
         for(int i = 0; i < gameSettings.getNumPlayers(); i++){
             this.players[i] = new Player(gameSettings.getStartScore(), gameSettings.getCheckoutType(), i, gameSettings.getPlayerNames()[i]);
         }
-        return this;
     }
 
-    private Game restartLeg(){
+    private void restartLeg(){
         this.init();
         this.resetPlayers();
-        return this;
     }
 
-    private Game resetPlayers(){
+    private void resetPlayers(){
         Arrays.asList(this.players).forEach(player -> {
             player.reset(this.gameSettings.getStartScore());
         });
-        return this;
     }
 
     @Override
@@ -87,7 +79,6 @@ public class Game implements GameListener {
 
     @Override
     public void setGameMultState(GameMultState state) {
-        Log.e("Game", "setGameMultState: " + state + this.state);
         if(this.state == state){
             this.state = GameMultState.NORMAL;
         } else {
@@ -145,7 +136,6 @@ public class Game implements GameListener {
 
     @Override
     public int getNumPlayers(){
-        Log.i("Game", "getNumPlayers: " + gameSettings.getNumPlayers());
         return gameSettings.getNumPlayers();
     }
 
@@ -161,10 +151,7 @@ public class Game implements GameListener {
 
     @Override
     public ArrayList<Integer> getCheckoutSuggestion(){
-        Log.i("Game", "getCheckoutSuggestion: " + this.currentPlayersTurn);
-        ArrayList<Integer> suggestion = this.players[this.currentPlayersTurn].getCheckoutSuggestion();
-        Log.d("Board", "getCheckoutSuggestion: " + suggestion.toString());
-        return suggestion;
+        return this.players[this.currentPlayersTurn].getCheckoutSuggestion();
     }
 
     @Override
@@ -186,37 +173,27 @@ public class Game implements GameListener {
             }
         });
 
-        /*
-        if( this.players[this.currentPlayersTurn].checkWin( this.gameSettings.getNumSets()) ){
-            //TODO Implement the logic for the win
-            Log.i("Game", "checkWin: " + this.currentPlayersTurn);
-            this.isDone = true;
+        if(this.isDone){
             Arrays.asList(this.players).forEach(Player::serialize);
-            return true;
         }
-        return false;
-        */
-
     }
 
     private boolean isCheckoutPossible(){
         return this.players[this.currentPlayersTurn].isCheckoutPossible();
     }
 
-    private Game checkCurrentPlayMove(){
+    private void checkCurrentPlayMove(){
         if(this.currentPlayMove >= 3){
             this.switchPlayer();
         }
-        return this;
     }
 
-    private Game switchPlayer(){
+    private void switchPlayer(){
         this.currentPlayersTurn++;
         this.currentPlayMove = 0;
         if(this.currentPlayersTurn >= this.gameSettings.getNumPlayers()){
             this.currentPlayersTurn = 0;
         }
-        return this;
     }
 
 

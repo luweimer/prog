@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import hsos.de.prog3.throwscorer.view.PlayerView;
-
 public class PlayerStats implements Parcelable{
 
     private HashMap<String, Integer> stats;
@@ -28,6 +26,7 @@ public class PlayerStats implements Parcelable{
         this.player = player;
         this.name = numPlayer;
         this.lastStates = new ArrayList<GameMultState>();
+        this.win = false;
         this.initMap();
     }
 
@@ -91,7 +90,7 @@ public class PlayerStats implements Parcelable{
 
         return this;
     }
-    public PlayerStats updateStats(String key){
+    public void updateStats(String key){
         if(this.stats.containsKey(key)){
             try {
                 this.stats.put(key, this.stats.get(key) + 1);
@@ -100,7 +99,6 @@ public class PlayerStats implements Parcelable{
             }
             Log.e("GameStats", "updateStats: " + key + " " + this.stats.get(key) );
         }
-        return this;
     }
     private PlayerStats updateStats(String key, int diff){
         if(this.stats.containsKey(key)){

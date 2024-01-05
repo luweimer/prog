@@ -2,6 +2,7 @@ package hsos.de.prog3.throwscorer.utility;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,7 @@ public class Router {
         Intent intent = new Intent(context, EvaluationActivity.class);
         intent.putExtra("winner", winner);
         intent.putExtra("PlayerStats", new ArrayList<>(playerStats));
+        playerStats.forEach(p -> Log.i("Router", "startEvaluationActivity: " + p.getPlayer() + " " + p.getWin()));
         //intent.putExtra("GameSettings", gameSettings);
         context.startActivity(intent);
 

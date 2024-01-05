@@ -1,6 +1,7 @@
 package hsos.de.prog3.throwscorer.activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,11 +12,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.controller.EvaluationController;
@@ -28,14 +29,18 @@ import hsos.de.prog3.throwscorer.view.EvaluationPlayerView;
 
 public class EvaluationActivity extends AppCompatActivity implements EvaluationActivityListener {
 
+    //private static final int WRITE_STORAGE_PERMISSION_CODE = 24;
     private TextView winner;
     private EditText gameName;
+
 
     private GridLayout statsFirst;
     private GridLayout statsSecond;
 
     private Button home;
     private Button saveGame;
+
+    private Button shareWinner;
 
     private EvaluationControllerListener controller;
     private EvaluationPlayerViewListener[] playerViews;
@@ -55,9 +60,14 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
 
     private EvaluationActivity registerButton(){
         this.home.setOnClickListener(v -> this.handleHome());
-        this.saveGame.setOnClickListener(v -> this.controller.handleSave(String.valueOf(this.gameName.getText())) );
+        this.saveGame.setOnClickListener(v -> {
+            //this.useStorage();
+            this.controller.handleSave(String.valueOf(this.gameName.getText()));
+        });
         //TODO: Auslagern? Nur ein View Evenet?!
         this.home.setOnClickListener(v -> this.handleHome());
+        this.shareWinner.setOnClickListener(v -> this.controller.shareWinner());
+
         return this;
     }
 
@@ -68,10 +78,67 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         this.gameName = findViewById(R.id.et_eva_name);
         this.home = findViewById(R.id.btn_eva_home);
         this.saveGame = findViewById(R.id.btn_eva_save);
+        this.shareWinner = findViewById(R.id.btn_eva_share);
 
         return this;
     }
 
+    @Override
+    public void shareWinner(double AVG, List<String> against){
+        Intent sendIntent = new Intent();
+        StringBuilder text = new StringBuilder(getString(R.string.share_avg_win) + " " + AVG + " " + getString(R.string.share_against) + " ");
+        for(int i = 0; i < against.size(); i++){
+            if(i == against.size() - 1){
+                text.append(against.get(i)).append(" ");
+            } else {
+                text.append(against.get(i)).append(", ");
+            }
+        }
+        text.append(getString(R.string.share_win));
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, text.toString());
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
+
+/* Dont need for sqlLite-Database
+    private void useStorage(){
+        if (ContextCompat.checkSelfPermission(
+                this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED) {
+            Log.i("EvaluationActivity", "Permission granted");
+                Toast.makeText(
+                        this, "Permission granted", Toast.LENGTH_SHORT).show();
+        } else {
+            ActivityCompat.requestPermissions(
+                    this, new String[] { android.Manifest.permission.WRITE_EXTERNAL_STORAGE }, WRITE_STORAGE_PERMISSION_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode){
+            case WRITE_STORAGE_PERMISSION_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(
+                            this, "Write Storage Permission granted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(
+                            this, "Write Storage Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+            default:
+                Toast.makeText(
+                        this, "undefined Permission", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+*/
     @Override
     public void createPlayerViews(List<PlayerStats> playerStats){
         playerViews = new EvaluationPlayerViewListener[playerStats.size()];

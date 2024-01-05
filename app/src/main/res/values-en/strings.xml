@@ -27,4 +27,8 @@
     <string name="ov_show">View</string>
     <string name="ov_clean">cleanup database</string>
     <string name="home_over">Gameoverview</string>
+    <string name="eva_share">Share</string>
+    <string name="share_avg_win">I had win with an AVG of</string>
+    <string name="share_against">against player:</string>
+    <string name="share_win">!</string>
 </resources>

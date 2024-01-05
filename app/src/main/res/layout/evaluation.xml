@@ -67,6 +67,15 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_marginBottom="5dp"/>
+            <Button
+                android:id="@+id/btn_eva_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:text="@string/eva_share"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

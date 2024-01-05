@@ -20,7 +20,7 @@ import java.util.Objects;
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.controller.GameController;
 import hsos.de.prog3.throwscorer.listener.activity.GameActivityListener;
-import hsos.de.prog3.throwscorer.listener.controller.GameControllerListener;
+import hsos.de.prog3.throwscorer.listener.controller.ClickHandler;
 import hsos.de.prog3.throwscorer.listener.view.PlayerViewListener;
 import hsos.de.prog3.throwscorer.model.CheckoutType;
 import hsos.de.prog3.throwscorer.model.GameMultState;
@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     private PlayerViewListener[] playerViews;
 
-    private GameControllerListener controller;
+    private ClickHandler controller;
 
     private TextView checkout;
     private TextView leg;
@@ -183,8 +183,8 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     @Override
     public void registerController(Object controller) {
-        if(controller instanceof GameControllerListener){
-            this.controller = (GameControllerListener) controller;
+        if(controller instanceof ClickHandler){
+            this.controller = (ClickHandler) controller;
         }
     }
 }

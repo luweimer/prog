@@ -4,13 +4,13 @@ import android.view.View;
 import android.widget.Button;
 
 import hsos.de.prog3.throwscorer.listener.activity.GameActivityListener;
-import hsos.de.prog3.throwscorer.listener.controller.GameControllerListener;
+import hsos.de.prog3.throwscorer.listener.controller.ClickHandler;
 import hsos.de.prog3.throwscorer.listener.model.GameListener;
 import hsos.de.prog3.throwscorer.model.Game;
 import hsos.de.prog3.throwscorer.model.GameMultState;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 
-public class GameController implements GameControllerListener {
+public class GameController implements ClickHandler {
 
     private GameActivityListener view;
     private GameListener model;

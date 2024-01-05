@@ -44,4 +44,8 @@
     <string name="ov_show">Anzeigen</string>
     <string name="ov_clean">Datenbank bereinigen</string>
     <string name="home_over">Spielübersicht</string>
+    <string name="eva_share">Teilen</string>
+    <string name="share_avg_win">Ich habe mit einem AVG von</string>
+    <string name="share_against">gegen folgende Gegner:</string>
+    <string name="share_win">gewonnen!</string>
 </resources>
