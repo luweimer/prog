@@ -7,7 +7,4 @@ public interface EvaluationPlayerViewListener {
     public void setViewValues(String mame, int sumScore, double avg, int sumThrough, int bull, int sBull, int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow);
 
     public void setViewValues(PlayerStats playerStats);
-
-
-
 }

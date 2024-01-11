@@ -180,7 +180,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom">
-
         <Button
             android:id="@+id/btn_ind_submit"
             android:layout_width="match_parent"
@@ -189,8 +188,6 @@
             android:text="@string/a_submit"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
-
     </LinearLayout>
 
 </LinearLayout>

@@ -57,7 +57,11 @@
 
                 </GridLayout>
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="10dp">
             <Button
                 android:id="@+id/btn_eva_home"
                 android:layout_width="match_parent"
@@ -66,7 +70,8 @@
                 android:text="@string/eva_home"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"/>
             <Button
                 android:id="@+id/btn_eva_share"
                 android:layout_width="match_parent"
@@ -75,7 +80,8 @@
                 android:text="@string/eva_share"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/btn_eva_take_pic"
@@ -85,7 +91,9 @@
                 android:text="@string/eva_pic"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

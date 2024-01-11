@@ -32,7 +32,6 @@
             android:layout_marginBottom="10dp"
             android:text="@string/ov_clean" />
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
