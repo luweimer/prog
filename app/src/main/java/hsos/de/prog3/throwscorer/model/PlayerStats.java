@@ -179,6 +179,10 @@ public class PlayerStats implements Parcelable{
     public String getName(){
         return String.valueOf(this.name);
     }
+
+    public int getPlayerNumber(){
+        return this.name;
+    }
     public int getSumScore(){
         return this.getValueFromHash("SUM");
     }
