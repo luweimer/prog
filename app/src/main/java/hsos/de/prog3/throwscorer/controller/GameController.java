@@ -57,6 +57,7 @@ public class GameController implements ClickHandler {
                 model.setGameMultState(GameMultState.TRIPLE);
                 break;
             }
+            //Language specific
             case "B" :
             case "Z" : {
                 this.removeLastBoardPoint();
@@ -93,6 +94,7 @@ public class GameController implements ClickHandler {
             this.view.showWinner(this.model.getWinner(), this.model.getPlayerStats(), this.model.getGameSettings() );
         }
 
+        //Update the view complete, because not much datas changed
         this.updateBoardState()
                 .updatePlayerHeader()
                 .updateActivePlayerHead()

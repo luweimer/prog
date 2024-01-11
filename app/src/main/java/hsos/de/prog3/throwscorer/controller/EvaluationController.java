@@ -19,8 +19,6 @@ public class EvaluationController implements EvaluationControllerListener {
     private EvaluationActivityListener view;
 
     private GameDatabase gameDatabase;
-
-    //private PersistentListener persistent;
     private PersistensListener persistent;
 
     public EvaluationController(EvaluationActivityListener view, GameDatabase gameDatabase) {
@@ -63,7 +61,6 @@ public class EvaluationController implements EvaluationControllerListener {
         double avg = 0;
         List<String> against = new ArrayList<>();
         for (PlayerStats p : this.gameDatabase.getPlayerStats()) {
-            Log.i("EvaluationController", "shareWinner: " + p.getPlayer() + " " + p.getWin());
             if(! p.getWin()){
                 against.add(p.getPlayer());
             } else {

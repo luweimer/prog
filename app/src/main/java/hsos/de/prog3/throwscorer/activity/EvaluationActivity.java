@@ -158,12 +158,10 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
     private Bitmap getPicture(){
         Drawable drawable = this.winPic.getDrawable();
 
-        // Konvertiere die Drawable-Instanz in eine Bitmap
         Bitmap bitmap;
         if (drawable instanceof BitmapDrawable) {
             bitmap = ((BitmapDrawable) drawable).getBitmap();
         } else {
-            // Wenn es sich nicht um eine BitmapDrawable handelt, versuche es anders
             bitmap = convertDrawableToBitmap(drawable);
         }
         return bitmap;
