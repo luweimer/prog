@@ -14,7 +14,7 @@ public interface OverviewActivityListener extends RegisterListener {
 
     public void updateGameRows(String name, String id);
 
-    public void showWinner(int player, ArrayList<PlayerStats> playerStats, Bitmap pic);
+    public void showGame(int player, ArrayList<PlayerStats> playerStats, Bitmap pic);
 
 
 

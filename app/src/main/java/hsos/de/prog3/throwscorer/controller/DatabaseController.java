@@ -5,11 +5,11 @@ import android.content.Context;
 import java.util.List;
 
 import hsos.de.prog3.throwscorer.database.DatabaseAccess;
-import hsos.de.prog3.throwscorer.listener.controller.PersistentListener;
+import hsos.de.prog3.throwscorer.listener.controller.PeListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
-public class DatabaseController implements PersistentListener {
+public class DatabaseController implements PeListener {
 
 
     private Context context;

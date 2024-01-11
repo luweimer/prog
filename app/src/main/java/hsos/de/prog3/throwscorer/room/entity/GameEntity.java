@@ -1,10 +1,12 @@
 package hsos.de.prog3.throwscorer.room.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.*;
 
 @Entity(tableName = "GameEntity")
 public class GameEntity {
     @PrimaryKey
+    @NonNull
     public String gameID;
 
     @ColumnInfo(name = "GameName")

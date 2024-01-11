@@ -73,6 +73,9 @@ public class GameDatabase {
         this.winnerPic = pic;
     }
 
+    public void setPlayerStats(List<PlayerStats> playerStats){
+        this.playerStats = playerStats;
+    }
 
 
 }

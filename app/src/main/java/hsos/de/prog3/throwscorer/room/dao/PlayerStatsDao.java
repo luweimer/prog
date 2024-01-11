@@ -15,7 +15,7 @@ public interface PlayerStatsDao {
     @Insert
     void insertPlayerStats(PlayerStatsEntity playerStatsEntity);
 
-    @Delete
-    void deletePlayerStats(String id);
+    @Query("DELETE FROM PlayerStats WHERE gameID = :gameID")
+    void deletePlayerStats(String gameID);
 
 }

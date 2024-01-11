@@ -7,12 +7,12 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import hsos.de.prog3.throwscorer.database.DatabaseAccess;
 import hsos.de.prog3.throwscorer.listener.activity.EvaluationActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.EvaluationControllerListener;
-import hsos.de.prog3.throwscorer.listener.controller.PersistentListener;
+import hsos.de.prog3.throwscorer.listener.controller.PersistensListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
+import hsos.de.prog3.throwscorer.room.RoomAccess;
 
 public class EvaluationController implements EvaluationControllerListener {
 
@@ -20,13 +20,14 @@ public class EvaluationController implements EvaluationControllerListener {
 
     private GameDatabase gameDatabase;
 
-    private PersistentListener persistent;
+    //private PersistentListener persistent;
+    private PersistensListener persistent;
 
     public EvaluationController(EvaluationActivityListener view, GameDatabase gameDatabase) {
         this.view = view;
         view.registerController(this);
         this.gameDatabase = gameDatabase;
-        this.persistent = new DatabaseController();
+        this.persistent = new RoomAccess();
         this.persistent.setContext((Context) this.view);
         this.init();
     }

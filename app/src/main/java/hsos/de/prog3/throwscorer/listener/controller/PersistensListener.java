@@ -2,17 +2,15 @@ package hsos.de.prog3.throwscorer.listener.controller;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
 
 import hsos.de.prog3.throwscorer.model.GameDatabase;
-import hsos.de.prog3.throwscorer.model.PlayerStats;
+import hsos.de.prog3.throwscorer.room.entity.GameEntity;
+import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
-/**
- * Interface to store data persistently
- * Example DatabaseController
- */
-public interface PersistentListener {
-
+public interface PersistensListener {
     /**
      * Set Context
      * @param context Context
@@ -20,8 +18,8 @@ public interface PersistentListener {
     public void setContext(Context context);
 
     /**
-     * Safe Game
-     * @param gameDatabase GameDatabase Object
+     * Safe Game -> generic gameDatabase object for different database types
+     * @param gameDatabase GameEntity Object
      */
     public void safeGame(GameDatabase gameDatabase);
 
@@ -40,19 +38,19 @@ public interface PersistentListener {
      * @param gameID The unique identifier of the game.
      * @return GameDatabase
      */
-    public GameDatabase getGame(String gameID);
+    public LiveData<GameEntity> getGame(String gameID);
 
     /**
      * Get all Games
      * @return List<GameDatabase> List of GameDatabase Objects
      */
-    public List<GameDatabase> getAllGames();
+    public LiveData<List<GameEntity>> getAllGames();
 
     /**
      * Get PlayerStats
+     *
      * @param gameID The unique identifier of the game.
      * @return List<PlayerStats> List of PlayerStats Objects
      */
-    public List<PlayerStats> getPlayerStats(String gameID);
-
+    public LiveData<List<PlayerStatsEntity>> getPlayerStats(String gameID);
 }
