@@ -3,15 +3,11 @@ package hsos.de.prog3.throwscorer.activity;
 import static hsos.de.prog3.throwscorer.utility.Router.startGame;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Arrays;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.view.PlayerNameViewListener;
@@ -51,7 +47,6 @@ public class PlayerNameActivity extends AppCompatActivity {
         return this;
     }
 
-    @Nullable
     private void handleIncomingIntent() {
         this.gameSettings = getIntent().getParcelableExtra("GameSettings");
     }
@@ -71,7 +66,6 @@ public class PlayerNameActivity extends AppCompatActivity {
             names[i] = name;
         }
         this.gameSettings.setPlayerNames(names);
-        Log.i("PlayerNameActivity", "handleSubmit: " + Arrays.toString(this.gameSettings.getPlayerNames()));
         startGame(this, this.gameSettings);
     }
 

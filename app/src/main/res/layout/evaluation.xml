@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -82,33 +83,23 @@
                 android:textSize="20sp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"/>
-
-            <Button
-                android:id="@+id/btn_eva_take_pic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:text="@string/eva_pic"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="5dp">
+                android:paddingVertical="10dp">
                 <Button
                     android:id="@+id/btn_eva_save"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button"
                     android:text="@string/eva_save"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginBottom="5dp"/>
 
                 <EditText
                     android:id="@+id/et_eva_name"
@@ -120,14 +111,31 @@
                     android:layout_marginBottom="5dp"
                     android:layout_columnWeight="1"
                     android:hint="@string/eva_name"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    />
             </LinearLayout>
-            <ImageView
-                android:id="@+id/iv_eva_win_pic"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher_ts_icon_round"
-                />
+                android:orientation="vertical"
+                android:paddingVertical="10dp">
+                <Button
+                    android:id="@+id/btn_eva_take_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button"
+                    android:text="@string/eva_pic"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/iv_eva_win_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_ts_icon_round"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 

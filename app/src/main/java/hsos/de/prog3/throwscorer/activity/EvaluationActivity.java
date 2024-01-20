@@ -1,6 +1,7 @@
 package hsos.de.prog3.throwscorer.activity;
 
 import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertDrawableToBitmap;
+import static hsos.de.prog3.throwscorer.utility.Converter.BitmapToBase64;
 import static hsos.de.prog3.throwscorer.utility.Router.startHomeActivity;
 
 import android.Manifest;
@@ -11,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -89,6 +91,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         //TODO: Auslagern? Nur ein View Evenet?!
         this.home.setOnClickListener(v -> this.handleHome() );
         this.winTakePic.setOnClickListener(v ->  this.useCamera());
+        this.winPic.setOnClickListener(v -> this.useCamera());
 
         return this;
     }
