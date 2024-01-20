@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_ov_game_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/textview"
+        android:text="@string/ov_game_name"
+        android:layout_marginBottom="5dp"/>
+
+    <ImageButton
+        android:id="@+id/ib_ov_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/textview"
+        android:contentDescription="@string/ov_show"
+        android:padding="5dp"
+        android:src="@android:drawable/ic_menu_search"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+
+    <ImageButton
+        android:id="@+id/ib_ov_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/textview"
+        android:padding="5dp"
+        android:src="@android:drawable/ic_delete"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:contentDescription="@string/ov_delete" />
+
+    <!--
+    <TextView
+        android:id="@+id/tv_ov_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/textview"
+        android:text="@string/ov_show"
+        android:layout_marginBottom="5dp"/>
+    <TextView
+        android:id="@+id/tv_ov_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/textview"
+        android:text="@string/ov_delete"
+        android:layout_marginBottom="5dp"/>
+        -->
+</TableRow>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white"
+    android:padding="10dp">
+
+        <ImageView
+            android:layout_width="239dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="20dp"
+            android:src="@mipmap/ic_launcher_ts_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="30dp"
+            android:background="@color/white">
+                <Button
+                    android:id="@+id/btn_home_rule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/home_over"/>
+
+                <Button
+                    android:id="@+id/btn_home_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/black"
+                    android:background="@drawable/button_primary"
+                    android:backgroundTint="@color/primary"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/home_start" />
+
+                <Button
+                    android:id="@+id/btn_home_ind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/home_start_ind" />
+
+        </LinearLayout>
+</LinearLayout>

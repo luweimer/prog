@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ThrowScorer</string>
+    <string name="home_start">Play game</string>
+    <string name="home_start_ind">Individuell game</string>
+    <string name="home_rule">Gamerules</string>
+    <string name="game_leg">Current Leg:</string>
+    <string name="game_back">B</string>
+    <string name="ind_settings">Gamesettings</string>
+    <string name="ind_score">Start-Score:</string>
+    <string name="ind_set">Number of Sets:</string>
+    <string name="ind_leg">Number of Legs:</string>
+    <string name="ind_player">Number of Players</string>
+    <string name="a_submit">Submit</string>
+    <string name="eva_win">Winner:</string>
+    <string name="eva_sum">Sum:</string>
+    <string name="eva_sumThrouhg">Through:</string>
+    <string name="pn_player">Player</string>
+    <string name="pnt_playername">Player names</string>
+    <string name="eva_save">Save game</string>
+    <string name="eva_name">Game name</string>
+    <string name="err_enter_name">Please enter valid name!</string>
+    <string name="ov_game">Games</string>
+    <string name="ov_winner">Winner</string>
+    <string name="ov_game_name">Gamename</string>
+    <string name="ov_delete">Delete</string>
+    <string name="ov_show">View</string>
+    <string name="ov_clean">cleanup database</string>
+    <string name="home_over">Gameoverview</string>
+    <string name="eva_share">Share</string>
+    <string name="share_avg_win">I had win with an AVG of</string>
+    <string name="share_against">against player:</string>
+    <string name="share_win">!</string>
+    <string name="eva_pic">Winning photo</string>
+</resources>
