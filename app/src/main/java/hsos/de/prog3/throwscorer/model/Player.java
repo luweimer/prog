@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Player
+ * Speichert die Daten eines Spielers
+ * Verwaltet PlayerStats-Objekt
+ * Autor: Lucius Weimer
+ */
 public class Player {
 
     private final int playerName;
@@ -25,6 +31,13 @@ public class Player {
     private boolean win;
 
 
+    /**
+     * Konstruktor
+     * @param score Startscore
+     * @param checkout CheckoutType
+     * @param numPlayer Spielernummer
+     * @param player Spielernamen
+     */
     public Player(int score, CheckoutType checkout, int numPlayer, String player){
         this.playerName = numPlayer;
         this.player = player;
@@ -39,41 +52,82 @@ public class Player {
         this.partialWinFlag = false;
     }
 
+    /**
+     * Zurücksetzen des Spielers
+     * Startscore, partialWinFlag, Reset der BoardPoints
+     * @param score
+     */
     public void reset(int score){
         this.score = score;
         this.partialWinFlag = false;
         this.resetBoardPoints();
     }
 
+    /**
+     * Getter für den aktuellen Score
+     * @return aktueller Score
+     */
     public int getScore(){
         return this.calculateCurrentScore();
     }
+
+    /**
+     * Getter für die Anzahl gewonnener Legs
+     * @return Anzahl gewonnener Legs
+     */
     public int getLegsWin(){
         return this.legsWin;
     }
+
+    /**
+     * Getter für die Anzahl gewonnener Sets
+     * @return Anzahl gewonnener Sets
+     */
     public int getSetsWin(){
         return this.setsWin;
     }
 
+    /**
+     * Getter für den Spielernamen
+     * @return Spielernamen
+     */
     public String getPlayer(){
         return this.player;
     }
 
+    /**
+     * Getter für die Spielerstatistiken
+     * @return Spielerstatistiken
+     */
     public PlayerStats getPlayerStats(){
         return this.playerStats;
     }
 
+    /**
+     * Getter für die BoardPoints
+     * @return BoardPoints
+     */
     public ArrayList<Integer> getBoardPoints(){
         return this.boardPoints;
     }
+
+    /**
+     * Getter für die BoardPointsOutput
+     * @return BoardPointsOutput
+     */
     public ArrayList<String> getBoardPointsOutput(){
         return this.boardPointsOutput;
     }
 
     /**
-     * @param point current point
-     * @param state current state
-     * @return Boolean if the point was added, false if Overthrow
+     * Fügt einen Punkt dem Spieler hinzu
+     * Prüft auf Overthrow
+     * Aktualisiert die BoardPoints
+     * Aktuelisiert den Score bei 3 BoardPoints und leert die BoardPoints
+     * Aktualisiert die PlayerStats bei 3 BoardPoints
+     * @param point aktuell geworfener Punkt
+     * @param state aktueller State (Multiplikator)
+     * @return boolean, true wenn der Punkt hinzugefügt wurde, false wenn Overthrow
      */
     public Boolean addPoint(int point, GameMultState state){
 
@@ -110,6 +164,13 @@ public class Player {
         return true;
     }
 
+    /**
+     * Fügt einen Punkt dem Output Array hinzu
+     * Fügt das Vorzeichen hinzu (D, T)
+     * Fügt S oder B hinzu bei 25 oder 50 Punkten
+     * @param point aktuell geworfener Punkt
+     * @param state aktueller State
+     */
     private void addPointOutput(int point, GameMultState state){
 
         if(point == 25){
@@ -139,9 +200,10 @@ public class Player {
     }
 
     /**
-     * Condition must be fulfilled for function call
-     * this.calculateCurrentScore() == 0
-     * @return true if win
+     * Prüft ob ein PartialWin möglich ist - Leg
+     * Setzt die winFlag
+     * @param state aktueller State
+     * @return true wenn PartialWin möglich, false wenn nicht
      */
     public boolean checkPartialWin(GameMultState state){
         if(this.checkout == CheckoutType.SINGLE){
@@ -157,9 +219,11 @@ public class Player {
         return false;
     }
 
-    //Example:
-    //Legs: Win 501 Points
-    //Sets: Win 2 Sets
+    /**
+     * Fügt einen PartialWin hinzu, wenn die winFlag gesetzt ist
+     * @param numLegs Anzahl Legs, die für ein Set notwendig sind
+     * @return true wenn PartialWin hinzugefügt wurde, false wenn nicht
+     */
     public boolean addPartialWin(int numLegs){
         if(!this.partialWinFlag){
             return false;
@@ -176,16 +240,29 @@ public class Player {
         return true;
     }
 
+    /**
+     * Prüft ob der Spieler gewonnen hat - Vergleich mit der Anzahl der Sets
+     * @param numSets Anzahl Sets, die für den Sieg notwendig sind
+     * @return true wenn gewonnen, false wenn nicht
+     */
     public boolean checkWin(int numSets){
         this.win = this.setsWin >= numSets;
         return this.win;
     }
 
+    /**
+     * Getter für die Spielernummer
+     * @return Spielernummer
+     */
     public int getPlayerNumber(){
         return this.playerName;
     }
 
-
+    /**
+     * Entfernt den letzten Punkt aus den BoardPoints
+     * Entfernt den letzten Punkt aus den BoardPointsOutput
+     * Aktualisiert die PlayerStats
+     */
     public void removePoint(){
         if(this.boardPoints.size() == 0){
             return;
@@ -198,13 +275,13 @@ public class Player {
 
 
     /**
+     * Multipliziert den Punkt mit dem State
+     * Double -> * 2
+     * Triple -> * 3
+     * Single -> return point
      * @param point current point
      * @param state current state
-     * @return int
-     *
-     * This method will multiply the point by the current state.
-     *
-     * This method will return the multiplied point.
+     * @return int multPoint
      */
     private int multScore(int point, GameMultState state){
         switch(state){
@@ -220,6 +297,10 @@ public class Player {
         }
     }
 
+    /**
+     * Prüft ob ein Checkout möglich ist und berechnet diesen
+     * @return ArrayList<Integer> mit Checkout, wenn nicht möglich leer
+     */
     public ArrayList<Integer> getCheckoutSuggestion(){
         if( this.isCheckoutPossible() ) {
             return this.calculateCheckout();
@@ -227,6 +308,11 @@ public class Player {
         return new ArrayList<>();
     }
 
+    /**
+     * Berechnet den Checkout
+     * Prüft ob ein Checkout mit einem Wurf möglich ist
+     * @return ArrayList<Integer> mit Checkout, wenn nicht möglich leer
+     */
     private ArrayList<Integer> calculateCheckout(){
         int pendingDarts = 3 - this.boardPoints.size();
         if(pendingDarts == 0){
@@ -272,8 +358,8 @@ public class Player {
     }
 
     /**
-     * Prof if checkout with one throw is possible
-     * @return ArrayList<Integer> with one throw checkout
+     * Prüft ob ein Checkout mit einem Wurf möglich ist
+     * @return ArrayList<Integer> mit Checkout, wenn nicht möglich leer
      */
     private ArrayList<Integer> oneThrowOut(){
         ArrayList<Integer> checkout = new ArrayList<>();
@@ -311,7 +397,11 @@ public class Player {
         return checkout;
     }
 
-
+    /**
+     * Prüft ob ein Checkout möglich ist
+     * @param lastPoint letzter Punkt bzw. Wurf
+     * @return true wenn möglich, false wenn nicht
+     */
     private boolean checkPossibleCheckout(int lastPoint){
 
         if(lastPoint == 0 || lastPoint == 25) return false;
@@ -335,7 +425,10 @@ public class Player {
         }
     }
 
-
+    /**
+     * Gibt eine Liste mit möglichen Punkten zurück, welche geworfen werden können
+     * @return List<Integer> mit möglichen Punkten
+     */
     private List<Integer> getPossiblePoints() {
         List<Integer> unPossiblePoints = Arrays.asList(
                 23, 29, 31, 35, 37, 41, 43, 44, 46, 47, 49, 50, 52, 53, 55, 56, 58, 59
@@ -346,9 +439,38 @@ public class Player {
                 .boxed()
                 .collect(Collectors.toList());
     }
+    /**
+     * Prüft ob ein Checkout möglich ist
+     * @return true wenn möglich, false wenn nicht
+     */
     public boolean isCheckoutPossible(){
-        return this.calculateCurrentScore() <= 170;
+        int currentScore = this.calculateCurrentScore();
+
+        if(currentScore == 50){
+            return true;
+        }
+
+        int pendingDarts = 3 - this.boardPoints.size();
+        int multPendingDarts = Math.max(0, pendingDarts - 1);
+
+        switch (this.checkout){
+            case SINGLE : {
+                return ( currentScore - (multPendingDarts * 60 + 20) ) <= 0;
+            }
+            case DOUBLE : {
+                return ( currentScore - (multPendingDarts * 60 + 40) ) <= 0;
+            }
+            case TRIPLE : {
+                return ( currentScore - (multPendingDarts * 60 + 60) ) <= 0;
+            }
+        }
+        return false;
     }
+
+    /**
+     * Berechnet den aktuellen Score, nach jedem Wurf
+     * @return int currentScore
+     */
     private int calculateCurrentScore(){
         int currentScore = this.score;
 
@@ -359,9 +481,9 @@ public class Player {
     }
 
     /**
-     * @param state current state
-     * @param multPoint current point
-     * @return true under zero -> false over zero
+     * @param multPoint aktueller Punkt (bereits multipliziert)
+     * @param state aktueller State
+     * @return true wenn der Score unter 0 ist, false wenn nicht
      */
     private boolean checkUnderZero(int multPoint, GameMultState state){
         int currentScore = this.calculateCurrentScore();
@@ -389,6 +511,9 @@ public class Player {
         }
     }
 
+    /**
+     * Entfernt die letzten BoardPoints
+     */
     private void removeLastBoardPoints(){
         int size = boardPoints.size();
         if(size != this.boardPointsOutput.size()){
@@ -402,11 +527,17 @@ public class Player {
 
     }
 
+    /**
+     * Leert die Liste der BoardPoints
+     */
     private void resetBoardPoints(){
         this.boardPoints.clear();
         this.boardPointsOutput.clear();
     }
 
+    /**
+     * Serialisiert die Daten des Spielers in die PlayerStats, wenn das Spiel beendet ist
+     */
     public void serialize(){
         Log.i("Player", "serialize: Legs: " + this.legsWin + " Sets: " + this.setsWin + " Win: " + this.win + " Name: " + this.playerName);
         this.playerStats

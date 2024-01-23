@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * PlayerStats
+ * Speicherung der Statistiken eines Spielers
+ * Implementiert Parcelable, um Objekt zwischen Activities zu übergeben
+ * Autor: Lucius Weimer
+ */
 public class PlayerStats implements Parcelable{
 
     private HashMap<String, Integer> stats;
@@ -21,6 +27,12 @@ public class PlayerStats implements Parcelable{
     private String player;
     private boolean win;
 
+    /**
+     * Standardkonstruktor
+     * @param numPlayer Spielernummer
+     * @param player Spielernamen
+     * Initialisiert die HashMap mit den benötigten Keys
+     */
     public PlayerStats(int numPlayer, String player){
         this.stats = new HashMap<String, Integer>();
         this.player = player;
@@ -30,6 +42,15 @@ public class PlayerStats implements Parcelable{
         this.initMap();
     }
 
+    /**
+     * Konstruktor
+     * @param player Spielernamen
+     * @param name Spielernummer
+     * @param winLegs Anzahl gewonnener Legs
+     * @param winSets Anzahl gewonnener Sets
+     * @param win Gewonnen oder nicht
+     * @param stats HashMap mit den Statistiken
+     */
     public PlayerStats(String player, int name, int winLegs, int winSets, boolean win, HashMap<String, Integer> stats){
         this.player = player;
         this.name = name;
@@ -39,6 +60,10 @@ public class PlayerStats implements Parcelable{
         this.stats = stats;
     }
 
+    /**
+     * Initialisiert die HashMap mit den benötigten Keys
+     * Keys: 1-20, 25, 50, 180, 100, 120, 140, 160, COUNT_SUM, SUM, S, D, T
+     */
     private void initMap(){
         for(int j = 0; j < 3; j++) {
             String output = (j == 0) ? "" : (j == 1) ? "D" : "T";
@@ -60,6 +85,12 @@ public class PlayerStats implements Parcelable{
         this.stats.put("T", 0);
     }
 
+    /**
+     * Aktualisiert die Statistiken
+     * Berechnet die Summe der geworfenen Punkte und aktualisiert die Statistiken
+     * @param boardPoints geworfene Punkte auf dem Board
+     * @return PlayerStats
+     */
     public PlayerStats updatePoints( ArrayList<Integer> boardPoints ){
         int points = boardPoints.stream()
                 .mapToInt(Integer::intValue)
@@ -89,6 +120,12 @@ public class PlayerStats implements Parcelable{
 
         return this;
     }
+
+    /**
+     * Aktualisiert die Statistiken
+     * Erhöht den Wert des Keys um 1
+     * @param key Key
+     */
     public void updateStats(String key){
         if(this.stats.containsKey(key)){
             try {
@@ -100,17 +137,38 @@ public class PlayerStats implements Parcelable{
         }
         Log.e("GameStats", "updateStats: " + key + " " + this.stats.get(key) );
     }
+
+    /**
+     * Aktualisiert die Statistiken
+     * @param key Key
+     * @param diff Wert um den der Key erhöht werden soll
+     * @return PlayerStats
+     */
     private PlayerStats updateStats(String key, int diff){
         if(this.stats.containsKey(key)){
             this.stats.put(key, this.stats.get(key) + diff);
         }
         return this;
     }
+
+    /**
+     * Aktualisiert die Statistiken
+     * Erhöht die Anzahl der geworfenen Punkte und die Summe der geworfenen Punkte
+     * @param point geworfene Punkte
+     * @return PlayerStats
+     */
     public PlayerStats addPoint(int point){
         this.updateStats("COUNT_SUM");
         this.updateStats("SUM", point);
         return this;
     }
+
+    /**
+     * Aktualisiert die Statistiken
+     * Erhöht die Anzahl der geworfenen Modi (Single, Double, Triple)
+     * @param state geworfener Modus
+     * @return PlayerStats
+     */
     public PlayerStats addState(GameMultState state){
         this.lastStates.add(state);
         switch (state){
@@ -130,11 +188,23 @@ public class PlayerStats implements Parcelable{
         return this;
     }
 
+    /**
+     * Aktualisiert die Statistiken
+     * Löscht den Punkt aus der Summe der geworfenen Punkte und verringert die Anzahl der geworfenen Punkte
+     * @param point
+     * @return
+     */
     public PlayerStats removePoint(int point){
         this.updateStats("COUNT_SUM", -1);
         this.updateStats("SUM", point * -1);
         return this;
     }
+
+    /**
+     * Aktualisiert die Statistiken
+     * Löscht den Modus aus der Anzahl der geworfenen Modi
+     * @return PlayerStats
+     */
     public PlayerStats removeState(){
         GameMultState state = this.lastStates.get(this.lastStates.size() - 1);
         switch (state){
@@ -153,20 +223,42 @@ public class PlayerStats implements Parcelable{
         }
         return this;
     }
+
+    /**
+     * Setzt die Anzahl der gewonnenen Legs
+     * @param legs Anzahl gewonnener Legs
+     * @return PlayerStats
+     */
     public PlayerStats setWinLegs(int legs){
         this.winLegs = legs;
         return this;
     }
 
+    /**
+     * Setzt die Anzahl der gewonnenen Sets
+     * @param sets Anzahl gewonnener Sets
+     * @return PlayerStats
+     */
     public PlayerStats setWinSets(int sets){
         this.winSets = sets;
         return this;
     }
+
+    /**
+     * Setzt ob der Spieler gewonnen hat
+     * @param win gewonnen oder nicht
+     * @return PlayerStats
+     */
     public PlayerStats setWin(boolean win){
         this.win = win;
         return this;
     }
 
+    /**
+     * Gibt den Wert des Keys zurück
+     * @param id Key
+     * @return Wert des Keys
+     */
     private int getValueFromHash(String id){
         try{
             return this.stats.get(id);
@@ -176,65 +268,160 @@ public class PlayerStats implements Parcelable{
         }
     }
 
+    /**
+     * Gibt den Spielernamen zurück
+     * @return Spielernamen
+     */
     public String getName(){
         return String.valueOf(this.name);
     }
 
+    /**
+     * Gibt die Spielernummer zurück
+     * @return Spielernummer
+     */
     public int getPlayerNumber(){
         return this.name;
     }
+
+    /**
+     * Gibt die Anzahl der Summe der geworfenen Punkte zurück
+     * @return Summe der geworfenen Punkte
+     */
     public int getSumScore(){
         return this.getValueFromHash("SUM");
     }
+
+    /**
+     * Gibt die Anzahl der geworfenen Punkte zurück
+     * @return Anzahl der geworfenen Punkte
+     */
     public int getCountSum(){return this.getValueFromHash("COUNT_SUM");}
+
+    /**
+     * Gibt die Anzahl der Durchläufe, in denen der Spieler 180 geworfen hat zurück
+     * @return
+     */
     public int get180(){
         return this.getValueFromHash("180");
     }
+
+    /**
+     * Gibt die Anzahl der Durchläufe, in denen der Spieler 160 geworfen hat zurück
+     * @return Anzahl der Durchläufe, in denen der Spieler 160 geworfen hat
+     */
     public int get160(){
         return this.getValueFromHash("160");
     }
+
+    /**
+     * Gibt die Anzahl der Durchläufe, in denen der Spieler 140 geworfen hat zurück
+     * @return Anzahl der Durchläufe, in denen der Spieler 140 geworfen hat
+     */
     public int get140(){
         return this.getValueFromHash("140");
     }
+
+    /**
+     * Gibt die Anzahl der Durchläufe, in denen der Spieler 120 geworfen hat zurück
+     * @return Anzahl der Durchläufe, in denen der Spieler 120 geworfen hat
+     */
     public int get120(){
         return this.getValueFromHash("120");
     }
+
+    /**
+     * Gibt die Anzahl der Durchläufe, in denen der Spieler 100 geworfen hat zurück
+     * @return Anzahl der Durchläufe, in denen der Spieler 100 geworfen hat
+     */
     public int get100(){
         return this.getValueFromHash("100");
     }
+
+    /**
+     * Gibt die Anzahl der geworfenen Bulls-Eye zurück
+     * @return Anzahl der geworfenen Bulls-Eye
+     */
     public int getBull(){
         return this.getValueFromHash("50");
     }
+
+    /**
+     * Gibt die Anzahl der geworfenen Single-Bulls zurück
+     * @return Anzahl der geworfenen Single-Bulls
+     */
     public int getsBull(){
         return this.getValueFromHash("25");
     }
+
+    /**
+     * Gibt die Anzahl der geworfenen Single zurück
+     * @return Anzahl der geworfenen Single
+     */
     public int getSingleThrow(){
         return this.getValueFromHash("S");
     }
+
+    /**
+     * Gibt die Anzahl der geworfenen Double zurück
+     * @return Anzahl der geworfenen Double
+     */
     public int getDoubleThrow(){
         return this.getValueFromHash("D");
     }
+
+    /**
+     * Gibt die Anzahl der geworfenen Triple zurück
+     * @return Anzahl der geworfenen Triple
+     */
     public int getTripleThrow(){
         return this.getValueFromHash("T");
     }
+
+    /**
+     * Gibt den Spielernamen zurück
+     * @return Spielernamen
+     */
     public String getPlayer(){
         return this.player;
     }
 
+    /**
+     * Gibt die Anzahl der gewonnenen Legs zurück
+     * @return Anzahl der gewonnenen Legs
+     */
     public int getWinLegs(){
         return this.winLegs;
     }
+
+    /**
+     * Gibt die Anzahl der gewonnenen Sets zurück
+     * @return Anzahl der gewonnenen Sets
+     */
     public int getWinSets(){
         return this.winSets;
     }
+
+    /**
+     * Gibt zurück ob der Spieler gewonnen hat
+     * @return gewonnen, true oder false
+     */
     public boolean getWin() {
         return win;
     }
 
+    /**
+     * Gibt die HashMap mit den Statistiken zurück
+     * @return HashMap mit den Statistiken
+     */
     public HashMap<String, Integer> getStats(){
         return this.stats;
     }
 
+    /**
+     * Gibt den Durchschnitt der geworfenen Punkte zurück
+     * @return Durchschnitt der geworfenen Punkte
+     */
     public double getAvg(){
         try{
             int count = this.stats.get("COUNT_SUM");
@@ -246,6 +433,10 @@ public class PlayerStats implements Parcelable{
         }
     }
 
+    /**
+     * Gibt die Statistiken als String zurück
+     * @return Statistiken als String
+     */
     @NonNull
     public String toString(){
         StringBuilder output = new StringBuilder();
