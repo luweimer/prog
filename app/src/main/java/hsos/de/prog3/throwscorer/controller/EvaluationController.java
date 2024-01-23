@@ -14,6 +14,13 @@ import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.room.RoomAccess;
 
+/**
+ * EvaluationController
+ * Verwaltet die Anzeige und Interaktion der Spielergebnisse mit der Speicherung in der Datenbank
+ * View: EvaluationActivityListener
+ * Datenbank: PersistensListener
+ * Autor: Lucius Weimer
+ */
 public class EvaluationController implements EvaluationControllerListener {
 
     private EvaluationActivityListener view;
@@ -30,6 +37,9 @@ public class EvaluationController implements EvaluationControllerListener {
         this.init();
     }
 
+    /**
+     * Initialisierung der View mit den Daten aus der Datenbank
+     */
     private void init(){
         this.view.createPlayerViews( gameDatabase.getPlayerStats() );
         this.view.setWinnerText( gameDatabase.getWinnerName() );
@@ -38,7 +48,12 @@ public class EvaluationController implements EvaluationControllerListener {
         }
     };
 
-
+    /**
+     * Speichern des Spiels in der Datenbank
+     * Ausgabe eines Toast über die View bei fehlenden Daten
+     * @param name Name des Spiels
+     * @param pic Siegesbild
+     */
     @Override
     public void handleSave(String name, Bitmap pic) {
         if(name.isEmpty()) {
@@ -56,6 +71,9 @@ public class EvaluationController implements EvaluationControllerListener {
         this.view.handleHome();
     }
 
+    /**
+     * Teilen des Siegers über die View
+     */
     @Override
     public void shareWinner(){
         double avg = 0;

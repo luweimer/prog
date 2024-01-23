@@ -22,6 +22,12 @@ import hsos.de.prog3.throwscorer.room.RoomAccess;
 import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
+/**
+ * OverviewController
+ * Verwaltet die Anzeige und Interaktion der Übersicht über alle gespeicherten Spieler
+ * View: OverviewActivityListener
+ * Datenbank: PersistensListener
+ */
 public class OverviewController implements OverviewControllerListener {
 
     private OverviewActivityListener view;
@@ -39,7 +45,9 @@ public class OverviewController implements OverviewControllerListener {
     }
 
     /**
-     * Register all Table Rows
+     * Registrieren der Tabellenzeilen (einzelne Spiele) in der View
+     * Verwendung von LiveData für die Aktualisierung der Daten
+     * Weiterleitung der Daten an die View -> createGameRows
      */
     private void registerTableRows(){
         LiveData<List<GameEntity>> liveDataGames = this.persistent.getAllGames();
@@ -61,6 +69,13 @@ public class OverviewController implements OverviewControllerListener {
         });
     };
 
+    /**
+     * Anzeigen eines ausgewählten Spiels, Trigger von OverviewRow (Einzelne Zeile)
+     * Abfrage des Spiels und der Spielergebnisse aus der Datenbank via LiveData durch die ID
+     * Zusammenführen der Daten in ein GameDatabase Objekt durch MediatorLiveData
+     * Weiterleitung der Daten an die View -> showGame
+     * @param id ID des Spiels
+     */
     @Override
     public void showGame(String id) {
         MediatorLiveData<Pair<GameEntity, List<PlayerStatsEntity>>> mediatorLiveData = new MediatorLiveData<>();
@@ -97,11 +112,20 @@ public class OverviewController implements OverviewControllerListener {
         });
     }
 
+    /**
+     * Löschen eines Spiels, Trigger von OverviewRow (Einzelne Zeile)
+     * Weiterleitung der ID an die Datenbank -> deleteGame
+     * @param id ID des Spiels
+     */
     @Override
     public void deleteGame(String id) {
         this.persistent.deleteGame(id);
     }
 
+    /**
+     * Löschen aller Spiele, Trigger von OverviewActivity
+     * Weiterleitung an die Datenbank -> deleteAllGames
+     */
     @Override
     public void cleanDatabase() {
         this.persistent.deleteAllGames();
