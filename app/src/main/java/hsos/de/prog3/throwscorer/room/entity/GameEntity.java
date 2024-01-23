@@ -3,6 +3,13 @@ package hsos.de.prog3.throwscorer.room.entity;
 import androidx.annotation.NonNull;
 import androidx.room.*;
 
+/**
+ * GameEntity
+ * Entity für Game
+ * Column: gameID (String), gameName (String), winnerInt (int), winnerName (String), picture (String)
+ * PrimaryKey: gameID
+ * Autor: Lucius Weimer
+ */
 @Entity(tableName = "GameEntity")
 public class GameEntity {
     @PrimaryKey

@@ -3,6 +3,13 @@ package hsos.de.prog3.throwscorer.room.entity;
 import androidx.annotation.NonNull;
 import androidx.room.*;
 
+/**
+ * PlayerStatsEntity
+ * Entity für die PlayerStats
+ * PrimaryKey: GameID, PlayerName
+ * Column: GameID (String), PlayerName (String), Name (int), WinLegs (int), WinSets (int), Win (Boolean), Stats (String)
+ * Autor: Lucius Weimer
+ */
 @Entity(tableName = "PlayerStats", primaryKeys = {"GameID", "PlayerName"})
 public class PlayerStatsEntity {
     @NonNull
@@ -26,7 +33,7 @@ public class PlayerStatsEntity {
     public boolean win;
 
     @ColumnInfo(name = "Stats")
-    public String stats; //JSON-String für die Stats gespeichert
+    public String stats;
 
     public PlayerStatsEntity(String gameID, String playerName, int name, int winLegs, int winSets, boolean win, String stats) {
         this.gameID = gameID;

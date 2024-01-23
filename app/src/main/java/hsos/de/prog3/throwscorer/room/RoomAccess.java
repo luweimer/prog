@@ -18,15 +18,30 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
+/**
+ * RoomAccess
+ * Zugriff auf die Room Datenbank
+ * Autor: Lucius Weimer
+ */
 public class RoomAccess implements PersistensListener {
 
     private AppDatabase appDatabase;
 
+    /**
+     * Setzen des Kontextes für die Datenbank
+     * @param context Context
+     */
     @Override
     public void setContext(Context context) {
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, "testOne").build();
     }
 
+    /**
+     * Speichern eines Spiels in der Datenbank
+     * Erstellt ein GameEntity Objekt von dem gameDatabase
+     * Speicherung durch einen neuen Thread
+     * @param gameDatabase GameEntity Object
+     */
     @Override
     public void safeGame(GameDatabase gameDatabase) {
         new Thread(new Runnable() {
@@ -63,6 +78,11 @@ public class RoomAccess implements PersistensListener {
         }).start();
     }
 
+    /**
+     * Löschen eines Spiels aus der Datenbank und die dazugehörigen PlayerStats
+     * Löschen durch einen neuen Thread
+     * @param gameID Der eindeutige Identifier des Spiels
+     */
     @Override
     public void deleteGame(String gameID) {
         new Thread(new Runnable() {
@@ -74,37 +94,62 @@ public class RoomAccess implements PersistensListener {
         }).start();
     }
 
+    /**
+     * Löschen aller Spiele aus der Datenbank und die dazugehörigen PlayerStats
+     * Löschen durch einen neuen Thread
+     */
     @Override
     public void deleteAllGames() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // Hier die Datenbankoperation durchführen
                 appDatabase.clearAllTables();
             }
         }).start();
     }
 
+    /**
+     * Laden eines Spiels aus der Datenbank
+     * @param gameID Der eindeutige Identifier des Spiels
+     * @return LiveData<GameEntity>
+     */
     @Override
     public LiveData<GameEntity> getGame(String gameID) {
         return appDatabase.gameDao().getGameById(gameID);
     }
 
+    /**
+     * Laden aller Spiele aus der Datenbank
+     * @return LiveData<List<GameEntity>>
+     */
     @Override
     public LiveData<List<GameEntity>> getAllGames() {
         return appDatabase.gameDao().getAllGames();
     }
 
+    /**
+     * Laden aller PlayerStats aus der Datenbank zu einem zugehörigen Spiel
+     * @param gameID Der eindeutige Identifier des Spiels
+     * @return LiveData<List<PlayerStatsEntity>>
+     */
     @Override
     public LiveData<List<PlayerStatsEntity>> getPlayerStats(String gameID) {
         return appDatabase.playerStatsDao().getPlayerStatsByGameId(gameID);
     }
 
-
+    /**
+     * Erstellen eines eindeutigen Identifiers für ein Spiel
+     * @return String
+     */
     private String createUUID(){
         return (UUID.randomUUID()).toString();
     }
 
+    /**
+     * Prüfen ob ein GameDatabase Objekt valide bzw. vollständig ist
+     * @param gameDatabase GameDatabase Objekt das geprüft werden soll
+     * @return boolean, true wenn valide
+     */
     private boolean checkValidGame(GameDatabase gameDatabase){
         if(gameDatabase.getGameName() == null || gameDatabase.getGameName().isEmpty()){
             return false;

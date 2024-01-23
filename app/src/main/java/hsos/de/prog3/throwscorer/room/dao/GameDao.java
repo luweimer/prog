@@ -7,7 +7,11 @@ import java.util.List;
 
 import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 
-
+/**
+ * GameDao
+ * Data Access Object für GameEntity
+ * Autor: Lucius Weimer
+ */
 @Dao
 public interface GameDao {
     @Query("SELECT * FROM GameEntity")

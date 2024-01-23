@@ -8,7 +8,19 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
+/**
+ * Converter
+ * Konvertiert die Entitys der Datenbank zu unabhängigen Datentypen von Throwscorer
+ * GameEntity -> GameDatabase
+ * PlayerStatsEntity -> PlayerStats
+ * Autor: Lucius Weimer
+ */
 public class Converter {
+    /**
+     * Konvertiert GameEntity zu GameDatabase
+     * @param gameEntity GameEntity
+     * @return GameDatabase
+     */
     public static GameDatabase convertGameEntityToGameDatabase(GameEntity gameEntity){
         return new GameDatabase(
                 gameEntity.gameID,
@@ -18,6 +30,12 @@ public class Converter {
                 Base64ToBitmap(gameEntity.picture)
         );
     }
+
+    /**
+     * Konvertiert PlayerStatsEntity zu PlayerStats
+     * @param playerStatsEntity
+     * @return
+     */
     public static PlayerStats convertPlayerStatsEntityToPlayerStats(PlayerStatsEntity playerStatsEntity){
         return new PlayerStats(
                 playerStatsEntity.playerName,

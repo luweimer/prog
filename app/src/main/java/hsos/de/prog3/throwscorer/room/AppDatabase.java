@@ -9,6 +9,12 @@ import hsos.de.prog3.throwscorer.room.dao.PlayerStatsDao;
 import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
+/**
+ * AppDatabase
+ * Room Database
+ * Entity: GameEntity, PlayerStatsEntity
+ * Autor: Lucius Weimer
+ */
 @Database(entities = {
             GameEntity.class,
             PlayerStatsEntity.class
