@@ -43,12 +43,13 @@ import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.EvaluationPlayerView;
 
+/**
+ * EvaluationActivity
+ * Übersicht über die Spielergebnisse
+ * Autor: Lucius Weimer
+ */
 public class EvaluationActivity extends AppCompatActivity implements EvaluationActivityListener {
-
-    //private static final int WRITE_STORAGE_PERMISSION_CODE = 24;
-
     private static final int CAMERA_PERMISSON_CODE = 100;
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private TextView winner;
     private EditText gameName;
 
@@ -79,13 +80,19 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         this.registerButton();
     }
 
+    /**
+     * Initialisiert die Elemente der Activity
+     */
     private void init(){
         this.registerViewElements();
     }
 
+    /**
+     * Registriert die Buttons
+     * @return EvaluationActivity
+     */
     private EvaluationActivity registerButton(){
         this.home.setOnClickListener(v -> this.handleHome() );
-        //Quelle: https://stackoverflow.com/questions/26865787/get-bitmap-from-imageview-in-android-l
         this.saveGame.setOnClickListener(v -> this.controller.handleSave(this.gameName.getText().toString(), this.getPicture() ) );
         this.shareWinner.setOnClickListener(v -> this.controller.shareWinner() );
         //TODO: Auslagern? Nur ein View Evenet?!
@@ -96,6 +103,10 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         return this;
     }
 
+    /**
+     * Registriert die View Elemente
+     * @return EvaluationActivity
+     */
     private EvaluationActivity registerViewElements(){
         this.winner = findViewById(R.id.tv_eva_win);
         this.statsFirst = findViewById(R.id.gl_eva_stats_first);
@@ -110,6 +121,9 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         return this;
     }
 
+    /**
+     * Managed das öffnen der Kamera und die Berechtigungsanfrage
+     */
     private void useCamera(){
         if(ContextCompat.checkSelfPermission(
                 this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -122,6 +136,14 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         }
     }
 
+    /**
+     * Verarbeitet die Ergebnisse der Berechtigungsanfrage
+     * @param requestCode The request code passed in
+     * @param permissions The requested permissions. Never null.
+     * @param grantResults The grant results for the corresponding permissions
+     *     which is either {@link android.content.pm.PackageManager#PERMISSION_GRANTED}
+     *     or {@link android.content.pm.PackageManager#PERMISSION_DENIED}. Never null.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -138,10 +160,18 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
                 this.showToast("Unidentified permission request");
         }
     }
+
+    /**
+     * Startet die Kamera mit Intent
+     */
     private void takePicture(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         imageCaptureLauncher.launch(intent);
     }
+
+    /**
+     * Registriert den ActivityResultLauncher für die Kamera
+     */
     private final ActivityResultLauncher<Intent> imageCaptureLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -158,6 +188,10 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
             }
     );
 
+    /**
+     * Ruft das Bild aus der ImageView und wandelt es in ein Bitmap um
+     * @return Bitmap
+     */
     private Bitmap getPicture(){
         Drawable drawable = this.winPic.getDrawable();
 
@@ -170,6 +204,10 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         return bitmap;
     }
 
+    /**
+     * Setzt das Bild in der ImageView
+     * @param imageBitmap Bitmap
+     */
     @Override
     public void setWinnerPic(Bitmap imageBitmap){
         this.winPic.setImageBitmap(imageBitmap);
@@ -177,6 +215,10 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         this.winPic.invalidate();
     }
 
+    /**
+     * Erstellt die einzelnen PlayerViews, welche die Spielergebnisse/ Statistiken anzeigen
+     * @param playerStats The PlayerStats Object
+     */
     @Override
     public void createPlayerViews(List<PlayerStats> playerStats){
         playerViews = new EvaluationPlayerViewListener[playerStats.size()];
@@ -192,6 +234,12 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         this.statsSecond.invalidate();
     }
 
+    /**
+     * Teilt den Gewinner über andere Apps mit
+     * Verwendung Intent - Action Send
+     * @param AVG Der Durchschnitt des gewonnenen Spielers
+     * @param against Die Spieler gegen die der Gewinner gewonnen hat
+     */
     @Override
     public void shareWinner(double AVG, List<String> against){
         Intent sendIntent = new Intent();
@@ -212,11 +260,19 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         startActivity(shareIntent);
     }
 
+    /**
+     * Ausgabe von Toast durch den Controller
+     * @param message Nachricht die angezeigt werden soll
+     */
     @Override
     public void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Setzt den Text für den Gewinner in der Überschrift
+     * @param playerWinner Name des Siegers
+     */
     @Override
     public void setWinnerText(String playerWinner){
         String text = this.winner.getText().toString();
@@ -224,11 +280,18 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         this.winner.setText(text);
     }
 
+    /**
+     * Startet die HomeActivity
+     */
     @Override
     public void handleHome(){
         startHomeActivity(this);
     }
 
+    /**
+     * Verarbeitung des Intent - winner, playerWinner, playerStats
+     * @return GameDatabase Object
+     */
     @Nullable
     private GameDatabase handleIncomingIntent() {
         Intent intent_in = this.getIntent();
@@ -236,7 +299,9 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
         List<PlayerStats> playerStats= new ArrayList<>();
         playerStats = intent_in.getParcelableArrayListExtra("PlayerStats");
         Bitmap pic = intent_in.getParcelableExtra("winnerPic");
-        assert playerStats != null;
+        if(playerStats == null){
+            Log.e("EvaluationActivity", "handleIncomingIntent: playerStats is null");
+        }
         String playerWinner = playerStats.get(winner).getPlayer();
         if(pic == null){
             return new GameDatabase(winner, playerWinner, playerStats);

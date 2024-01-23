@@ -15,6 +15,12 @@ import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.model.CheckoutType;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 
+/**
+ * IndividualGameActivity
+ * Activity um Spieleinstellungen eines individuellen Spiels festzulegen
+ * Parameter: StartScore, Spieleranzahl, Setanzahl, Leganzahl, CheckoutType
+ * Autor: Lucius Weimer
+ */
 public class IndividualGameActivity extends AppCompatActivity {
 
     private EditText score;
@@ -32,10 +38,17 @@ public class IndividualGameActivity extends AppCompatActivity {
         this.init();
     }
 
+    /**
+     * Initialisiert die Elemente der Activity
+     */
     private void init(){
         this.registerViewElements();
     }
 
+    /**
+     * Registriert die Elemente der Activity
+     * @return IndividualGameActivity
+     */
     private IndividualGameActivity registerViewElements(){
         this.score = findViewById(R.id.et_ind_score);
         this.set = findViewById(R.id.et_ind_set);
@@ -47,6 +60,12 @@ public class IndividualGameActivity extends AppCompatActivity {
         return this;
     }
 
+    /**
+     * Validiert die Eingaben und startet die PlayerNameActivity
+     * Auslesen der TextViews und RadioButtons
+     * Textviews werden in Integer geparst
+     * RadioButtons werden in CheckoutType geparst
+     */
     private void handleSubmit(){
         int score;
         int set;
@@ -68,6 +87,10 @@ public class IndividualGameActivity extends AppCompatActivity {
         startPlayerNameActivity(this, gameSettings);
     }
 
+    /**
+     * Liest die Spieleranzahl aus den RadioButtons aus
+     * @return int - Spieleranzahl
+     */
     private int getPlayerSize(){
         int playerSize;
         try{
@@ -79,6 +102,10 @@ public class IndividualGameActivity extends AppCompatActivity {
         return playerSize;
     }
 
+    /**
+     * Liest den CheckoutType aus den RadioButtons aus
+     * @return CheckoutType
+     */
     private CheckoutType getCheckoutType(){
         String checkoutType = this.getRadioButtonText( this.checkoutType.getCheckedRadioButtonId() );
         if(checkoutType.equals(this.getResources().getString(R.string.a_double))){
@@ -90,6 +117,11 @@ public class IndividualGameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Hilfsfunktion um RadioButtons auszulesen
+     * @param id - RadioButton ID
+     * @return String - RadioButton Text
+     */
     private String getRadioButtonText(int id){
         RadioButton radioButton = (RadioButton) findViewById( id );
         return radioButton.getText().toString();

@@ -19,6 +19,12 @@ import hsos.de.prog3.throwscorer.listener.view.OverviewRowListener;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.OverviewRow;
 
+/**
+ * OverviewActivity
+ * Activity die eine Übersicht über alle gespeicherten Spiele darstellt
+ * Hauptfunktionen: Datenbank aufräumen, zur HomeActivity zurückkehren
+ * Funktionen pro Spiel: Spiele löschen, Spiel auswählen
+ */
 public class OverviewActivity extends AppCompatActivity implements OverviewActivityListener {
 
     private TableLayout gameTable;
@@ -40,31 +46,39 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
         this.initController();
     }
 
+    /**
+     * Initialisiert die Elemente der Activity
+     */
     private void init(){
         this.registerViewElements();
     }
 
+    /**
+     * Registriert die Hauptfunktionen
+     * Listener für die Buttons, wenn der Controller gesetzt ist
+     */
     private void initController(){
-        if(this.controller == null){
-            return;
+        if(this.controller != null){
+            this.cleanup.setOnClickListener(view -> this.controller.cleanDatabase());
+            this.home.setOnClickListener(view -> startHomeActivity(this));
         }
-        this.cleanup.setOnClickListener(view -> this.controller.cleanDatabase());
-        this.home.setOnClickListener(view -> startHomeActivity(this));
     }
 
+    /**
+     * Registriert die View-Elemente der Activity
+     */
     private void registerViewElements(){
         this.gameTable = this.findViewById(R.id.tl_ov_games);
         this.cleanup = this.findViewById(R.id.btn_ov_clean);
         this.home = this.findViewById(R.id.btn_ov_home);
     }
 
-    @Override
-    public void registerController(Object controller) {
-        if(controller instanceof OverviewControllerListener){
-            this.controller = (OverviewControllerListener) controller;
-        }
-    }
-
+    /**
+     * Erstellt die Zeilen für die einzelnen Spiele
+     * Löscht die alten Zeilen
+     * @param name - Name der Spiele
+     * @param id - ID der Spiele
+     */
     @Override
     public void createGameRows(String[] name, String[] id) {
         if(this.rows != null){
@@ -85,13 +99,21 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
         this.gameTable.invalidate();
     }
 
-    @Override
-    public void updateGameRows(String name, String id) {
-
-    }
-
+    /**
+     * Startet die EvaluationActivity für ein ausgewähltes Spiel
+     * @param player - Sieger des Spiels
+     * @param playerStats - Statistiken der Spieler
+     * @param pic - Siegesbild des Spiels
+     */
     @Override
     public void showGame(int player, ArrayList<PlayerStats> playerStats, Bitmap pic) {
         startEvaluationActivity(this, player, playerStats, pic);
+    }
+
+    @Override
+    public void registerController(Object controller) {
+        if(controller instanceof OverviewControllerListener){
+            this.controller = (OverviewControllerListener) controller;
+        }
     }
 }
