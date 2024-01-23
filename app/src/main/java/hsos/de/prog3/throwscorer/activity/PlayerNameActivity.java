@@ -14,6 +14,11 @@ import hsos.de.prog3.throwscorer.listener.view.PlayerNameViewListener;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.view.PlayerNameView;
 
+/**
+ * PlayerNameActivity
+ * Activity um die Spielernamen festzulegen
+ * Autor: Lucius Weimer
+ */
 public class PlayerNameActivity extends AppCompatActivity {
 
     private GridLayout playerNames;
@@ -32,25 +37,44 @@ public class PlayerNameActivity extends AppCompatActivity {
         this.createPlayerViews();
     }
 
+    /**
+     * Initialisiert die Elemente der Activity
+     */
     private void init(){
         this.registerViewElements().registerBtn();
     }
 
+    /**
+     * Registriert die Elemente der Activity
+     * @return PlayerNameActivity
+     */
     private PlayerNameActivity registerViewElements(){
         this.playerNames = findViewById(R.id.gl_pn_playername);
         this.submit = findViewById(R.id.btn_pn_submit);
         return this;
     }
 
+    /**
+     * Registriert den Button
+     * @return
+     */
     private PlayerNameActivity registerBtn(){
         this.submit.setOnClickListener(v -> this.handleSubmit());
         return this;
     }
 
+    /**
+     * Verarbeitet die eingehenden Daten und setzt die GameSettings
+     */
     private void handleIncomingIntent() {
         this.gameSettings = getIntent().getParcelableExtra("GameSettings");
     }
 
+    /**
+     * Validiert die Eingaben und startet die GameActivity
+     * Überprüfung der Spielernamen nach Länge und Inhalt
+     * Länge < 5, um die Darstellung in der GameActivity nicht zu beeinträchtigen
+     */
     private void handleSubmit(){
         String[] names = new String[this.gameSettings.getNumPlayers()];
         for(int i = 0; i < playerName.length; i++){
@@ -69,6 +93,9 @@ public class PlayerNameActivity extends AppCompatActivity {
         startGame(this, this.gameSettings);
     }
 
+    /**
+     * Erstellt die Views für die Spielernamen
+     */
     private void createPlayerViews(){
         this.playerName = new PlayerNameViewListener[this.gameSettings.getNumPlayers()];
         for(int i = 0; i < this.gameSettings.getNumPlayers(); i++){
