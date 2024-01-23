@@ -123,7 +123,7 @@ public class GameController implements ClickHandler {
         }
 
         if( this.model.getIsDone() ){
-            this.view.showWinner(this.model.getWinner(), this.model.getPlayerStats(), this.model.getGameSettings() );
+            this.view.showGame(this.model.getWinner(), this.model.getPlayerStats(), this.model.getGameSettings() );
         }
 
         //Update the view complete, because not much datas changed

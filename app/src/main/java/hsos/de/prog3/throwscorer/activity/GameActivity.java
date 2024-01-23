@@ -3,6 +3,7 @@ package hsos.de.prog3.throwscorer.activity;
 import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertArrayListCheckout;
 import static hsos.de.prog3.throwscorer.utility.Router.startEvaluationActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -258,7 +259,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
      * @param gameSettings GameSettings - Einstellungen des Spiels
      */
     @Override
-    public void showWinner(int player, ArrayList<PlayerStats> playerStats, GameSettings gameSettings) {
+    public void showGame(int player, ArrayList<PlayerStats> playerStats, GameSettings gameSettings) {
         startEvaluationActivity(this, player, playerStats, null);
     }
 
@@ -269,4 +270,5 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
             this.controller = (ClickHandler) controller;
         }
     }
+
 }

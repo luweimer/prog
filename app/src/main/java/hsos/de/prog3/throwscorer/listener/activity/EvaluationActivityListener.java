@@ -10,40 +10,46 @@ import hsos.de.prog3.throwscorer.listener.RegisterListener;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
- * Listener for the EvaluationActivity
+ * EvaluationActivity
+ * Schnittstelle für die EvaluationActivity
+ * Autor: Lucius Weimer
  */
 public interface EvaluationActivityListener extends RegisterListener {
 
     /**
-     * Handle Intent for Home Button
+     * Verarbeitung des Klicks auf den Home-Button
      */
     public void handleHome();
 
     /**
-     * set the winner text
-     * @param playerWinner The name of the winner
+     * Setzen des Sieger Textes
+     * @param playerWinner Name des Siegers
      */
     public void setWinnerText(String playerWinner);
 
     /**
-     * Creates the PlayerViews Objects
-     * @param playerStats The PlayerStats Object
+     * Erstellung PlayerViews
+     * @param playerStats PlayerStats
      */
     public void createPlayerViews(List<PlayerStats> playerStats);
 
     /**
-     * Shows a toast message on the screen
-     * @param message The message to show
+     * Anzeige eines Toasts in der View
+     * @param message Nachricht
      */
     public void showToast(String message);
 
     /**
-     *
-     * @param AVG The average of the winner
-     * @param against The list of the other players
+     * Trigger für das Teilen des Siegers
+     * @param AVG durchscnittliche Punktzahl des Siegers
+     * @param against Liste aller anderen Spieler
      */
     public void shareWinner(double AVG, List<String> against);
 
+    /**
+     * Setzen des Sieger Bildes
+     * @param pic Bitmap
+     */
     public void setWinnerPic(Bitmap pic);
 
 }
