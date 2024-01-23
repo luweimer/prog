@@ -10,6 +10,11 @@ import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.view.EvaluationPlayerViewListener;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
+/**
+ * EvaluationPlayerView
+ * View für die einzelnen Spielerstatistiken
+ * Autor: Lucius Weimer
+ */
 public class EvaluationPlayerView implements EvaluationPlayerViewListener {
 
     private LinearLayout gamePlayer;
@@ -28,16 +33,28 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
     private TextView doubleThrow;
     private TextView tripleThrow;
 
+    /**
+     * Konstruktor - Erstellt die View und fügt sie dem GridLayout hinzu
+     * @param context - Context
+     * @param playerHeader - GridLayout
+     */
     public EvaluationPlayerView(Context context, GridLayout playerHeader){
         this.gamePlayer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.evaluation_player, playerHeader, false);
         playerHeader.addView(this.gamePlayer);
         this.init();
     }
 
+    /**
+     * Initialisiert die View
+     */
     private void init(){
         this.registerViewElements();
     }
 
+    /**
+     * Registriert die einzelnen Elemente der View - TextViews
+     * @return EvaluationPlayerView
+     */
     private EvaluationPlayerView registerViewElements(){
         this.name = this.gamePlayer.findViewById(R.id.tv_evap_player_name);
         this.sumScore = this.gamePlayer.findViewById(R.id.tv_evap_sum_score);
@@ -56,10 +73,32 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
         return this;
     }
 
+    /**
+     * Helper: Rundet eine Zahl auf zwei Nachkommastellen
+     * @param val - Zahl
+     * @return double
+     */
     private double roundTwoDecimal(double val){
         return Math.round(val * 100.0) / 100.0;
     }
 
+    /**
+     * Setzt die Werte der View
+     * @param mame String - Name des Spielers
+     * @param sumScore int - Summe der Punkte
+     * @param avg double - Durchschnitt
+     * @param sumThrough int - Anzahl der Würfe
+     * @param bull int - Anzahl der erzielten Bulls
+     * @param sBull int - Anzahl der erzielten Single Bulls
+     * @param o180 int - Anzahl der erzielten 180er
+     * @param o160 int - Anzahl der erzielten 160er
+     * @param o140 int - Anzahl der erzielten 140er
+     * @param o120 int - Anzahl der erzielten 120er
+     * @param o100 int - Anzahl der erzielten 100er
+     * @param singleThrow int - Anzahl der Single Würfe
+     * @param doubleThrow int - Anzahl der Double Würfe
+     * @param tripleThrow int - Anzahl der Triple Würfe
+     */
     @Override
     public void setViewValues(String mame, int sumScore, double avg, int sumThrough, int bull, int sBull,int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow) {
         this.name.setText(mame);
@@ -78,6 +117,10 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
         this.tripleThrow.setText(String.valueOf(tripleThrow));
     }
 
+    /**
+     * Bereitet das PlayerStats Objekt auf und leitet die Werte and die setViewValues Methode weiter
+     * @param playerStats - PlayerStats
+     */
     @Override
     public void setViewValues(PlayerStats playerStats) {
         this.setViewValues(
