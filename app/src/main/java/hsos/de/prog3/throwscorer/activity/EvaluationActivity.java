@@ -123,6 +123,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
 
     /**
      * Managed das öffnen der Kamera und die Berechtigungsanfrage
+     * Quelle: Vorlesung -Android: Berechtigungen und Datenspeicherung-
      */
     private void useCamera(){
         if(ContextCompat.checkSelfPermission(
@@ -138,6 +139,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
 
     /**
      * Verarbeitet die Ergebnisse der Berechtigungsanfrage
+     * Quelle: Vorlesung -Android: Berechtigungen und Datenspeicherung-
      * @param requestCode The request code passed in
      * @param permissions The requested permissions. Never null.
      * @param grantResults The grant results for the corresponding permissions
