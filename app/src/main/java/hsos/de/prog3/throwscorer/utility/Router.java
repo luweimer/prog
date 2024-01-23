@@ -16,20 +16,43 @@ import hsos.de.prog3.throwscorer.activity.PlayerNameActivity;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
+/**
+ * Router
+ * Utility class um Activities zu starten
+ * Activity zum starten: GameActivity, PlayerNameActivity, EvaluationActivity, HomeActivity, OverviewActivity, IndividualGameActivity
+ * Autor: Lucius Weimer
+ */
 public class Router {
 
+    /**
+     * Startet die GameActivity
+     * @param context Context der aktuellen Activity
+     * @param gameSettings GameSettings für das Spiel
+     */
     public static void startGame(Context context, GameSettings gameSettings){
         Intent intent = new Intent(context, GameActivity.class);
         intent.putExtra("GameSettings", gameSettings);
         context.startActivity(intent);
     }
 
+    /**
+     * Startet die PlayerNameActivity
+     * @param context Context der aktuellen Activity
+     * @param gameSettings GameSettings für das Spiel
+     */
     public static void startPlayerNameActivity(Context context, GameSettings gameSettings){
         Intent intent = new Intent(context, PlayerNameActivity.class);
         intent.putExtra("GameSettings", gameSettings);
         context.startActivity(intent);
     }
 
+    /**
+     * Startet die EvaluationActivity
+     * @param context Context der aktuellen Activity
+     * @param winner Gewinner des Spiels
+     * @param playerStats Spielerstatistiken
+     * @param winnerPic Siegesbild
+     */
     public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic){
         Intent intent = new Intent(context, EvaluationActivity.class);
         intent.putExtra("winner", winner);
@@ -38,6 +61,10 @@ public class Router {
         context.startActivity(intent);
     }
 
+    /**
+     * Startet die HomeActivity
+     * @param context Context der aktuellen Activity
+     */
     public static void startHomeActivity(Context context){
         Intent intent = new Intent(context, HomeActivity.class);
         intent.addCategory(Intent.CATEGORY_HOME);
@@ -45,11 +72,19 @@ public class Router {
         context.startActivity(intent);
     }
 
+    /**
+     * Startet die OverviewActivity
+     * @param context Context der aktuellen Activity
+     */
     public static void startOverviewActivity(Context context){
         Intent intent = new Intent(context, OverviewActivity.class);
         context.startActivity(intent);
     }
 
+    /**
+     * Startet die IndividualGameActivity
+     * @param context Context der aktuellen Activity
+     */
     public static void startIndividualGame(Context context){
         Intent intent = new Intent(context, IndividualGameActivity.class);
         context.startActivity(intent);

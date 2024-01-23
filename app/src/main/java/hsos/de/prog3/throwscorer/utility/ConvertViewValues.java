@@ -11,7 +11,20 @@ import java.util.ArrayList;
 
 import hsos.de.prog3.throwscorer.model.CheckoutType;
 
+/**
+ * ConvertViewValues
+ * Utility class um Datentypen für die Darstellung in der View zu konvertieren
+ * ArrayList<Integer> - Checkout String
+ * ArrayList<String> - String
+ * Drawable - Bitmap
+ */
 public class ConvertViewValues {
+    /**
+     * Konvertiert eine ArrayList zu einem Checkout String
+     * @param list ArrayList to convert
+     * @param settingsCheckout CheckoutType
+     * @return Checkout String
+     */
     public static String convertArrayListCheckout(ArrayList<Integer> list, CheckoutType settingsCheckout){
         StringBuilder output = new StringBuilder();
         list.forEach(p -> {
@@ -48,6 +61,11 @@ public class ConvertViewValues {
         return output.toString();
     }
 
+    /**
+     * Konvertiert eine ArrayList zu einem String
+     * @param list ArrayList to convert
+     * @return String
+     */
     public static String convertArrayList(ArrayList<String> list){
         StringBuilder output = new StringBuilder();
         list.forEach(p -> {
@@ -57,48 +75,11 @@ public class ConvertViewValues {
         return output.toString();
     }
 
-    private static boolean convertStandartPoints(StringBuilder output, int point){
-        if(point == 50){
-            output.append("B").append(" ");
-            return true;
-        } else if(point == 25){
-            output.append("S").append(" ");
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean convertSingle(StringBuilder output, int p){
-        if(p < 20 && p > 0){
-            output.append(p).append(" ");
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean convertDouble(StringBuilder output, int p){
-        if( checkDouble( p )){
-            output.append("D").append(p / 2).append(" ");
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean convertTriple(StringBuilder output, int p){
-        if (checkTriple(p)) {
-            output.append("T").append(p / 3).append(" ");
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean checkDouble(int point){
-        return point % 2 == 0 && point <= 40;
-    }
-    private static boolean checkTriple(int point){
-        return point % 3 == 0;
-    }
-
+    /**
+     * Konvertiert ein Drawable zu einem Bitmap
+     * @param drawable Drawable to convert
+     * @return Bitmap
+     */
     public static Bitmap convertDrawableToBitmap(Drawable drawable) {
         Bitmap bitmap;
 
@@ -114,6 +95,85 @@ public class ConvertViewValues {
         }
 
         return bitmap;
+    }
+
+    /**
+     * Konvertiert standart Punkte
+     * B - Bulls Eye
+     * S - Single Bull
+     * @param output StringBuilder
+     * @param point Punkte
+     * @return true, wenn Konvertierung erfolgreich war
+     */
+    private static boolean convertStandartPoints(StringBuilder output, int point){
+        if(point == 50){
+            output.append("B").append(" ");
+            return true;
+        } else if(point == 25){
+            output.append("S").append(" ");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Konvertiert Single Punkte
+     * @param output StringBuilder
+     * @param p Punkte
+     * @return true, wenn Konvertierung erfolgreich war
+     */
+    private static boolean convertSingle(StringBuilder output, int p){
+        if(p < 20 && p > 0){
+            output.append(p).append(" ");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Konvertiert Double Punkte
+     * @param output StringBuilder
+     * @param p Punkte
+     * @return true, wenn Konvertierung erfolgreich war
+     */
+    private static boolean convertDouble(StringBuilder output, int p){
+        if( checkDouble( p )){
+            output.append("D").append(p / 2).append(" ");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Konvertiert Triple Punkte
+     * @param output StringBuilder
+     * @param p Punkte
+     * @return true, wenn Konvertierung erfolgreich war
+     */
+    private static boolean convertTriple(StringBuilder output, int p){
+        if (checkTriple(p)) {
+            output.append("T").append(p / 3).append(" ");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Prüft ob der Punkt ein Double-Punkt sind
+     * @param point Punkt zum prüfen
+     * @return true, wenn Punkt ein Double-Punkt ist
+     */
+    private static boolean checkDouble(int point){
+        return point % 2 == 0 && point <= 40;
+    }
+
+    /**
+     * Prüft ob der Punkt ein Triple-Punkt sind
+     * @param point Punkt zum prüfen
+     * @return true, wenn Punkt ein Triple-Punkt ist
+     */
+    private static boolean checkTriple(int point){
+        return point % 3 == 0;
     }
 
 }
