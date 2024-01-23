@@ -43,12 +43,12 @@ import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.EvaluationPlayerView;
 
+/**
+ * 
+ */
 public class EvaluationActivity extends AppCompatActivity implements EvaluationActivityListener {
 
-    //private static final int WRITE_STORAGE_PERMISSION_CODE = 24;
-
     private static final int CAMERA_PERMISSON_CODE = 100;
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private TextView winner;
     private EditText gameName;
 
