@@ -10,46 +10,50 @@ import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
+/**
+ * PersistensListener
+ * Schnittstelle für die Persistente Speicherung
+ * Autor: Lucius Weimer
+ */
 public interface PersistensListener {
     /**
-     * Set Context
+     * Setzen des Contexts
      * @param context Context
      */
     public void setContext(Context context);
 
     /**
-     * Safe Game -> generic gameDatabase object for different database types
+     * Speichern eines Spiels in der Datenbank
      * @param gameDatabase GameEntity Object
      */
     public void safeGame(GameDatabase gameDatabase);
 
     /**
-     * Delete Game
-     * @param gameID The unique identifier of the game.
+     * Löschen eines Spiels
+     * @param gameID ID des Spiels
      */
     public void deleteGame(String gameID);
     /**
-     * Delete all Games
+     * Löschen aller Spiele und zugehöriger Daten
      */
     public void deleteAllGames();
 
     /**
-     * Get Game
-     * @param gameID The unique identifier of the game.
+     * Get Spiel
+     * @param gameID ID des Spiels
      * @return GameDatabase
      */
     public LiveData<GameEntity> getGame(String gameID);
 
     /**
-     * Get all Games
-     * @return List<GameDatabase> List of GameDatabase Objects
+     * Get alle Spiele
+     * @return List<GameDatabase> Liste von GameDatabase Objects
      */
     public LiveData<List<GameEntity>> getAllGames();
 
     /**
-     * Get PlayerStats
-     *
-     * @param gameID The unique identifier of the game.
+     * Get PlayerStats zu einem Spiel
+     * @param gameID ID des Spiels
      * @return List<PlayerStats> List of PlayerStats Objects
      */
     public LiveData<List<PlayerStatsEntity>> getPlayerStats(String gameID);

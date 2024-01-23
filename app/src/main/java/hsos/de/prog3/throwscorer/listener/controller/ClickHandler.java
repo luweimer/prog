@@ -5,12 +5,14 @@ import android.view.View;
 import hsos.de.prog3.throwscorer.listener.RegisterListener;
 
 /**
- * Interface for a ClickHandler
+ * ClickHandler
+ * Schnittstelle für Click-Handler
+ * Author: Lucius Weimer
  */
 public interface ClickHandler extends RegisterListener {
     /**
-     * Handles the onClick event of the buttons
-     * @param view The view that was clicked
+     * Verarbeitet einen Klick auf ein View-Element
+     * @param view das View-Element, das geklickt wurde
      */
     public void handleOnClick(View view);
 }

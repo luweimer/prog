@@ -4,8 +4,8 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
- * Schnittstelle EvaluationPlayerViewListener
- * EvaluationActivity -> EvaluationPlayerView
+ * EvaluationPlayerViewListener
+ * Schnittstelle EvaluationPlayerView
  * Autor: Lucius Weimer
  */
 public interface EvaluationPlayerViewListener {

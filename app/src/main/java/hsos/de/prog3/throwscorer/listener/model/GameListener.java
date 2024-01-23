@@ -8,36 +8,120 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
- * Interface for the GameListener
+ * GameListener
+ * Shnitstelle für das Game
+ * Autor: Lucius Weimer
  */
 public interface GameListener {
 
+    /**
+     * Get Leg
+     * @return Leg Nummer
+     */
     public int getLeg();
+
+    /**
+     * Get isDone - Spiel ist beendet
+     * @return true wenn Spiel beendet, sonst false
+     */
     public boolean getIsDone();
+
+    /**
+     * Get Winner
+     * @return int Nummer des Siegers
+     */
     public int getWinner();
+
+    /**
+     * Get Current Player
+     * @return int Nummer des aktuellen Spielers
+     */
     public int getCurrentPlayersTurn();
+
+    /**
+     * Get Num Players
+     * @return int Anzahl der Spieler
+     */
     public int getNumPlayers();
+
+    /**
+     * Get Player Score
+     * @param player Nummer des Spielers
+     * @return int Punktzahl des Spielers
+     */
     public int getPlayerScore(int player);
+
+    /**
+     * Get Player Legs Win
+     * @param player Nummer des Spielers
+     * @return int Anzahl der gewonnen Legs des Spielers
+     */
     public int getPlayerLegsWin(int player);
+
+    /**
+     * Get Player Sets Win
+     * @param player Nummer des Spielers
+     * @return int Anzahl der gewonnen Sets des Spielers
+     */
     public int getPlayerSetWin(int player);
+
+    /**
+     * Get Player Name
+     * @return Namen aller Spieler
+     */
     public String[] getPlayerNames();
+
+    /**
+     * Get Player Points
+     * @param player Nummer des Spielers
+     * @return ArrayList<String> Liste der Punkte des Spielers
+     */
     public ArrayList<String> getPlayerPoints(int player);
+
+    /**
+     * Get Checkout Suggestion
+     * @return ArrayList<Integer> Liste eines Checkout Vorschlags
+     */
     public ArrayList<Integer> getCheckoutSuggestion();
+
+    /**
+     * Get Game Mult State
+     * @return GameMultState Aktueller Status (Multiplikator) des Boards
+     */
     public GameMultState getGameMultState();
+
+    /**
+     * Get Checkout Type
+     * @return CheckoutType Checkout Typ
+     */
     public CheckoutType getCheckoutType();
+
+    /**
+     * Get Game Settings
+     * @return GameSettings Einstellungen des Spiels
+     */
     public GameSettings getGameSettings();
+
+    /**
+     * Get Player Stats
+     * @return ArrayList<PlayerStats> Liste der Statistiken aller Spieler
+     */
     public ArrayList<PlayerStats> getPlayerStats();
 
+    /**
+     * Set Game Mult State
+     * @param state GameMultState Status (Multiplikator) des Boards
+     */
     public void setGameMultState(GameMultState state);
 
     /**
-     * remove the last point of the board from the current player
+     * Löscht den letzten Punkt des Boards des aktuellen Spielers
      */
     public void removeLastBoardPoint();
 
     /**
-     * concat the point to the board of the current player
-     * @param point The point to concat
+     * Fügt einen Punkt zum Board des aktuellen Spielers hinzu
+     * @param point Punkt der hinzugefügt werden soll
      */
     public void concatBoardPoints(int point);
 

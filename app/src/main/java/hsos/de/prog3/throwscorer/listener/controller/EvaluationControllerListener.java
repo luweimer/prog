@@ -4,8 +4,20 @@ import android.graphics.Bitmap;
 
 import hsos.de.prog3.throwscorer.listener.RegisterListener;
 
+/**
+ * EvaluationControllerListener
+ * Schnittstelle für den EvaluationController
+ */
 public interface EvaluationControllerListener {
+    /**
+     * Speichern eines Spieles
+     * @param name Name des Spiels
+     * @param pic Siegesbild
+     */
     public void handleSave(String name, Bitmap pic);
 
+    /**
+     * Teilen des Siegers
+     */
     public void shareWinner();
 }
