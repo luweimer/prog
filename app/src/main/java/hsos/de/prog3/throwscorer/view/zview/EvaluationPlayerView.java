@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import hsos.de.prog3.throwscorer.R;
-import hsos.de.prog3.throwscorer.listener.view.EvaluationPlayerViewListener;
+import hsos.de.prog3.throwscorer.listener.view.zview.EvaluationPlayerViewListener;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**

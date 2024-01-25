@@ -1,4 +1,4 @@
-package hsos.de.prog3.throwscorer.listener.activity;
+package hsos.de.prog3.throwscorer.listener.view.activity;
 
 import java.util.ArrayList;
 import java.util.List;

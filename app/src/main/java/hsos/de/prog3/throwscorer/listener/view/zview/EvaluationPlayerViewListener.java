@@ -1,6 +1,5 @@
-package hsos.de.prog3.throwscorer.listener.view;
+package hsos.de.prog3.throwscorer.listener.view.zview;
 
-import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**

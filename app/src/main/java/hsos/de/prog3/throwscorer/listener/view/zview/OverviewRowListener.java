@@ -1,4 +1,4 @@
-package hsos.de.prog3.throwscorer.listener.view;
+package hsos.de.prog3.throwscorer.listener.view.zview;
 
 /**
  * OverviewRowListener

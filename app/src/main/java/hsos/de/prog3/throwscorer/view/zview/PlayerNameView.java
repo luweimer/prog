@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import hsos.de.prog3.throwscorer.R;
-import hsos.de.prog3.throwscorer.listener.view.PlayerNameViewListener;
+import hsos.de.prog3.throwscorer.listener.view.zview.PlayerNameViewListener;
 
 /**
  * PlayerNameView

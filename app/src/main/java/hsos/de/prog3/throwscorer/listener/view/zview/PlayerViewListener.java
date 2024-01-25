@@ -1,8 +1,6 @@
-package hsos.de.prog3.throwscorer.listener.view;
+package hsos.de.prog3.throwscorer.listener.view.zview;
 
 import java.util.ArrayList;
-
-import hsos.de.prog3.throwscorer.model.Player;
 
 /**
  * PlayerViewListener

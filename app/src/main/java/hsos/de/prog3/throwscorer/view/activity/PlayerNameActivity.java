@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 
 import hsos.de.prog3.throwscorer.R;
-import hsos.de.prog3.throwscorer.listener.view.PlayerNameViewListener;
+import hsos.de.prog3.throwscorer.listener.view.zview.PlayerNameViewListener;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.view.zview.PlayerNameView;
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import hsos.de.prog3.throwscorer.R;
-import hsos.de.prog3.throwscorer.listener.view.PlayerViewListener;
+import hsos.de.prog3.throwscorer.listener.view.zview.PlayerViewListener;
 
 /**
  * PlayerView

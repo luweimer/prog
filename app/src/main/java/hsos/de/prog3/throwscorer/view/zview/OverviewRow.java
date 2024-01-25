@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.controller.OverviewControllerListener;
-import hsos.de.prog3.throwscorer.listener.view.OverviewRowListener;
+import hsos.de.prog3.throwscorer.listener.view.zview.OverviewRowListener;
 
 /**
  * OverviewRow

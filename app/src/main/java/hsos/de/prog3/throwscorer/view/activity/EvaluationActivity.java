@@ -33,9 +33,9 @@ import java.util.List;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.controller.EvaluationController;
-import hsos.de.prog3.throwscorer.listener.activity.EvaluationActivityListener;
+import hsos.de.prog3.throwscorer.listener.view.activity.EvaluationActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.EvaluationControllerListener;
-import hsos.de.prog3.throwscorer.listener.view.EvaluationPlayerViewListener;
+import hsos.de.prog3.throwscorer.listener.view.zview.EvaluationPlayerViewListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.zview.EvaluationPlayerView;
