@@ -13,6 +13,7 @@ import hsos.de.prog3.throwscorer.activity.HomeActivity;
 import hsos.de.prog3.throwscorer.activity.IndividualGameActivity;
 import hsos.de.prog3.throwscorer.activity.OverviewActivity;
 import hsos.de.prog3.throwscorer.activity.PlayerNameActivity;
+import hsos.de.prog3.throwscorer.activity.SplashActivity;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
@@ -24,6 +25,11 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
  */
 public class Router {
 
+    public static void startHome(Context context){
+        Intent mainIntent = new Intent(context, HomeActivity.class);
+        context.startActivity(mainIntent);
+    }
+
     /**
      * Startet die GameActivity
      * @param context Context der aktuellen Activity
@@ -31,6 +37,10 @@ public class Router {
      */
     public static void startGame(Context context, GameSettings gameSettings){
         Intent intent = new Intent(context, GameActivity.class);
+        if (gameSettings == null) {
+            Log.e("Router", "GameSettings is null");
+            return;
+        }
         intent.putExtra("GameSettings", gameSettings);
         context.startActivity(intent);
     }
@@ -42,6 +52,10 @@ public class Router {
      */
     public static void startPlayerNameActivity(Context context, GameSettings gameSettings){
         Intent intent = new Intent(context, PlayerNameActivity.class);
+        if (gameSettings == null) {
+            Log.e("Router", "GameSettings is null");
+            return;
+        }
         intent.putExtra("GameSettings", gameSettings);
         context.startActivity(intent);
     }
@@ -55,6 +69,10 @@ public class Router {
      */
     public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic){
         Intent intent = new Intent(context, EvaluationActivity.class);
+        if(playerStats == null || winnerPic == null || playerStats.isEmpty()){
+            Log.e("Router", "Unable to start EvaluationActitvity");
+            return;
+        }
         intent.putExtra("winner", winner);
         intent.putExtra("PlayerStats", new ArrayList<>(playerStats));
         intent.putExtra("winnerPic", winnerPic);

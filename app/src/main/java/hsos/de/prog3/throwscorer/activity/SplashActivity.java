@@ -7,6 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import hsos.de.prog3.throwscorer.R;
+import hsos.de.prog3.throwscorer.utility.Router;
 
 /**
  * SplashActivity
@@ -27,8 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
-                startActivity(mainIntent);
+                Router.startHome(SplashActivity.this);
                 finish();
             }
         }, SPLASH_DELAY);

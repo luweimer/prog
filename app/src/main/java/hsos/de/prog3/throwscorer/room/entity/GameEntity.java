@@ -26,7 +26,7 @@ public class GameEntity {
     public String winnerName;
 
     @ColumnInfo(name = "Picture")
-    public String picture; // Base64-String für das Bild gespeichert
+    public String picture;
 
     public GameEntity(String gameID, String gameName, int winnerInt, String winnerName, String picture) {
         this.gameID = gameID;

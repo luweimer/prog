@@ -173,6 +173,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
 
     /**
      * Registriert den ActivityResultLauncher für die Kamera
+     * Referenz: https://stackoverflow.com/questions/67115099/how-do-i-use-registerforactivityresult-to-launch-camera
      */
     private final ActivityResultLauncher<Intent> imageCaptureLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

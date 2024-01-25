@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
+
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.view.PlayerNameViewListener;
 import hsos.de.prog3.throwscorer.model.GameSettings;
@@ -89,6 +91,12 @@ public class PlayerNameActivity extends AppCompatActivity {
             }
             names[i] = name;
         }
+
+        if(this.checkDuplicatedValues(this.playerName)){
+            Toast.makeText(getApplicationContext(), "Please enter unique names", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         this.gameSettings.setPlayerNames(names);
         startGame(this, this.gameSettings);
     }
@@ -104,5 +112,15 @@ public class PlayerNameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Überprüft, ob die Spielernamen einzigartig sind
+     * @param playerName Spielernamen
+     * @return true, wenn die Spielernamen nicht einzigartig sind
+     */
+    private boolean checkDuplicatedValues(PlayerNameViewListener[] playerName){
+        return Arrays.stream(playerName)
+                .distinct()
+                .count() < playerName.length;
+    }
 
 }

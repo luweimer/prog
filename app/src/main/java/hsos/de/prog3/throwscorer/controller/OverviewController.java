@@ -4,6 +4,8 @@ import static hsos.de.prog3.throwscorer.room.Converter.convertGameEntityToGameDa
 import static hsos.de.prog3.throwscorer.room.Converter.convertPlayerStatsEntityToPlayerStats;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
 import android.util.Pair;
 
 import androidx.lifecycle.LifecycleOwner;
@@ -13,6 +15,7 @@ import androidx.lifecycle.MediatorLiveData;
 import java.util.ArrayList;
 import java.util.List;
 
+import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.activity.OverviewActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.OverviewControllerListener;
 import hsos.de.prog3.throwscorer.listener.controller.PersistensListener;
@@ -37,6 +40,8 @@ public class OverviewController implements OverviewControllerListener {
     public OverviewController(OverviewActivityListener view) {
         this.view = view;
         view.registerController(this);
+
+        Log.i("OverviewController", Resources.getSystem().getString(R.string.app_name));
 
         this.persistent = new RoomAccess();
         this.persistent.setContext((Context) this.view);

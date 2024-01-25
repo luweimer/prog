@@ -1,12 +1,16 @@
 package hsos.de.prog3.throwscorer.controller;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.activity.EvaluationActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.EvaluationControllerListener;
 import hsos.de.prog3.throwscorer.listener.controller.PersistensListener;
