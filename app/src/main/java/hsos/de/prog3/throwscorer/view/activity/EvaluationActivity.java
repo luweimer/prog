@@ -1,18 +1,15 @@
-package hsos.de.prog3.throwscorer.activity;
+package hsos.de.prog3.throwscorer.view.activity;
 
 import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertDrawableToBitmap;
-import static hsos.de.prog3.throwscorer.utility.Converter.BitmapToBase64;
 import static hsos.de.prog3.throwscorer.utility.Router.startHomeActivity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -41,7 +38,7 @@ import hsos.de.prog3.throwscorer.listener.controller.EvaluationControllerListene
 import hsos.de.prog3.throwscorer.listener.view.EvaluationPlayerViewListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
-import hsos.de.prog3.throwscorer.view.EvaluationPlayerView;
+import hsos.de.prog3.throwscorer.view.zview.EvaluationPlayerView;
 
 /** EvaluationActivity
  * Übersicht über die Spielergebnisse

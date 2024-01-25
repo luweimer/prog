@@ -1,4 +1,4 @@
-package hsos.de.prog3.throwscorer.activity;
+package hsos.de.prog3.throwscorer.view.activity;
 
 import static hsos.de.prog3.throwscorer.utility.Router.startGame;
 
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.listener.view.PlayerNameViewListener;
 import hsos.de.prog3.throwscorer.model.GameSettings;
-import hsos.de.prog3.throwscorer.view.PlayerNameView;
+import hsos.de.prog3.throwscorer.view.zview.PlayerNameView;
 
 /**
  * PlayerNameActivity

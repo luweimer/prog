@@ -61,17 +61,17 @@ public class EvaluationController implements EvaluationControllerListener {
     @Override
     public void handleSave(String name, Bitmap pic) {
         if(name.isEmpty()) {
-            this.view.showToast("Bitte gib einen Namen ein!");
+            this.view.showToast("Please enter a name the game!");
             return;
         }
         if(pic == null) {
-            this.view.showToast("Bitte wähle ein Bild aus!");
+            this.view.showToast("Please choose a picture!");
             return;
         }
         this.gameDatabase.setGameName(name);
         this.gameDatabase.setWinnerPic(pic);
         this.persistent.safeGame(this.gameDatabase);
-        this.view.showToast("Spiel wurde erfolgreich hinzugefügt!");
+        this.view.showToast("Game was saved successfully!");
         this.view.handleHome();
     }
 

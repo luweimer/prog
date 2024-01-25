@@ -19,7 +19,7 @@
         android:theme="@style/Theme.ThrowScorer"
         tools:targetApi="31">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".view.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,17 +27,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.HomeActivity"
+        <activity android:name=".view.activity.HomeActivity"
             android:exported="false"/>
-        <activity android:name=".activity.GameActivity"
+        <activity android:name=".view.activity.GameActivity"
             android:exported="false"/>
-        <activity android:name=".activity.IndividualGameActivity"
+        <activity android:name=".view.activity.IndividualGameActivity"
             android:exported="false"/>
-        <activity android:name=".activity.EvaluationActivity"
+        <activity android:name=".view.activity.EvaluationActivity"
             android:exported="false"/>
-        <activity android:name=".activity.PlayerNameActivity"
+        <activity android:name=".view.activity.PlayerNameActivity"
             android:exported="false"/>
-        <activity android:name=".activity.OverviewActivity"
+        <activity android:name=".view.activity.OverviewActivity"
             android:exported="false"/>
     </application>
 

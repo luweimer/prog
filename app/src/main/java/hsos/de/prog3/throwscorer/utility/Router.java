@@ -7,13 +7,12 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import hsos.de.prog3.throwscorer.activity.EvaluationActivity;
-import hsos.de.prog3.throwscorer.activity.GameActivity;
-import hsos.de.prog3.throwscorer.activity.HomeActivity;
-import hsos.de.prog3.throwscorer.activity.IndividualGameActivity;
-import hsos.de.prog3.throwscorer.activity.OverviewActivity;
-import hsos.de.prog3.throwscorer.activity.PlayerNameActivity;
-import hsos.de.prog3.throwscorer.activity.SplashActivity;
+import hsos.de.prog3.throwscorer.view.activity.EvaluationActivity;
+import hsos.de.prog3.throwscorer.view.activity.GameActivity;
+import hsos.de.prog3.throwscorer.view.activity.HomeActivity;
+import hsos.de.prog3.throwscorer.view.activity.IndividualGameActivity;
+import hsos.de.prog3.throwscorer.view.activity.OverviewActivity;
+import hsos.de.prog3.throwscorer.view.activity.PlayerNameActivity;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 

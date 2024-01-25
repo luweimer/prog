@@ -1,4 +1,4 @@
-package hsos.de.prog3.throwscorer.view;
+package hsos.de.prog3.throwscorer.view.zview;
 
 import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertArrayList;
 

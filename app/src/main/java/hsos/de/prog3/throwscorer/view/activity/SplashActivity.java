@@ -1,6 +1,5 @@
-package hsos.de.prog3.throwscorer.activity;
+package hsos.de.prog3.throwscorer.view.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 

@@ -1,9 +1,8 @@
-package hsos.de.prog3.throwscorer.activity;
+package hsos.de.prog3.throwscorer.view.activity;
 
 import static hsos.de.prog3.throwscorer.utility.ConvertViewValues.convertArrayListCheckout;
 import static hsos.de.prog3.throwscorer.utility.Router.startEvaluationActivity;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +26,7 @@ import hsos.de.prog3.throwscorer.model.CheckoutType;
 import hsos.de.prog3.throwscorer.model.GameMultState;
 import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
-import hsos.de.prog3.throwscorer.view.PlayerView;
+import hsos.de.prog3.throwscorer.view.zview.PlayerView;
 
 /**
  * GameActivity

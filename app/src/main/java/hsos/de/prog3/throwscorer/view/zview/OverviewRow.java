@@ -1,7 +1,6 @@
-package hsos.de.prog3.throwscorer.view;
+package hsos.de.prog3.throwscorer.view.zview;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageButton;

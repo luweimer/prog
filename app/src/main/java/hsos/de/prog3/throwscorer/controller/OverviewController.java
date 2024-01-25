@@ -41,8 +41,6 @@ public class OverviewController implements OverviewControllerListener {
         this.view = view;
         view.registerController(this);
 
-        Log.i("OverviewController", Resources.getSystem().getString(R.string.app_name));
-
         this.persistent = new RoomAccess();
         this.persistent.setContext((Context) this.view);
 

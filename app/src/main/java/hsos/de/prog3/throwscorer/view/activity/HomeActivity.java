@@ -1,4 +1,4 @@
-package hsos.de.prog3.throwscorer.activity;
+package hsos.de.prog3.throwscorer.view.activity;
 
 import static hsos.de.prog3.throwscorer.utility.Router.startGame;
 import static hsos.de.prog3.throwscorer.utility.Router.startIndividualGame;

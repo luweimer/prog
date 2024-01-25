@@ -1,4 +1,4 @@
-package hsos.de.prog3.throwscorer.activity;
+package hsos.de.prog3.throwscorer.view.activity;
 
 import static hsos.de.prog3.throwscorer.utility.Router.startEvaluationActivity;
 import static hsos.de.prog3.throwscorer.utility.Router.startHomeActivity;
@@ -17,7 +17,7 @@ import hsos.de.prog3.throwscorer.listener.activity.OverviewActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.OverviewControllerListener;
 import hsos.de.prog3.throwscorer.listener.view.OverviewRowListener;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
-import hsos.de.prog3.throwscorer.view.OverviewRow;
+import hsos.de.prog3.throwscorer.view.zview.OverviewRow;
 
 /**
  * OverviewActivity
