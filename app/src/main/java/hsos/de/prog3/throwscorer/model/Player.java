@@ -139,6 +139,7 @@ public class Player {
             this.removeLastBoardPoints();
             return false;
         }
+        Log.e("Player", "Multpoint:" + multPoint + " Current: " + this.calculateCurrentScore());
         this.playerStats.addPoint(multPoint).addState(state);
         this.addPointOutput(point, state);
 
@@ -153,11 +154,7 @@ public class Player {
             this.boardPointsOutput.forEach(p ->{
                 this.playerStats.updateStats(p);
             });
-            if(this.calculateCurrentScore() != 0){
-                this.resetBoardPoints();
-            } else {
-                //Player win one leg
-            }
+            this.resetBoardPoints();
 
         }
 
@@ -372,21 +369,21 @@ public class Player {
 
         switch (this.checkout){
             case SINGLE: {
-                if(currentScore < 20){
+                if(currentScore <= 20){
                     Log.d("Player", "Single");
                     checkout.add(currentScore);
                 }
                 break;
             }
             case DOUBLE: {
-                if(currentScore % 2 == 0 && currentScore < 40){
+                if(currentScore % 2 == 0 && currentScore <= 40){
                     Log.d("Player", "Double");
                     checkout.add(currentScore);
                 }
                 break;
             }
             case TRIPLE: {
-                if(currentScore % 3 == 0 && currentScore < 60){
+                if(currentScore % 3 == 0 && currentScore <= 60){
                     Log.d("Player", "Triple");
                     checkout.add(currentScore);
                 }

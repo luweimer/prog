@@ -68,7 +68,7 @@ public class Router {
      */
     public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic){
         Intent intent = new Intent(context, EvaluationActivity.class);
-        if(playerStats == null || winnerPic == null || playerStats.isEmpty()){
+        if(playerStats == null || playerStats.isEmpty()){
             Log.e("Router", "Unable to start EvaluationActitvity");
             return;
         }

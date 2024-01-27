@@ -43,7 +43,8 @@ public class GameController implements ClickHandler {
      */
     private void init(){
         view.createPlayerHeader( this.model.getNumPlayers(), this.model.getPlayerNames()  );
-        this.updatePlayerHeader();
+        this.updatePlayerHeader()
+                .updateActivePlayerHead();
     }
 
     /**
