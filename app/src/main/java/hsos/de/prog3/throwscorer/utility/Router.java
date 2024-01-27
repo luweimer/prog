@@ -66,7 +66,7 @@ public class Router {
      * @param playerStats Spielerstatistiken
      * @param winnerPic Siegesbild
      */
-    public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic){
+    public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic, boolean deactivateBack){
         Intent intent = new Intent(context, EvaluationActivity.class);
         if(playerStats == null || playerStats.isEmpty()){
             Log.e("Router", "Unable to start EvaluationActitvity");
@@ -75,6 +75,9 @@ public class Router {
         intent.putExtra("winner", winner);
         intent.putExtra("PlayerStats", new ArrayList<>(playerStats));
         intent.putExtra("winnerPic", winnerPic);
+        if(deactivateBack){
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
         context.startActivity(intent);
     }
 

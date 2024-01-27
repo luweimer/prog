@@ -107,7 +107,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
      */
     @Override
     public void showGame(int player, ArrayList<PlayerStats> playerStats, Bitmap pic) {
-        startEvaluationActivity(this, player, playerStats, pic);
+        startEvaluationActivity(this, player, playerStats, pic, false);
     }
 
     @Override
