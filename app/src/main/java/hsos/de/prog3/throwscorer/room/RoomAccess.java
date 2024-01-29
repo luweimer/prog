@@ -4,7 +4,10 @@ import static hsos.de.prog3.throwscorer.utility.Converter.BitmapToBase64;
 import static hsos.de.prog3.throwscorer.utility.Converter.hashMapToJson;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
@@ -26,6 +29,13 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 public class RoomAccess implements PersistensListener {
 
     private AppDatabase appDatabase;
+    private Handler handler;
+    private Context context;
+
+    public RoomAccess(){
+        this.handler = new Handler(Looper.getMainLooper());
+    }
+
 
     /**
      * Setzen des Kontextes für die Datenbank
@@ -34,6 +44,7 @@ public class RoomAccess implements PersistensListener {
     @Override
     public void setContext(Context context) {
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, "testOne").build();
+        this.context = context;
     }
 
     /**
@@ -44,38 +55,34 @@ public class RoomAccess implements PersistensListener {
      */
     @Override
     public void safeGame(GameDatabase gameDatabase) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if(!checkValidGame(gameDatabase)){
-                    return;
-                }
-
-                String gameID = createUUID();
-                String picture = BitmapToBase64(gameDatabase.getWinnerPic());
-
-                GameEntity gameEntity = new GameEntity(gameID, gameDatabase.getGameName(), gameDatabase.getWinnerInt(), gameDatabase.getWinnerName(), picture);
-                appDatabase.gameDao().insertGame(gameEntity);
-
-                for (PlayerStats playerStat : gameDatabase.getPlayerStats()) {
-                    PlayerStatsEntity playerStatsEntity = new PlayerStatsEntity(
-                            gameID,
-                            playerStat.getPlayer(),
-                            playerStat.getPlayerNumber(),
-                            playerStat.getWinLegs(),
-                            playerStat.getWinSets(),
-                            playerStat.getWin(),
-                            hashMapToJson( playerStat.getStats() )
-                    );
-                    try{
-                        appDatabase.playerStatsDao().insertPlayerStats(playerStatsEntity);
-                    } catch (Exception e){
-                        Log.e("RoomAccess", "safeGame: " + e.getMessage() );
-                    }
-
-                }
+        this.DBOperation(() -> {
+            if(!checkValidGame(gameDatabase)){
+                return;
             }
-        }).start();
+            String gameID = createUUID();
+            String picture = BitmapToBase64(gameDatabase.getWinnerPic());
+
+            GameEntity gameEntity = new GameEntity(gameID, gameDatabase.getGameName(), gameDatabase.getWinnerInt(), gameDatabase.getWinnerName(), picture);
+            appDatabase.gameDao().insertGame(gameEntity);
+
+            for (PlayerStats playerStat : gameDatabase.getPlayerStats()) {
+                PlayerStatsEntity playerStatsEntity = new PlayerStatsEntity(
+                        gameID,
+                        playerStat.getPlayer(),
+                        playerStat.getPlayerNumber(),
+                        playerStat.getWinLegs(),
+                        playerStat.getWinSets(),
+                        playerStat.getWin(),
+                        hashMapToJson( playerStat.getStats() )
+                );
+                try{
+                    appDatabase.playerStatsDao().insertPlayerStats(playerStatsEntity);
+                } catch (Exception e){
+                    Log.e("RoomAccess", "safeGame: " + e.getMessage() );
+                }
+
+            }
+        }, "Game saved!");
     }
 
     /**
@@ -85,13 +92,10 @@ public class RoomAccess implements PersistensListener {
      */
     @Override
     public void deleteGame(String gameID) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                appDatabase.gameDao().deleteGame(gameID);
-                appDatabase.playerStatsDao().deletePlayerStats(gameID);
-            }
-        }).start();
+        this.DBOperation(() -> {
+            appDatabase.gameDao().deleteGame(gameID);
+            appDatabase.playerStatsDao().deletePlayerStats(gameID);
+        }, "Game deleted!");
     }
 
     /**
@@ -100,10 +104,35 @@ public class RoomAccess implements PersistensListener {
      */
     @Override
     public void deleteAllGames() {
+        Log.i("RoomAccess", "deleteAllGames: ");
+        this.DBOperation(() -> {
+            appDatabase.clearAllTables();
+        }, "All games deleted!");
+    }
+
+    private void DBOperation(Runnable runnable, String output){
+        Log.i("RoomAccess", "DBOperation: ");
         new Thread(new Runnable() {
             @Override
             public void run() {
-                appDatabase.clearAllTables();
+                try {
+                    runnable.run();
+                    Log.i("RoomAccess", "run: ");
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context.getApplicationContext(), output, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (Exception e) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context.getApplicationContext(), "Eingabe fehlgeschlagen!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Log.e("RoomAccess", "deleteAllGames: " + e.getMessage() );
+                }
             }
         }).start();
     }
