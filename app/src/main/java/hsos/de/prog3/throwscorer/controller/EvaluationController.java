@@ -66,7 +66,6 @@ public class EvaluationController implements EvaluationControllerListener {
         this.gameDatabase.setGameName(name);
         this.gameDatabase.setWinnerPic(pic);
         this.persistent.safeGame(this.gameDatabase);
-        this.view.showToast("Game was saved successfully!");
         this.view.handleHome();
     }
 
