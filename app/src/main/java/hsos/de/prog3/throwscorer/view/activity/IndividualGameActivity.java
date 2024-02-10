@@ -19,7 +19,7 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
  * IndividualGameActivity
  * Activity um Spieleinstellungen eines individuellen Spiels festzulegen
  * Parameter: StartScore, Spieleranzahl, Setanzahl, Leganzahl, CheckoutType
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class IndividualGameActivity extends AppCompatActivity {
 

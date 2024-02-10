@@ -13,7 +13,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
  * AppDatabase
  * Room Database
  * Entity: GameEntity, PlayerStatsEntity
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 @Database(entities = {
             GameEntity.class,

@@ -13,7 +13,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
  * Konvertiert die Entitys der Datenbank zu unabhaengigen Datentypen von Throwscorer
  * GameEntity -> GameDatabase
  * PlayerStatsEntity -> PlayerStats
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class Converter {
     /**

@@ -34,7 +34,7 @@ import hsos.de.prog3.throwscorer.view.zview.PlayerView;
  * Unterscheidung zwischen Custom und Standard Buttons
  * Custom Buttons - double, triple, back
  * Standard Buttons - 1-20, 25, 50
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class GameActivity extends AppCompatActivity implements GameActivityListener {
 

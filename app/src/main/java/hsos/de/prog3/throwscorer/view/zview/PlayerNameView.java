@@ -13,7 +13,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.PlayerNameViewListener;
 /**
  * PlayerNameView
  * Stellt die einzelnen Eingabe-Felder fuer die Spielernamen dar
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class PlayerNameView implements PlayerNameViewListener {
 

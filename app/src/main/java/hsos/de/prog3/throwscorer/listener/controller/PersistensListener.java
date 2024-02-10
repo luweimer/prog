@@ -13,7 +13,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 /**
  * PersistensListener
  * Schnittstelle fuer die Persistente Speicherung
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface PersistensListener {
     /**

@@ -19,7 +19,7 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
  * HomeActivity
  * Startet als erste Activity der Anwendung
  * uebersicht ueber alle Moeglichkeiten des Spiels
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class HomeActivity extends AppCompatActivity {
 

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
  * Einstellungen fuer ein Spiel
  * Einstellungsmoeglichkeiten: Startscore, Anzahl Spieler, Anzahl Legs, Anzahl Sets, CheckoutType, Spielernamen
  * Implementiert Parcelable, um Objekt zwischen Activities zu uebergeben
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class GameSettings implements Parcelable {
 

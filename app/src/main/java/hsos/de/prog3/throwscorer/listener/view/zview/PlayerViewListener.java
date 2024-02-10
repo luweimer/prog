@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * PlayerViewListener
  * Schnittstelle PlayerView
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface PlayerViewListener {
 

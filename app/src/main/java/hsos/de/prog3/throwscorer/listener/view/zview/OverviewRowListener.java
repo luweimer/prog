@@ -3,7 +3,7 @@ package hsos.de.prog3.throwscorer.listener.view.zview;
 /**
  * OverviewRowListener
  * Schnittstelle OverviewRow
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface OverviewRowListener {
 

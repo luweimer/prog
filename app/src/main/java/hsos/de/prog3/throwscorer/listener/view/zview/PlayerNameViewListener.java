@@ -3,7 +3,7 @@ package hsos.de.prog3.throwscorer.listener.view.zview;
 /**
  * PlayerNameViewListener
  * Schnittstelle PlayerNameView
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface PlayerNameViewListener {
 

@@ -7,7 +7,7 @@ import hsos.de.prog3.throwscorer.listener.RegisterListener;
 /**
  * ClickHandler
  * Schnittstelle fuer Click-Handler
- * Author: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface ClickHandler extends RegisterListener {
     /**

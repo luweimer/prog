@@ -3,7 +3,7 @@ package hsos.de.prog3.throwscorer.listener.controller;
 /**
  * OverviewControllerListener
  * Schnittstelle fuer den OverviewController
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface OverviewControllerListener{
 

@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * Player
  * Speichert die Daten eines Spielers
  * Verwaltet PlayerStats-Objekt
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class Player {
 

@@ -17,6 +17,7 @@ import hsos.de.prog3.throwscorer.model.CheckoutType;
  * ArrayList<Integer> - Checkout String
  * ArrayList<String> - String
  * Drawable - Bitmap
+ * @author Lucius Weimer
  */
 public class ConvertViewValues {
     /**

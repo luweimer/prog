@@ -15,7 +15,7 @@ import java.util.List;
  * PlayerStats
  * Speicherung der Statistiken eines Spielers
  * Implementiert Parcelable, um Objekt zwischen Activities zu uebergeben
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class PlayerStats implements Parcelable{
 

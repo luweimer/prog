@@ -16,7 +16,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.PlayerViewListener;
 /**
  * PlayerView
  * Stellt die einzelnen Spieler in der GameActivity dar.
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class PlayerView implements PlayerViewListener {
 

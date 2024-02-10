@@ -8,7 +8,7 @@ import androidx.room.*;
  * Entity fuer Game
  * Column: gameID (String), gameName (String), winnerInt (int), winnerName (String), picture (String)
  * PrimaryKey: gameID
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 @Entity(tableName = "GameEntity")
 public class GameEntity {

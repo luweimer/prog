@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * GameDatabase
  * Speicherung aller Informationen eines Spiels unabhaengig von tatsaechlichen Speicherung
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class GameDatabase {
 

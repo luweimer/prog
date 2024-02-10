@@ -15,7 +15,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.OverviewRowListener;
 /**
  * OverviewRow
  * View-Klasse fuer eine Zeile in der uebersicht um ein Spiel darzustellen
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class OverviewRow implements OverviewRowListener {
 

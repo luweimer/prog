@@ -18,7 +18,7 @@ import hsos.de.prog3.throwscorer.room.RoomAccess;
  * Verwaltet die Anzeige und Interaktion der Spielergebnisse mit der Speicherung in der Datenbank
  * View: EvaluationActivityListener
  * Datenbank: PersistensListener
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class EvaluationController implements EvaluationControllerListener {
 

@@ -16,7 +16,7 @@ import java.util.Iterator;
  * Utility class um Datentypen zu konvertieren
  * HaspMap - JSON
  * Bitmap - Base64
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class Converter {
 

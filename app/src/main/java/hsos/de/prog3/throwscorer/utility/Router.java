@@ -20,7 +20,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
  * Router
  * Utility class um Activities zu starten
  * Activity zum starten: GameActivity, PlayerNameActivity, EvaluationActivity, HomeActivity, OverviewActivity, IndividualGameActivity
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class Router {
 

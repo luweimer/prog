@@ -24,7 +24,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 /**
  * RoomAccess
  * Zugriff auf die Room Datenbank
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class RoomAccess implements PersistensListener {
 

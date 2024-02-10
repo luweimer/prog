@@ -5,7 +5,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 /**
  * EvaluationPlayerViewListener
  * Schnittstelle EvaluationPlayerView
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface EvaluationPlayerViewListener {
     /**

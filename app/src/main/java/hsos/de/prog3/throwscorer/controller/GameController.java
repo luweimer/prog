@@ -15,7 +15,7 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
  * Verwaltet die Anzeige und Interaktion des Spiels
  * View: GameActivityListener
  * Model: GameListener
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class GameController implements ClickHandler {
 

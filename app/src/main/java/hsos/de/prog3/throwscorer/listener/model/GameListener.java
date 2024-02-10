@@ -10,7 +10,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 /**
  * GameListener
  * Shnitstelle fuer das Game
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public interface GameListener {
 

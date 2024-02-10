@@ -19,7 +19,7 @@ import hsos.de.prog3.throwscorer.view.zview.PlayerNameView;
 /**
  * PlayerNameActivity
  * Activity um die Spielernamen festzulegen
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class PlayerNameActivity extends AppCompatActivity {
 

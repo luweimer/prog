@@ -11,7 +11,7 @@ import hsos.de.prog3.throwscorer.utility.Router;
 /**
  * SplashActivity
  * Activity fuer den Splashscreen
- * Autor: Lucius Weimer
+ * @author Lucius Weimer
  */
 public class SplashActivity extends AppCompatActivity {
 
