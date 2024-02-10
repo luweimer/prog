@@ -6,9 +6,9 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 import java.util.List;
 
-import hsos.de.prog3.throwscorer.listener.view.activity.EvaluationActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.EvaluationControllerListener;
 import hsos.de.prog3.throwscorer.listener.controller.PersistensListener;
+import hsos.de.prog3.throwscorer.listener.view.activity.EvaluationActivityListener;
 import hsos.de.prog3.throwscorer.model.GameDatabase;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.room.RoomAccess;

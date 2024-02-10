@@ -3,9 +3,9 @@ package hsos.de.prog3.throwscorer.controller;
 import android.view.View;
 import android.widget.Button;
 
-import hsos.de.prog3.throwscorer.listener.view.activity.GameActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.ClickHandler;
 import hsos.de.prog3.throwscorer.listener.model.GameListener;
+import hsos.de.prog3.throwscorer.listener.view.activity.GameActivityListener;
 import hsos.de.prog3.throwscorer.model.Game;
 import hsos.de.prog3.throwscorer.model.GameMultState;
 import hsos.de.prog3.throwscorer.model.GameSettings;

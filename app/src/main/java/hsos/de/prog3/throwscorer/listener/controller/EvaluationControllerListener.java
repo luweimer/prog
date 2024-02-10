@@ -2,8 +2,6 @@ package hsos.de.prog3.throwscorer.listener.controller;
 
 import android.graphics.Bitmap;
 
-import hsos.de.prog3.throwscorer.listener.RegisterListener;
-
 /**
  * EvaluationControllerListener
  * Schnittstelle fuer den EvaluationController

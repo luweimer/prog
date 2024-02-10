@@ -7,14 +7,14 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import hsos.de.prog3.throwscorer.model.GameSettings;
+import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.activity.EvaluationActivity;
 import hsos.de.prog3.throwscorer.view.activity.GameActivity;
 import hsos.de.prog3.throwscorer.view.activity.HomeActivity;
 import hsos.de.prog3.throwscorer.view.activity.IndividualGameActivity;
 import hsos.de.prog3.throwscorer.view.activity.OverviewActivity;
 import hsos.de.prog3.throwscorer.view.activity.PlayerNameActivity;
-import hsos.de.prog3.throwscorer.model.GameSettings;
-import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
  * Router

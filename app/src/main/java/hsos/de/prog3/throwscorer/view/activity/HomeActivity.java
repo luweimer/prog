@@ -4,11 +4,9 @@ import static hsos.de.prog3.throwscorer.utility.Router.startGame;
 import static hsos.de.prog3.throwscorer.utility.Router.startIndividualGame;
 import static hsos.de.prog3.throwscorer.utility.Router.startOverviewActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 

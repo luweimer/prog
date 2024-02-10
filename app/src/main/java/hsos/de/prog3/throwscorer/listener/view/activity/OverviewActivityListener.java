@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 
 import hsos.de.prog3.throwscorer.listener.RegisterListener;
-import hsos.de.prog3.throwscorer.model.GameSettings;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**

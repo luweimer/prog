@@ -1,6 +1,5 @@
 package hsos.de.prog3.throwscorer.room;
 
-import androidx.core.content.PackageManagerCompat;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
