@@ -6,7 +6,7 @@ import hsos.de.prog3.throwscorer.listener.RegisterListener;
 
 /**
  * EvaluationControllerListener
- * Schnittstelle für den EvaluationController
+ * Schnittstelle fuer den EvaluationController
  */
 public interface EvaluationControllerListener {
     /**

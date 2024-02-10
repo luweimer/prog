@@ -32,7 +32,7 @@ public class Router {
     /**
      * Startet die GameActivity
      * @param context Context der aktuellen Activity
-     * @param gameSettings GameSettings für das Spiel
+     * @param gameSettings GameSettings fuer das Spiel
      */
     public static void startGame(Context context, GameSettings gameSettings){
         Intent intent = new Intent(context, GameActivity.class);
@@ -47,7 +47,7 @@ public class Router {
     /**
      * Startet die PlayerNameActivity
      * @param context Context der aktuellen Activity
-     * @param gameSettings GameSettings für das Spiel
+     * @param gameSettings GameSettings fuer das Spiel
      */
     public static void startPlayerNameActivity(Context context, GameSettings gameSettings){
         Intent intent = new Intent(context, PlayerNameActivity.class);

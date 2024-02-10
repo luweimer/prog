@@ -7,9 +7,9 @@ import androidx.annotation.NonNull;
 
 /**
  * GameSettings
- * Einstellungen für ein Spiel
- * Einstellungsmöglichkeiten: Startscore, Anzahl Spieler, Anzahl Legs, Anzahl Sets, CheckoutType, Spielernamen
- * Implementiert Parcelable, um Objekt zwischen Activities zu übergeben
+ * Einstellungen fuer ein Spiel
+ * Einstellungsmoeglichkeiten: Startscore, Anzahl Spieler, Anzahl Legs, Anzahl Sets, CheckoutType, Spielernamen
+ * Implementiert Parcelable, um Objekt zwischen Activities zu uebergeben
  * Autor: Lucius Weimer
  */
 public class GameSettings implements Parcelable {
@@ -24,7 +24,7 @@ public class GameSettings implements Parcelable {
 
     /**
      * Standardkonstruktor
-     * Setzt Standardwerte für ein Spiel - WM-Modus
+     * Setzt Standardwerte fuer ein Spiel - WM-Modus
      * Startscore: 501, Anzahl Spieler: 2, Anzahl Legs: 3, Anzahl Sets: 3, CheckoutType: Double
      * Spielernamen: Player 1, Player 2
      */
@@ -40,7 +40,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Konstruktor für individuelle Einstellungen
+     * Konstruktor fuer individuelle Einstellungen
      * @param startScore Startscore
      * @param numPlayers Anzahl Spieler
      * @param numLegs Anzahl Legs
@@ -57,7 +57,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Getter für den Startscore
+     * Getter fuer den Startscore
      * @return Startscore des Spiels
      */
     public int getStartScore(){
@@ -65,7 +65,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Getter für die Anzahl Spieler
+     * Getter fuer die Anzahl Spieler
      * @return Anzahl Spieler
      */
     public int getNumPlayers(){
@@ -73,7 +73,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Getter für die Anzahl Legs
+     * Getter fuer die Anzahl Legs
      * @return Anzahl Legs
      */
     public int getNumLegs(){
@@ -81,7 +81,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Getter für die Anzahl Sets
+     * Getter fuer die Anzahl Sets
      * @return Anzahl Sets
      */
     public int getNumSets(){
@@ -89,7 +89,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Getter für die Spielernamen
+     * Getter fuer die Spielernamen
      * @return Spielernamen
      */
     public String[] getPlayerNames(){
@@ -97,7 +97,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Setter für die Spielernamen
+     * Setter fuer die Spielernamen
      * @param playerNames Spielernamen
      */
     public void setPlayerNames(String[] playerNames){
@@ -105,7 +105,7 @@ public class GameSettings implements Parcelable {
     }
 
     /**
-     * Getter für den CheckoutType
+     * Getter fuer den CheckoutType
      * @return CheckoutType
      */
     public CheckoutType getCheckoutType(){

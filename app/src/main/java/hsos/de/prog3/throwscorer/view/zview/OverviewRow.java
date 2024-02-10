@@ -14,7 +14,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.OverviewRowListener;
 
 /**
  * OverviewRow
- * View-Klasse für eine Zeile in der Übersicht um ein Spiel darzustellen
+ * View-Klasse fuer eine Zeile in der uebersicht um ein Spiel darzustellen
  * Autor: Lucius Weimer
  */
 public class OverviewRow implements OverviewRowListener {
@@ -29,11 +29,11 @@ public class OverviewRow implements OverviewRowListener {
     private OverviewControllerListener controller;
 
     /**
-     * Konstruktor für eine neue Zeile in der Übersicht
-     * Setzt den Controller und fügt die Zeile dem übergeordneten TableLayout hinzu
+     * Konstruktor fuer eine neue Zeile in der uebersicht
+     * Setzt den Controller und fuegt die Zeile dem uebergeordneten TableLayout hinzu
      * @param context Kontext der App
-     * @param tableLayout übergeordnetes TableLayout
-     * @param controller Controller der Übersicht
+     * @param tableLayout uebergeordnetes TableLayout
+     * @param controller Controller der uebersicht
      */
     public OverviewRow(Context context, TableLayout tableLayout, OverviewControllerListener controller){
         this.row = (TableRow) LayoutInflater.from(context).inflate(R.layout.overview_row, tableLayout, false);
@@ -90,11 +90,11 @@ public class OverviewRow implements OverviewRowListener {
     }
 
     /**
-     * Entfernt die Zeile aus dem übergeordneten TableLayout
+     * Entfernt die Zeile aus dem uebergeordneten TableLayout
      */
     @Override
     public void destroy() {
-        // Entferne die Zeile aus dem übergeordneten TableLayout
+        // Entferne die Zeile aus dem uebergeordneten TableLayout
         ((ViewGroup) row.getParent()).removeView(row);
     }
 

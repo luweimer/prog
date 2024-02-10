@@ -12,7 +12,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
 /**
  * PersistensListener
- * Schnittstelle für die Persistente Speicherung
+ * Schnittstelle fuer die Persistente Speicherung
  * Autor: Lucius Weimer
  */
 public interface PersistensListener {
@@ -29,12 +29,12 @@ public interface PersistensListener {
     public void safeGame(GameDatabase gameDatabase);
 
     /**
-     * Löschen eines Spiels
+     * Loeschen eines Spiels
      * @param gameID ID des Spiels
      */
     public void deleteGame(String gameID);
     /**
-     * Löschen aller Spiele und zugehöriger Daten
+     * Loeschen aller Spiele und zugehoeriger Daten
      */
     public void deleteAllGames();
 

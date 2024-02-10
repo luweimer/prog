@@ -5,7 +5,7 @@ import androidx.room.*;
 
 /**
  * GameEntity
- * Entity für Game
+ * Entity fuer Game
  * Column: gameID (String), gameName (String), winnerInt (int), winnerName (String), picture (String)
  * PrimaryKey: gameID
  * Autor: Lucius Weimer

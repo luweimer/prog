@@ -38,7 +38,7 @@ public class RoomAccess implements PersistensListener {
 
 
     /**
-     * Setzen des Kontextes für die Datenbank
+     * Setzen des Kontextes fuer die Datenbank
      * @param context Context
      */
     @Override
@@ -86,8 +86,8 @@ public class RoomAccess implements PersistensListener {
     }
 
     /**
-     * Löschen eines Spiels aus der Datenbank und die dazugehörigen PlayerStats
-     * Löschen durch einen neuen Thread
+     * Loeschen eines Spiels aus der Datenbank und die dazugehoerigen PlayerStats
+     * Loeschen durch einen neuen Thread
      * @param gameID Der eindeutige Identifier des Spiels
      */
     @Override
@@ -99,8 +99,8 @@ public class RoomAccess implements PersistensListener {
     }
 
     /**
-     * Löschen aller Spiele aus der Datenbank und die dazugehörigen PlayerStats
-     * Löschen durch einen neuen Thread
+     * Loeschen aller Spiele aus der Datenbank und die dazugehoerigen PlayerStats
+     * Loeschen durch einen neuen Thread
      */
     @Override
     public void deleteAllGames() {
@@ -110,6 +110,13 @@ public class RoomAccess implements PersistensListener {
         }, "All games deleted!");
     }
 
+    /**
+     * Ausfuehren einer Datenbankoperation in einem neuen Thread
+     * Unabhaengig vom UI-Thread
+     * Ausgabe eines Toasts ueber den Handler
+     * @param runnable Runnable Objekt - Datenbankoperation die Ausgefuehrt wird
+     * @param output String - Ausgabe des Toasts, bei Erfolgreicher Ausfuehrung
+     */
     private void DBOperation(Runnable runnable, String output){
         Log.i("RoomAccess", "DBOperation: ");
         new Thread(new Runnable() {
@@ -157,7 +164,7 @@ public class RoomAccess implements PersistensListener {
     }
 
     /**
-     * Laden aller PlayerStats aus der Datenbank zu einem zugehörigen Spiel
+     * Laden aller PlayerStats aus der Datenbank zu einem zugehoerigen Spiel
      * @param gameID Der eindeutige Identifier des Spiels
      * @return LiveData<List<PlayerStatsEntity>>
      */
@@ -167,7 +174,7 @@ public class RoomAccess implements PersistensListener {
     }
 
     /**
-     * Erstellen eines eindeutigen Identifiers für ein Spiel
+     * Erstellen eines eindeutigen Identifiers fuer ein Spiel
      * @return String
      */
     private String createUUID(){
@@ -175,8 +182,8 @@ public class RoomAccess implements PersistensListener {
     }
 
     /**
-     * Prüfen ob ein GameDatabase Objekt valide bzw. vollständig ist
-     * @param gameDatabase GameDatabase Objekt das geprüft werden soll
+     * Pruefen ob ein GameDatabase Objekt valide bzw. vollstaendig ist
+     * @param gameDatabase GameDatabase Objekt das geprueft werden soll
      * @return boolean, true wenn valide
      */
     private boolean checkValidGame(GameDatabase gameDatabase){

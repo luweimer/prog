@@ -12,8 +12,8 @@ import hsos.de.prog3.throwscorer.listener.model.GameListener;
 
 /**
  * Game
- * Model class für das Spiel
- * Verwendung der Folgender Klassen für die Abbildung des gesamten Spiels:
+ * Model class fuer das Spiel
+ * Verwendung der Folgender Klassen fuer die Abbildung des gesamten Spiels:
  * - GameSettings
  * - Player
  * - PlayerStats
@@ -33,10 +33,10 @@ public class Game implements GameListener {
     private final Player[] players;
 
     /**
-     * Konstruktor für das Spiel
+     * Konstruktor fuer das Spiel
      * Startet das Spiel mit GameSettings
-     * Startet den Aufruf für die Instanziierung der Player Objekte
-     * Setzt Listener für den Controller für Aktualisierungen
+     * Startet den Aufruf fuer die Instanziierung der Player Objekte
+     * Setzt Listener fuer den Controller fuer Aktualisierungen
      * @param gameController GameController
      * @param gameSettings GameSettings
      */
@@ -53,7 +53,7 @@ public class Game implements GameListener {
 
     /**
      * Startet das Spiel
-     * Zurücksetzen der aktuellen Runde
+     * Zuruecksetzen der aktuellen Runde
      */
     private void restart(){
         this.currentPlayMove = 0;
@@ -78,7 +78,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Setzt den Startscore der Player Objekte zurück
+     * Setzt den Startscore der Player Objekte zurueck
      */
     private void resetPlayers(){
         Arrays.asList(this.players).forEach(player -> {
@@ -87,7 +87,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die Anzahl der gesamten Legs zurück
+     * Gibt die Anzahl der gesamten Legs zurueck
      * @return int
      */
     @Override
@@ -96,7 +96,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt den Score des übergebenen Spielers zurück
+     * Gibt den Score des uebergebenen Spielers zurueck
      * @param player int
      * @return int - Score
      */
@@ -106,7 +106,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die Anzahl der gewonnenen Legs des übergebenen Spielers zurück
+     * Gibt die Anzahl der gewonnenen Legs des uebergebenen Spielers zurueck
      * @param player int
      * @return int - gewonnene Legs
      */
@@ -116,7 +116,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die Anzahl der gewonnenen Sets des übergebenen Spielers zurück
+     * Gibt die Anzahl der gewonnenen Sets des uebergebenen Spielers zurueck
      * @param player int
      * @return int - gewonnene Sets
      */
@@ -126,7 +126,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die Namen der Spieler zurück
+     * Gibt die Namen der Spieler zurueck
      * @return String[] - Namen der Spieler
      */
     @Override
@@ -135,7 +135,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die Punkte des übergebenen Spielers zurück
+     * Gibt die Punkte des uebergebenen Spielers zurueck
      * @param player int
      * @return ArrayList<String> - Punkte des Spielers
      */
@@ -158,7 +158,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt den Multiplikator des Spiels zurück
+     * Gibt den Multiplikator des Spiels zurueck
      * @return GameMultState
      */
     @Override
@@ -167,7 +167,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt den Checkout Typ des Spiels zurück
+     * Gibt den Checkout Typ des Spiels zurueck
      * @return CheckoutType
      */
     @Override
@@ -176,7 +176,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die GameSettings des Spiels zurück
+     * Gibt die GameSettings des Spiels zurueck
      * @return GameSettings
      */
     @Override
@@ -185,7 +185,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die PlayerStats aller Spieler zurück
+     * Gibt die PlayerStats aller Spieler zurueck
      * @return ArrayList<PlayerStats>
      */
     @Override
@@ -198,11 +198,11 @@ public class Game implements GameListener {
     }
 
     /**
-     * Fügt dem aktuellen Spieler den übergebenen Punkt hinzu
-     * Prüft ob ein Checkout des Spielers möglich ist
-     * Prüft ob der Spieler gewonnen hat
-     * Prüft ob der Spieler gewechselt werden muss
-     * @param point Der Punkt der hinzugefügt werden soll
+     * Fuegt dem aktuellen Spieler den uebergebenen Punkt hinzu
+     * Prueft ob ein Checkout des Spielers moeglich ist
+     * Prueft ob der Spieler gewonnen hat
+     * Prueft ob der Spieler gewechselt werden muss
+     * @param point Der Punkt der hinzugefuegt werden soll
      */
     @Override
     public void concatBoardPoints(int point) {
@@ -232,7 +232,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt die Anzahl der Spieler zurück
+     * Gibt die Anzahl der Spieler zurueck
      * @return int - Anzahl der Spieler
      */
     @Override
@@ -241,7 +241,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt zurück ob das Spiel beendet ist
+     * Gibt zurueck ob das Spiel beendet ist
      * @return boolean, true wenn das Spiel beendet ist
      */
     @Override
@@ -250,7 +250,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt den Gewinner des Spiels zurück
+     * Gibt den Gewinner des Spiels zurueck
      * @return int - Gewinner des Spiels, wenn Wert -1 dann ist das Spiel noch nicht beendet
      */
     @Override
@@ -259,7 +259,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt den Checkout Vorschlag des aktuellen Spielers zurück
+     * Gibt den Checkout Vorschlag des aktuellen Spielers zurueck
      * @return ArrayList<Integer> - Checkout Vorschlag
      */
     @Override
@@ -268,7 +268,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Gibt den aktuellen Spieler zurück
+     * Gibt den aktuellen Spieler zurueck
      * @return int - aktueller Spieler
      */
     @Override
@@ -277,7 +277,7 @@ public class Game implements GameListener {
     }
 
     /**
-     * Prüft ob der aktuelle Spieler ein Leg gewonnen hat
+     * Prueft ob der aktuelle Spieler ein Leg gewonnen hat
      */
     private void checkPartialWin(){
         if(this.players[this.currentPlayersTurn].addPartialWin( this.gameSettings.getNumLegs() )){
@@ -287,8 +287,8 @@ public class Game implements GameListener {
     }
 
     /**
-     * Prüft ob ein Spieler das Spiel gewonnen hat
-     * Vergleich von gewonnenen Sets mit der Anzahl der benötigten Sets
+     * Prueft ob ein Spieler das Spiel gewonnen hat
+     * Vergleich von gewonnenen Sets mit der Anzahl der benoetigten Sets
      * Setzt ggf. das Spiel auf beendet (isDone)
      */
     private void checkWin(){
@@ -305,15 +305,15 @@ public class Game implements GameListener {
     }
 
     /**
-     * Prüft ob beim aktuellen Spieler ein Checkout möglich ist
-     * @return boolean, true wenn ein Checkout möglich ist
+     * Prueft ob beim aktuellen Spieler ein Checkout moeglich ist
+     * @return boolean, true wenn ein Checkout moeglich ist
      */
     private boolean isCheckoutPossible(){
         return this.players[this.currentPlayersTurn].isCheckoutPossible();
     }
 
     /**
-     * Prüft ob der aktuelle Spieler gewechselt werden muss
+     * Prueft ob der aktuelle Spieler gewechselt werden muss
      * Wenn der aktuelle Spieler 3 mal geworfen hat, wird der Spieler gewechselt
      */
     private void checkCurrentPlayMove(){

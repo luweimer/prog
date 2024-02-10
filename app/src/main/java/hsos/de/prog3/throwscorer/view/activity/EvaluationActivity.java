@@ -41,7 +41,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.zview.EvaluationPlayerView;
 
 /** EvaluationActivity
- * Übersicht über die Spielergebnisse
+ * uebersicht ueber die Spielergebnisse
  * Autor: Lucius Weimer
  */
 public class EvaluationActivity extends AppCompatActivity implements EvaluationActivityListener {
@@ -119,7 +119,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
     }
 
     /**
-     * Managed das öffnen der Kamera und die Berechtigungsanfrage
+     * Managed das oeffnen der Kamera und die Berechtigungsanfrage
      * Quelle: Vorlesung -Android: Berechtigungen und Datenspeicherung-
      */
     private void useCamera(){
@@ -169,7 +169,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
     }
 
     /**
-     * Registriert den ActivityResultLauncher für die Kamera
+     * Registriert den ActivityResultLauncher fuer die Kamera
      * Referenz: https://stackoverflow.com/questions/67115099/how-do-i-use-registerforactivityresult-to-launch-camera
      */
     private final ActivityResultLauncher<Intent> imageCaptureLauncher = registerForActivityResult(
@@ -235,7 +235,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
     }
 
     /**
-     * Teilt den Gewinner über andere Apps mit
+     * Teilt den Gewinner ueber andere Apps mit
      * Verwendung Intent - Action Send
      * @param AVG Der Durchschnitt des gewonnenen Spielers
      * @param against Die Spieler gegen die der Gewinner gewonnen hat
@@ -270,7 +270,7 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
     }
 
     /**
-     * Setzt den Text für den Gewinner in der Überschrift
+     * Setzt den Text fuer den Gewinner in der ueberschrift
      * @param playerWinner Name des Siegers
      */
     @Override

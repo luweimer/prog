@@ -20,7 +20,7 @@ public interface OverviewRowListener {
     public void setID(String id);
 
     /**
-     * Löschen des Elements von der View
+     * Loeschen des Elements von der View
      */
     public void destroy();
 }

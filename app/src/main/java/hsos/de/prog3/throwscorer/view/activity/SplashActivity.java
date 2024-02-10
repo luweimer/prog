@@ -10,7 +10,7 @@ import hsos.de.prog3.throwscorer.utility.Router;
 
 /**
  * SplashActivity
- * Activity für den Splashscreen
+ * Activity fuer den Splashscreen
  * Autor: Lucius Weimer
  */
 public class SplashActivity extends AppCompatActivity {
@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
     private static final int SPLASH_DELAY = 2000;
 
     /**
-     * Startet die HomeActivity nach einer Verzögerung
+     * Startet die HomeActivity nach einer Verzoegerung
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

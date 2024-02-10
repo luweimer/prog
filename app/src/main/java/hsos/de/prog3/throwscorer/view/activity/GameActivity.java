@@ -30,7 +30,7 @@ import hsos.de.prog3.throwscorer.view.zview.PlayerView;
 
 /**
  * GameActivity
- * Activity für das Dartspiel
+ * Activity fuer das Dartspiel
  * Unterscheidung zwischen Custom und Standard Buttons
  * Custom Buttons - double, triple, back
  * Standard Buttons - 1-20, 25, 50
@@ -68,7 +68,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Registriert die Listener für die Buttons, wenn der Controller gesetzt ist
+     * Registriert die Listener fuer die Buttons, wenn der Controller gesetzt ist
      */
     private void initController(){
         if(this.controller != null){
@@ -126,7 +126,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Setzt den OnClickListener für den Button im Controller
+     * Setzt den OnClickListener fuer den Button im Controller
      * @param button Button
      * @return GameActivity
      */
@@ -143,7 +143,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Gibt den Button anhand der ID zurück
+     * Gibt den Button anhand der ID zurueck
      * @param id String
      * @return Button
      */
@@ -153,7 +153,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Setzt die Custom Buttons zurück, auf den Standard Hintergrund
+     * Setzt die Custom Buttons zurueck, auf den Standard Hintergrund
      */
     private void resetSpecialButton(){
         this.boardBtnSpecial.forEach((key, btn) -> {
@@ -171,7 +171,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Erstellt die PlayerViews für die einzelnen PlayerHeader
+     * Erstellt die PlayerViews fuer die einzelnen PlayerHeader
      * @param numPlayers int
      * @param player String[]
      */
@@ -213,7 +213,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Updated die Custom Buttons
-     * Setzt alle Custom Buttons zurück
+     * Setzt alle Custom Buttons zurueck
      * Setzt den aktiven Custom Button
      * @param state GameMultState - aktiver Custom Button
      */
@@ -229,7 +229,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Updated das aktuelle Leg in der Übersicht
+     * Updated das aktuelle Leg in der uebersicht
      * @param legs int - aktuelles Leg
      */
     @Override
@@ -239,8 +239,8 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     }
 
     /**
-     * Updated die Checkout Suggestion in der Übersicht für den aktiven Spieler
-     * Verwendung globaler Methode convertArrayListCheckout für Convertierung der ArrayList in String
+     * Updated die Checkout Suggestion in der uebersicht fuer den aktiven Spieler
+     * Verwendung globaler Methode convertArrayListCheckout fuer Convertierung der ArrayList in String
      * @param suggestions ArrayList<Integer>
      * @param checkout CheckoutType
      */

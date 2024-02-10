@@ -11,7 +11,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
  * EvaluationActivity
- * Schnittstelle für die EvaluationActivity
+ * Schnittstelle fuer die EvaluationActivity
  * Autor: Lucius Weimer
  */
 public interface EvaluationActivityListener extends RegisterListener {
@@ -40,7 +40,7 @@ public interface EvaluationActivityListener extends RegisterListener {
     public void showToast(String message);
 
     /**
-     * Trigger für das Teilen des Siegers
+     * Trigger fuer das Teilen des Siegers
      * @param AVG durchscnittliche Punktzahl des Siegers
      * @param against Liste aller anderen Spieler
      */

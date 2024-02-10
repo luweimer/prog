@@ -24,7 +24,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
 /**
  * OverviewController
- * Verwaltet die Anzeige und Interaktion der Übersicht über alle gespeicherten Spieler
+ * Verwaltet die Anzeige und Interaktion der uebersicht ueber alle gespeicherten Spieler
  * View: OverviewActivityListener
  * Datenbank: PersistensListener
  */
@@ -46,7 +46,7 @@ public class OverviewController implements OverviewControllerListener {
 
     /**
      * Registrieren der Tabellenzeilen (einzelne Spiele) in der View
-     * Verwendung von LiveData für die Aktualisierung der Daten
+     * Verwendung von LiveData fuer die Aktualisierung der Daten
      * Weiterleitung der Daten an die View -> createGameRows
      */
     private void registerTableRows(){
@@ -70,9 +70,9 @@ public class OverviewController implements OverviewControllerListener {
     };
 
     /**
-     * Anzeigen eines ausgewählten Spiels, Trigger von OverviewRow (Einzelne Zeile)
+     * Anzeigen eines ausgewaehlten Spiels, Trigger von OverviewRow (Einzelne Zeile)
      * Abfrage des Spiels und der Spielergebnisse aus der Datenbank via LiveData durch die ID
-     * Zusammenführen der Daten in ein GameDatabase Objekt durch MediatorLiveData
+     * Zusammenfuehren der Daten in ein GameDatabase Objekt durch MediatorLiveData
      * Weiterleitung der Daten an die View -> showGame
      * @param id ID des Spiels
      */
@@ -113,7 +113,7 @@ public class OverviewController implements OverviewControllerListener {
     }
 
     /**
-     * Löschen eines Spiels, Trigger von OverviewRow (Einzelne Zeile)
+     * Loeschen eines Spiels, Trigger von OverviewRow (Einzelne Zeile)
      * Weiterleitung der ID an die Datenbank -> deleteGame
      * @param id ID des Spiels
      */
@@ -123,7 +123,7 @@ public class OverviewController implements OverviewControllerListener {
     }
 
     /**
-     * Löschen aller Spiele, Trigger von OverviewActivity
+     * Loeschen aller Spiele, Trigger von OverviewActivity
      * Weiterleitung an die Datenbank -> deleteAllGames
      */
     @Override

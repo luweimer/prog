@@ -12,7 +12,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
  * EvaluationPlayerView
- * View für die einzelnen Spielerstatistiken
+ * View fuer die einzelnen Spielerstatistiken
  * Autor: Lucius Weimer
  */
 public class EvaluationPlayerView implements EvaluationPlayerViewListener {
@@ -34,7 +34,7 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
     private TextView tripleThrow;
 
     /**
-     * Konstruktor - Erstellt die View und fügt sie dem GridLayout hinzu
+     * Konstruktor - Erstellt die View und fuegt sie dem GridLayout hinzu
      * @param context - Context
      * @param playerHeader - GridLayout
      */
@@ -87,7 +87,7 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
      * @param mame String - Name des Spielers
      * @param sumScore int - Summe der Punkte
      * @param avg double - Durchschnitt
-     * @param sumThrough int - Anzahl der Würfe
+     * @param sumThrough int - Anzahl der Wuerfe
      * @param bull int - Anzahl der erzielten Bulls
      * @param sBull int - Anzahl der erzielten Single Bulls
      * @param o180 int - Anzahl der erzielten 180er
@@ -95,9 +95,9 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
      * @param o140 int - Anzahl der erzielten 140er
      * @param o120 int - Anzahl der erzielten 120er
      * @param o100 int - Anzahl der erzielten 100er
-     * @param singleThrow int - Anzahl der Single Würfe
-     * @param doubleThrow int - Anzahl der Double Würfe
-     * @param tripleThrow int - Anzahl der Triple Würfe
+     * @param singleThrow int - Anzahl der Single Wuerfe
+     * @param doubleThrow int - Anzahl der Double Wuerfe
+     * @param tripleThrow int - Anzahl der Triple Wuerfe
      */
     @Override
     public void setViewValues(String mame, int sumScore, double avg, int sumThrough, int bull, int sBull,int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow) {

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * PlayerStats
  * Speicherung der Statistiken eines Spielers
- * Implementiert Parcelable, um Objekt zwischen Activities zu übergeben
+ * Implementiert Parcelable, um Objekt zwischen Activities zu uebergeben
  * Autor: Lucius Weimer
  */
 public class PlayerStats implements Parcelable{
@@ -31,7 +31,7 @@ public class PlayerStats implements Parcelable{
      * Standardkonstruktor
      * @param numPlayer Spielernummer
      * @param player Spielernamen
-     * Initialisiert die HashMap mit den benötigten Keys
+     * Initialisiert die HashMap mit den benoetigten Keys
      */
     public PlayerStats(int numPlayer, String player){
         this.stats = new HashMap<String, Integer>();
@@ -61,7 +61,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Initialisiert die HashMap mit den benötigten Keys
+     * Initialisiert die HashMap mit den benoetigten Keys
      * Keys: 1-20, 25, 50, 180, 100, 120, 140, 160, COUNT_SUM, SUM, S, D, T
      */
     private void initMap(){
@@ -123,7 +123,7 @@ public class PlayerStats implements Parcelable{
 
     /**
      * Aktualisiert die Statistiken
-     * Erhöht den Wert des Keys um 1
+     * Erhoeht den Wert des Keys um 1
      * @param key Key
      */
     public void updateStats(String key){
@@ -141,7 +141,7 @@ public class PlayerStats implements Parcelable{
     /**
      * Aktualisiert die Statistiken
      * @param key Key
-     * @param diff Wert um den der Key erhöht werden soll
+     * @param diff Wert um den der Key erhoeht werden soll
      * @return PlayerStats
      */
     private PlayerStats updateStats(String key, int diff){
@@ -153,7 +153,7 @@ public class PlayerStats implements Parcelable{
 
     /**
      * Aktualisiert die Statistiken
-     * Erhöht die Anzahl der geworfenen Punkte und die Summe der geworfenen Punkte
+     * Erhoeht die Anzahl der geworfenen Punkte und die Summe der geworfenen Punkte
      * @param point geworfene Punkte
      * @return PlayerStats
      */
@@ -165,7 +165,7 @@ public class PlayerStats implements Parcelable{
 
     /**
      * Aktualisiert die Statistiken
-     * Erhöht die Anzahl der geworfenen Modi (Single, Double, Triple)
+     * Erhoeht die Anzahl der geworfenen Modi (Single, Double, Triple)
      * @param state geworfener Modus
      * @return PlayerStats
      */
@@ -190,7 +190,7 @@ public class PlayerStats implements Parcelable{
 
     /**
      * Aktualisiert die Statistiken
-     * Löscht den Punkt aus der Summe der geworfenen Punkte und verringert die Anzahl der geworfenen Punkte
+     * Loescht den Punkt aus der Summe der geworfenen Punkte und verringert die Anzahl der geworfenen Punkte
      * @param point
      * @return
      */
@@ -202,7 +202,7 @@ public class PlayerStats implements Parcelable{
 
     /**
      * Aktualisiert die Statistiken
-     * Löscht den Modus aus der Anzahl der geworfenen Modi
+     * Loescht den Modus aus der Anzahl der geworfenen Modi
      * @return PlayerStats
      */
     public PlayerStats removeState(){
@@ -255,7 +255,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt den Wert des Keys zurück
+     * Gibt den Wert des Keys zurueck
      * @param id Key
      * @return Wert des Keys
      */
@@ -269,7 +269,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt den Spielernamen zurück
+     * Gibt den Spielernamen zurueck
      * @return Spielernamen
      */
     public String getName(){
@@ -277,7 +277,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Spielernummer zurück
+     * Gibt die Spielernummer zurueck
      * @return Spielernummer
      */
     public int getPlayerNumber(){
@@ -285,7 +285,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der Summe der geworfenen Punkte zurück
+     * Gibt die Anzahl der Summe der geworfenen Punkte zurueck
      * @return Summe der geworfenen Punkte
      */
     public int getSumScore(){
@@ -293,13 +293,13 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der geworfenen Punkte zurück
+     * Gibt die Anzahl der geworfenen Punkte zurueck
      * @return Anzahl der geworfenen Punkte
      */
     public int getCountSum(){return this.getValueFromHash("COUNT_SUM");}
 
     /**
-     * Gibt die Anzahl der Durchläufe, in denen der Spieler 180 geworfen hat zurück
+     * Gibt die Anzahl der Durchlaeufe, in denen der Spieler 180 geworfen hat zurueck
      * @return
      */
     public int get180(){
@@ -307,39 +307,39 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der Durchläufe, in denen der Spieler 160 geworfen hat zurück
-     * @return Anzahl der Durchläufe, in denen der Spieler 160 geworfen hat
+     * Gibt die Anzahl der Durchlaeufe, in denen der Spieler 160 geworfen hat zurueck
+     * @return Anzahl der Durchlaeufe, in denen der Spieler 160 geworfen hat
      */
     public int get160(){
         return this.getValueFromHash("160");
     }
 
     /**
-     * Gibt die Anzahl der Durchläufe, in denen der Spieler 140 geworfen hat zurück
-     * @return Anzahl der Durchläufe, in denen der Spieler 140 geworfen hat
+     * Gibt die Anzahl der Durchlaeufe, in denen der Spieler 140 geworfen hat zurueck
+     * @return Anzahl der Durchlaeufe, in denen der Spieler 140 geworfen hat
      */
     public int get140(){
         return this.getValueFromHash("140");
     }
 
     /**
-     * Gibt die Anzahl der Durchläufe, in denen der Spieler 120 geworfen hat zurück
-     * @return Anzahl der Durchläufe, in denen der Spieler 120 geworfen hat
+     * Gibt die Anzahl der Durchlaeufe, in denen der Spieler 120 geworfen hat zurueck
+     * @return Anzahl der Durchlaeufe, in denen der Spieler 120 geworfen hat
      */
     public int get120(){
         return this.getValueFromHash("120");
     }
 
     /**
-     * Gibt die Anzahl der Durchläufe, in denen der Spieler 100 geworfen hat zurück
-     * @return Anzahl der Durchläufe, in denen der Spieler 100 geworfen hat
+     * Gibt die Anzahl der Durchlaeufe, in denen der Spieler 100 geworfen hat zurueck
+     * @return Anzahl der Durchlaeufe, in denen der Spieler 100 geworfen hat
      */
     public int get100(){
         return this.getValueFromHash("100");
     }
 
     /**
-     * Gibt die Anzahl der geworfenen Bulls-Eye zurück
+     * Gibt die Anzahl der geworfenen Bulls-Eye zurueck
      * @return Anzahl der geworfenen Bulls-Eye
      */
     public int getBull(){
@@ -347,7 +347,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der geworfenen Single-Bulls zurück
+     * Gibt die Anzahl der geworfenen Single-Bulls zurueck
      * @return Anzahl der geworfenen Single-Bulls
      */
     public int getsBull(){
@@ -355,7 +355,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der geworfenen Single zurück
+     * Gibt die Anzahl der geworfenen Single zurueck
      * @return Anzahl der geworfenen Single
      */
     public int getSingleThrow(){
@@ -363,7 +363,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der geworfenen Double zurück
+     * Gibt die Anzahl der geworfenen Double zurueck
      * @return Anzahl der geworfenen Double
      */
     public int getDoubleThrow(){
@@ -371,7 +371,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der geworfenen Triple zurück
+     * Gibt die Anzahl der geworfenen Triple zurueck
      * @return Anzahl der geworfenen Triple
      */
     public int getTripleThrow(){
@@ -379,7 +379,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt den Spielernamen zurück
+     * Gibt den Spielernamen zurueck
      * @return Spielernamen
      */
     public String getPlayer(){
@@ -387,7 +387,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der gewonnenen Legs zurück
+     * Gibt die Anzahl der gewonnenen Legs zurueck
      * @return Anzahl der gewonnenen Legs
      */
     public int getWinLegs(){
@@ -395,7 +395,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Anzahl der gewonnenen Sets zurück
+     * Gibt die Anzahl der gewonnenen Sets zurueck
      * @return Anzahl der gewonnenen Sets
      */
     public int getWinSets(){
@@ -403,7 +403,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt zurück ob der Spieler gewonnen hat
+     * Gibt zurueck ob der Spieler gewonnen hat
      * @return gewonnen, true oder false
      */
     public boolean getWin() {
@@ -411,7 +411,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die HashMap mit den Statistiken zurück
+     * Gibt die HashMap mit den Statistiken zurueck
      * @return HashMap mit den Statistiken
      */
     public HashMap<String, Integer> getStats(){
@@ -419,7 +419,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt den Durchschnitt der geworfenen Punkte zurück
+     * Gibt den Durchschnitt der geworfenen Punkte zurueck
      * @return Durchschnitt der geworfenen Punkte
      */
     public double getAvg(){
@@ -434,7 +434,7 @@ public class PlayerStats implements Parcelable{
     }
 
     /**
-     * Gibt die Statistiken als String zurück
+     * Gibt die Statistiken als String zurueck
      * @return Statistiken als String
      */
     @NonNull

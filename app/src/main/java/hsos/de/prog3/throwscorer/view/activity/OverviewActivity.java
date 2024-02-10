@@ -21,9 +21,9 @@ import hsos.de.prog3.throwscorer.view.zview.OverviewRow;
 
 /**
  * OverviewActivity
- * Activity die eine Übersicht über alle gespeicherten Spiele darstellt
- * Hauptfunktionen: Datenbank aufräumen, zur HomeActivity zurückkehren
- * Funktionen pro Spiel: Spiele löschen, Spiel auswählen
+ * Activity die eine uebersicht ueber alle gespeicherten Spiele darstellt
+ * Hauptfunktionen: Datenbank aufraeumen, zur HomeActivity zurueckkehren
+ * Funktionen pro Spiel: Spiele loeschen, Spiel auswaehlen
  */
 public class OverviewActivity extends AppCompatActivity implements OverviewActivityListener {
 
@@ -55,7 +55,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
 
     /**
      * Registriert die Hauptfunktionen
-     * Listener für die Buttons, wenn der Controller gesetzt ist
+     * Listener fuer die Buttons, wenn der Controller gesetzt ist
      */
     private void initController(){
         if(this.controller != null){
@@ -74,8 +74,8 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     }
 
     /**
-     * Erstellt die Zeilen für die einzelnen Spiele
-     * Löscht die alten Zeilen
+     * Erstellt die Zeilen fuer die einzelnen Spiele
+     * Loescht die alten Zeilen
      * @param name - Name der Spiele
      * @param id - ID der Spiele
      */
@@ -100,7 +100,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     }
 
     /**
-     * Startet die EvaluationActivity für ein ausgewähltes Spiel
+     * Startet die EvaluationActivity fuer ein ausgewaehltes Spiel
      * @param player - Sieger des Spiels
      * @param playerStats - Statistiken der Spieler
      * @param pic - Siegesbild des Spiels

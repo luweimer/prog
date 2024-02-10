@@ -9,7 +9,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
  * GameListener
- * Shnitstelle für das Game
+ * Shnitstelle fuer das Game
  * Autor: Lucius Weimer
  */
 public interface GameListener {
@@ -115,13 +115,13 @@ public interface GameListener {
     public void setGameMultState(GameMultState state);
 
     /**
-     * Löscht den letzten Punkt des Boards des aktuellen Spielers
+     * Loescht den letzten Punkt des Boards des aktuellen Spielers
      */
     public void removeLastBoardPoint();
 
     /**
-     * Fügt einen Punkt zum Board des aktuellen Spielers hinzu
-     * @param point Punkt der hinzugefügt werden soll
+     * Fuegt einen Punkt zum Board des aktuellen Spielers hinzu
+     * @param point Punkt der hinzugefuegt werden soll
      */
     public void concatBoardPoints(int point);
 

@@ -2,7 +2,7 @@ package hsos.de.prog3.throwscorer.listener.controller;
 
 /**
  * OverviewControllerListener
- * Schnittstelle für den OverviewController
+ * Schnittstelle fuer den OverviewController
  * Autor: Lucius Weimer
  */
 public interface OverviewControllerListener{
@@ -14,13 +14,13 @@ public interface OverviewControllerListener{
     public void showGame(String id);
 
     /**
-     * Löschen eines Spiels
+     * Loeschen eines Spiels
      * @param id ID des Spiels
      */
     public void deleteGame(String id);
 
     /**
-     * Löschen der Inhalte der Datenbank
+     * Loeschen der Inhalte der Datenbank
      */
     public void cleanDatabase();
 }

@@ -12,7 +12,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**
  * GameActivityListener
- * Schnittstelle für die GameActivity
+ * Schnittstelle fuer die GameActivity
  * Autor: Lucius Weimer
  */
 public interface GameActivityListener extends RegisterListener {
@@ -25,7 +25,7 @@ public interface GameActivityListener extends RegisterListener {
     public void createPlayerHeader(int numPlayers, String[] player);
 
     /**
-     * Setzen aller Spieler auf inaktiv außer dem aktiven Spieler (Übergeben Spieler)
+     * Setzen aller Spieler auf inaktiv ausser dem aktiven Spieler (uebergeben Spieler)
      * @param player Nummer des aktiven Spielers
      */
     public void updateActivePlayerHead(int player);

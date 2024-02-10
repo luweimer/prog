@@ -12,7 +12,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.PlayerNameViewListener;
 
 /**
  * PlayerNameView
- * Stellt die einzelnen Eingabe-Felder für die Spielernamen dar
+ * Stellt die einzelnen Eingabe-Felder fuer die Spielernamen dar
  * Autor: Lucius Weimer
  */
 public class PlayerNameView implements PlayerNameViewListener {
@@ -23,9 +23,9 @@ public class PlayerNameView implements PlayerNameViewListener {
 
     /**
      * Konstruktor
-     * Fügt die View dem übergeordneten GridLayout hinzu
+     * Fuegt die View dem uebergeordneten GridLayout hinzu
      * @param context Kontext der App
-     * @param playerName übergeordnetes GridLayout
+     * @param playerName uebergeordnetes GridLayout
      */
     public PlayerNameView(Context context, GridLayout playerName){
         this.playerLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.playername_player, playerName, false);
@@ -51,7 +51,7 @@ public class PlayerNameView implements PlayerNameViewListener {
     }
 
     /**
-     * Setzt die Überschrift für den jeweiligen Spieler
+     * Setzt die ueberschrift fuer den jeweiligen Spieler
      * @param name Name des Spielers
      */
     public void setPlayerName(String name){
@@ -59,7 +59,7 @@ public class PlayerNameView implements PlayerNameViewListener {
     }
 
     /**
-     * Gibt den Namen des eingebenen Spielers zurück
+     * Gibt den Namen des eingebenen Spielers zurueck
      * @return Name des Spielers
      */
     @Override

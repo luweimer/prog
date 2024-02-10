@@ -9,7 +9,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 
 /**
  * PlayerStatsDao
- * Data Access Object für PlayerStatsEntity
+ * Data Access Object fuer PlayerStatsEntity
  * Autor: Lucius Weimer
  */
 @Dao

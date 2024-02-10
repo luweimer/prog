@@ -18,7 +18,7 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
 /**
  * HomeActivity
  * Startet als erste Activity der Anwendung
- * Übersicht über alle Möglichkeiten des Spiels
+ * uebersicht ueber alle Moeglichkeiten des Spiels
  * Autor: Lucius Weimer
  */
 public class HomeActivity extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Startet ein neues Spiel mit den übergebenen Einstellungen.
+     * Startet ein neues Spiel mit den uebergebenen Einstellungen.
      * Einstellung - WM standart Einstellungen
      */
     private void handleStartGame(){
@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Startet die Übersichts Activity, über alle gespeicherten Spiele
+     * Startet die uebersichts Activity, ueber alle gespeicherten Spiele
      */
     private void handleOverview(){
         Log.i("HomeActivity", "handleRules");

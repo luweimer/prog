@@ -22,8 +22,8 @@ public interface PlayerViewListener {
     public void updateScore(int score);
 
     /**
-     * Aktualisieren der Würfe
-     * @param points Würfe
+     * Aktualisieren der Wuerfe
+     * @param points Wuerfe
      */
     public void updatePoints(ArrayList<String> points);
 

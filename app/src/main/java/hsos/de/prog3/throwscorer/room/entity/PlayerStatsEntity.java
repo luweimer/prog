@@ -5,7 +5,7 @@ import androidx.room.*;
 
 /**
  * PlayerStatsEntity
- * Entity für die PlayerStats
+ * Entity fuer die PlayerStats
  * PrimaryKey: GameID, PlayerName
  * Column: GameID (String), PlayerName (String), Name (int), WinLegs (int), WinSets (int), Win (Boolean), Stats (String)
  * Autor: Lucius Weimer

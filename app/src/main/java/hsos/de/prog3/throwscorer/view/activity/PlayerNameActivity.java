@@ -74,8 +74,8 @@ public class PlayerNameActivity extends AppCompatActivity {
 
     /**
      * Validiert die Eingaben und startet die GameActivity
-     * Überprüfung der Spielernamen nach Länge und Inhalt
-     * Länge < 5, um die Darstellung in der GameActivity nicht zu beeinträchtigen
+     * ueberpruefung der Spielernamen nach Laenge und Inhalt
+     * Laenge < 5, um die Darstellung in der GameActivity nicht zu beeintraechtigen
      */
     private void handleSubmit(){
         String[] names = new String[this.gameSettings.getNumPlayers()];
@@ -102,7 +102,7 @@ public class PlayerNameActivity extends AppCompatActivity {
     }
 
     /**
-     * Erstellt die Views für die Spielernamen
+     * Erstellt die Views fuer die Spielernamen
      */
     private void createPlayerViews(){
         this.playerName = new PlayerNameViewListener[this.gameSettings.getNumPlayers()];
@@ -113,7 +113,7 @@ public class PlayerNameActivity extends AppCompatActivity {
     }
 
     /**
-     * Überprüft, ob die Spielernamen einzigartig sind
+     * ueberprueft, ob die Spielernamen einzigartig sind
      * @param playerName Spielernamen
      * @return true, wenn die Spielernamen nicht einzigartig sind
      */

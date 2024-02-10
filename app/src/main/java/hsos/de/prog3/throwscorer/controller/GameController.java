@@ -39,7 +39,7 @@ public class GameController implements ClickHandler {
 
     /**
      * Initialisierung der View mit den Daten aus dem Model
-     * Erstellung der Spielerübersichten
+     * Erstellung der Spieleruebersichten
      */
     private void init(){
         view.createPlayerHeader( this.model.getNumPlayers(), this.model.getPlayerNames()  );
@@ -57,7 +57,7 @@ public class GameController implements ClickHandler {
     }
 
     /**
-     * Zurücksetzen des BoardStates (Spezialfelder) im Model
+     * Zuruecksetzen des BoardStates (Spezialfelder) im Model
      * @return GameController
      */
     private GameController resetBoardState(){
@@ -107,7 +107,7 @@ public class GameController implements ClickHandler {
     /**
      * Verarbeitung des Klicks auf einen Button
      * Weiterleitung des Inputs an die entsprechende Methode
-     * Überprüfung, ob das Spiel beendet ist
+     * ueberpruefung, ob das Spiel beendet ist
      * Gesamte Aktualisierung der View
      * @param view View, welche angeklickt wurde (Button)
      */
@@ -136,7 +136,7 @@ public class GameController implements ClickHandler {
     }
 
     /**
-     * Aktualisierung der Spielerübersichten
+     * Aktualisierung der Spieleruebersichten
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
      * @return GameController
      */
@@ -148,7 +148,7 @@ public class GameController implements ClickHandler {
     }
 
     /**
-     * Aktualisierung der aktiven Spielerübersicht
+     * Aktualisierung der aktiven Spieleruebersicht
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
      * @return GameController
      */
@@ -168,7 +168,7 @@ public class GameController implements ClickHandler {
     }
 
     /**
-     * Aktualisierung der Checkout Vorschläge für den aktuellen Spieler
+     * Aktualisierung der Checkout Vorschlaege fuer den aktuellen Spieler
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
      * @return GameController
      */

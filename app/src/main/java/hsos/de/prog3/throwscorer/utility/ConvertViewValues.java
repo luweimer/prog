@@ -13,7 +13,7 @@ import hsos.de.prog3.throwscorer.model.CheckoutType;
 
 /**
  * ConvertViewValues
- * Utility class um Datentypen für die Darstellung in der View zu konvertieren
+ * Utility class um Datentypen fuer die Darstellung in der View zu konvertieren
  * ArrayList<Integer> - Checkout String
  * ArrayList<String> - String
  * Drawable - Bitmap
@@ -159,8 +159,8 @@ public class ConvertViewValues {
     }
 
     /**
-     * Prüft ob der Punkt ein Double-Punkt sind
-     * @param point Punkt zum prüfen
+     * Prueft ob der Punkt ein Double-Punkt sind
+     * @param point Punkt zum pruefen
      * @return true, wenn Punkt ein Double-Punkt ist
      */
     private static boolean checkDouble(int point){
@@ -168,8 +168,8 @@ public class ConvertViewValues {
     }
 
     /**
-     * Prüft ob der Punkt ein Triple-Punkt sind
-     * @param point Punkt zum prüfen
+     * Prueft ob der Punkt ein Triple-Punkt sind
+     * @param point Punkt zum pruefen
      * @return true, wenn Punkt ein Triple-Punkt ist
      */
     private static boolean checkTriple(int point){

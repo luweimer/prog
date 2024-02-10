@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * GameDatabase
- * Speicherung aller Informationen eines Spiels unabhängig von tatsächlichen Speicherung
+ * Speicherung aller Informationen eines Spiels unabhaengig von tatsaechlichen Speicherung
  * Autor: Lucius Weimer
  */
 public class GameDatabase {
@@ -41,7 +41,7 @@ public class GameDatabase {
      * Konstruktor
      * @param winnerInt Nummer des Gewinners
      * @param winnerName Name des Gewinners
-     * @param playerStats Liste der Spielerstatistiken für alle Spieler
+     * @param playerStats Liste der Spielerstatistiken fuer alle Spieler
      * @param winnerPic Siegesbild
      */
     public GameDatabase(int winnerInt, String winnerName, List<PlayerStats> playerStats, Bitmap winnerPic){
@@ -57,7 +57,7 @@ public class GameDatabase {
      * Konstruktor
      * @param winnerInt Nummer des Gewinners
      * @param winnerName Name des Gewinners
-     * @param playerStats Liste der Spielerstatistiken für alle Spieler
+     * @param playerStats Liste der Spielerstatistiken fuer alle Spieler
      */
     public GameDatabase(int winnerInt, String winnerName, List<PlayerStats> playerStats){
         this.playerStats = new ArrayList<>();
@@ -68,7 +68,7 @@ public class GameDatabase {
     }
 
     /**
-     * Getter für WinnerInt
+     * Getter fuer WinnerInt
      * @return winnerInt - Nummer des Gewinners
      */
     public int getWinnerInt(){
@@ -76,7 +76,7 @@ public class GameDatabase {
     }
 
     /**
-     * Getter für WinnerName
+     * Getter fuer WinnerName
      * @return winnerName - Name des Gewinners
      */
     public String getWinnerName(){
@@ -84,15 +84,15 @@ public class GameDatabase {
     }
 
     /**
-     * Getter für PlayerStats
-     * @return playerStats - Liste der Spielerstatistiken für alle Spieler
+     * Getter fuer PlayerStats
+     * @return playerStats - Liste der Spielerstatistiken fuer alle Spieler
      */
     public List<PlayerStats> getPlayerStats(){
         return playerStats;
     }
 
     /**
-     * Getter für GameName
+     * Getter fuer GameName
      * @return gameName - Name des Spiels
      */
     public String getGameName(){
@@ -100,7 +100,7 @@ public class GameDatabase {
     }
 
     /**
-     * Getter für Siegesbild
+     * Getter fuer Siegesbild
      * @return winnerPic - Siegesbild
      */
     public Bitmap getWinnerPic(){
@@ -108,7 +108,7 @@ public class GameDatabase {
     }
 
     /**
-     * Setter für GameName
+     * Setter fuer GameName
      * @param name Name des Spiels
      */
     public void setGameName(String name){
@@ -116,7 +116,7 @@ public class GameDatabase {
     }
 
     /**
-     * Setter für Siegesbild
+     * Setter fuer Siegesbild
      * @param pic - Siegesbild
      */
     public void setWinnerPic(Bitmap pic){
@@ -124,8 +124,8 @@ public class GameDatabase {
     }
 
     /**
-     * Setter für PlayerStats
-     * @param playerStats - Liste der Spielerstatistiken für alle Spieler
+     * Setter fuer PlayerStats
+     * @param playerStats - Liste der Spielerstatistiken fuer alle Spieler
      */
     public void setPlayerStats(List<PlayerStats> playerStats){
         this.playerStats = playerStats;

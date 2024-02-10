@@ -28,9 +28,9 @@ public class PlayerView implements PlayerViewListener {
 
     /**
      * Konstruktor
-     * Fügt die View dem übergeordneten GridLayout hinzu
+     * Fuegt die View dem uebergeordneten GridLayout hinzu
      * @param context Kontext der App
-     * @param playerHeader übergeordnetes GridLayout
+     * @param playerHeader uebergeordnetes GridLayout
      */
     public PlayerView(Context context, GridLayout playerHeader){
         this.gamePlayer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.game_player, playerHeader, false);
@@ -76,7 +76,7 @@ public class PlayerView implements PlayerViewListener {
     }
 
     /**
-     * Setzt die geworfenen Punkte des Spielers (Abbildung der 3 Würfe pro Runde)
+     * Setzt die geworfenen Punkte des Spielers (Abbildung der 3 Wuerfe pro Runde)
      * @param points geworfene Punkte des Spielers
      */
     @Override

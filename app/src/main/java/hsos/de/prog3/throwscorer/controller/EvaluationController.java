@@ -49,7 +49,7 @@ public class EvaluationController implements EvaluationControllerListener {
 
     /**
      * Speichern des Spiels in der Datenbank
-     * Ausgabe eines Toast über die View bei fehlenden Daten
+     * Ausgabe eines Toast ueber die View bei fehlenden Daten
      * @param name Name des Spiels
      * @param pic Siegesbild
      */
@@ -70,7 +70,7 @@ public class EvaluationController implements EvaluationControllerListener {
     }
 
     /**
-     * Teilen des Siegers über die View
+     * Teilen des Siegers ueber die View
      */
     @Override
     public void shareWinner(){
