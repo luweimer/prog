@@ -1,7 +1,5 @@
 package hsos.de.prog3.throwscorer.utility;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;

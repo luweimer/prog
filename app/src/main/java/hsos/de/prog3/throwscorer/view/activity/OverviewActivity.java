@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.controller.OverviewController;
-import hsos.de.prog3.throwscorer.listener.view.activity.OverviewActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.OverviewControllerListener;
+import hsos.de.prog3.throwscorer.listener.view.activity.OverviewActivityListener;
 import hsos.de.prog3.throwscorer.listener.view.zview.OverviewRowListener;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 import hsos.de.prog3.throwscorer.view.zview.OverviewRow;

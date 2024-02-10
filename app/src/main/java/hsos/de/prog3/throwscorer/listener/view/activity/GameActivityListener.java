@@ -1,13 +1,11 @@
 package hsos.de.prog3.throwscorer.listener.view.activity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import hsos.de.prog3.throwscorer.listener.RegisterListener;
 import hsos.de.prog3.throwscorer.model.CheckoutType;
 import hsos.de.prog3.throwscorer.model.GameMultState;
 import hsos.de.prog3.throwscorer.model.GameSettings;
-import hsos.de.prog3.throwscorer.model.Player;
 import hsos.de.prog3.throwscorer.model.PlayerStats;
 
 /**

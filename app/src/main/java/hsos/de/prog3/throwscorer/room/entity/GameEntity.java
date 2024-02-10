@@ -1,7 +1,9 @@
 package hsos.de.prog3.throwscorer.room.entity;
 
 import androidx.annotation.NonNull;
-import androidx.room.*;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * GameEntity

@@ -2,8 +2,6 @@ package hsos.de.prog3.throwscorer.listener.view.activity;
 
 import android.graphics.Bitmap;
 
-import androidx.core.content.ContextCompat;
-
 import java.util.List;
 
 import hsos.de.prog3.throwscorer.listener.RegisterListener;

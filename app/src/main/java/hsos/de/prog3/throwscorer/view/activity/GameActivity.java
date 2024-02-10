@@ -19,8 +19,8 @@ import java.util.Objects;
 
 import hsos.de.prog3.throwscorer.R;
 import hsos.de.prog3.throwscorer.controller.GameController;
-import hsos.de.prog3.throwscorer.listener.view.activity.GameActivityListener;
 import hsos.de.prog3.throwscorer.listener.controller.ClickHandler;
+import hsos.de.prog3.throwscorer.listener.view.activity.GameActivityListener;
 import hsos.de.prog3.throwscorer.listener.view.zview.PlayerViewListener;
 import hsos.de.prog3.throwscorer.model.CheckoutType;
 import hsos.de.prog3.throwscorer.model.GameMultState;
