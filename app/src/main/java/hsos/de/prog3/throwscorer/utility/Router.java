@@ -24,6 +24,11 @@ import hsos.de.prog3.throwscorer.view.activity.PlayerNameActivity;
  */
 public class Router {
 
+    /**
+     * Startet die HomeActivity
+     *
+     * @param context Context der aktuellen Activity
+     */
     public static void startHome(Context context){
         Intent mainIntent = new Intent(context, HomeActivity.class);
         context.startActivity(mainIntent);
@@ -31,6 +36,7 @@ public class Router {
 
     /**
      * Startet die GameActivity
+     *
      * @param context Context der aktuellen Activity
      * @param gameSettings GameSettings fuer das Spiel
      */
