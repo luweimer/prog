@@ -55,7 +55,7 @@ public class Player {
     /**
      * Zuruecksetzen des Spielers
      * Startscore, partialWinFlag, Reset der BoardPoints
-     * @param score
+     * @param score Startscore
      */
     public void reset(int score){
         this.score = score;
@@ -150,12 +150,10 @@ public class Player {
             this.boardPoints.forEach(p -> {
                 this.score -= p;
             });
-            //Lamda?
             this.boardPointsOutput.forEach(p ->{
                 this.playerStats.updateStats(p);
             });
             this.resetBoardPoints();
-
         }
 
         return true;
