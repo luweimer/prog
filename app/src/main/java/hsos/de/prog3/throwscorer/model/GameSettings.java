@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
  * Einstellungen fuer ein Spiel
  * Einstellungsmoeglichkeiten: Startscore, Anzahl Spieler, Anzahl Legs, Anzahl Sets, CheckoutType, Spielernamen
  * Implementiert Parcelable, um Objekt zwischen Activities zu uebergeben
+ *
  * @author Lucius Weimer
  */
 public class GameSettings implements Parcelable {
@@ -28,7 +29,7 @@ public class GameSettings implements Parcelable {
      * Startscore: 501, Anzahl Spieler: 2, Anzahl Legs: 3, Anzahl Sets: 3, CheckoutType: Double
      * Spielernamen: Player 1, Player 2
      */
-    public GameSettings(){
+    public GameSettings() {
         this.startScore = 501;
         this.numPlayers = 2;
         this.numLegs = 3;
@@ -41,13 +42,14 @@ public class GameSettings implements Parcelable {
 
     /**
      * Konstruktor fuer individuelle Einstellungen
-     * @param startScore Startscore
-     * @param numPlayers Anzahl Spieler
-     * @param numLegs Anzahl Legs
-     * @param numSets Anzahl Sets
+     *
+     * @param startScore   Startscore
+     * @param numPlayers   Anzahl Spieler
+     * @param numLegs      Anzahl Legs
+     * @param numSets      Anzahl Sets
      * @param checkoutType CheckoutType
      */
-    public GameSettings(int startScore, int numPlayers, int numLegs, int numSets, CheckoutType checkoutType){
+    public GameSettings(int startScore, int numPlayers, int numLegs, int numSets, CheckoutType checkoutType) {
         this.startScore = startScore;
         this.numPlayers = numPlayers;
         this.numLegs = numLegs;
@@ -58,57 +60,64 @@ public class GameSettings implements Parcelable {
 
     /**
      * Getter fuer den Startscore
+     *
      * @return Startscore des Spiels
      */
-    public int getStartScore(){
+    public int getStartScore() {
         return this.startScore;
     }
 
     /**
      * Getter fuer die Anzahl Spieler
+     *
      * @return Anzahl Spieler
      */
-    public int getNumPlayers(){
+    public int getNumPlayers() {
         return this.numPlayers;
     }
 
     /**
      * Getter fuer die Anzahl Legs
+     *
      * @return Anzahl Legs
      */
-    public int getNumLegs(){
+    public int getNumLegs() {
         return this.numLegs;
     }
 
     /**
      * Getter fuer die Anzahl Sets
+     *
      * @return Anzahl Sets
      */
-    public int getNumSets(){
+    public int getNumSets() {
         return this.numSets;
     }
 
     /**
      * Getter fuer die Spielernamen
+     *
      * @return Spielernamen
      */
-    public String[] getPlayerNames(){
+    public String[] getPlayerNames() {
         return this.playerNames;
     }
 
     /**
      * Setter fuer die Spielernamen
+     *
      * @param playerNames Spielernamen
      */
-    public void setPlayerNames(String[] playerNames){
+    public void setPlayerNames(String[] playerNames) {
         this.playerNames = playerNames;
     }
 
     /**
      * Getter fuer den CheckoutType
+     *
      * @return CheckoutType
      */
-    public CheckoutType getCheckoutType(){
+    public CheckoutType getCheckoutType() {
         return this.checkoutType;
     }
 

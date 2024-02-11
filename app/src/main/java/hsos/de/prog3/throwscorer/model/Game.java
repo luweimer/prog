@@ -37,10 +37,11 @@ public class Game implements GameListener {
      * Startet das Spiel mit GameSettings
      * Startet den Aufruf fuer die Instanziierung der Player Objekte
      * Setzt Listener fuer den Controller fuer Aktualisierungen
+     *
      * @param gameController GameController
-     * @param gameSettings GameSettings
+     * @param gameSettings   GameSettings
      */
-    public Game(GameController gameController, GameSettings gameSettings){
+    public Game(GameController gameController, GameSettings gameSettings) {
         this.gameSettings = gameSettings;
         gameController.registerController(this);
         this.players = new Player[gameSettings.getNumPlayers()];
@@ -55,7 +56,7 @@ public class Game implements GameListener {
      * Startet das Spiel
      * Zuruecksetzen der aktuellen Runde
      */
-    private void restart(){
+    private void restart() {
         this.currentPlayMove = 0;
         this.state = GameMultState.NORMAL;
     }
@@ -63,8 +64,8 @@ public class Game implements GameListener {
     /**
      * Initialisiert die Player Objekte
      */
-    private void initPlayerObjects(){
-        for(int i = 0; i < gameSettings.getNumPlayers(); i++){
+    private void initPlayerObjects() {
+        for (int i = 0; i < gameSettings.getNumPlayers(); i++) {
             this.players[i] = new Player(gameSettings.getStartScore(), gameSettings.getCheckoutType(), i, gameSettings.getPlayerNames()[i]);
         }
     }
@@ -72,7 +73,7 @@ public class Game implements GameListener {
     /**
      * Startet ein neues Leg
      */
-    private void restartLeg(){
+    private void restartLeg() {
         this.restart();
         this.resetPlayers();
     }
@@ -80,7 +81,7 @@ public class Game implements GameListener {
     /**
      * Setzt den Startscore der Player Objekte zurueck
      */
-    private void resetPlayers(){
+    private void resetPlayers() {
         Arrays.asList(this.players).forEach(player -> {
             player.reset(this.gameSettings.getStartScore());
         });
@@ -88,54 +89,60 @@ public class Game implements GameListener {
 
     /**
      * Gibt die Anzahl der gesamten Legs zurueck
+     *
      * @return int
      */
     @Override
-    public int getLeg(){
+    public int getLeg() {
         return this.legs;
     }
 
     /**
      * Gibt den Score des uebergebenen Spielers zurueck
+     *
      * @param player int
      * @return int - Score
      */
     @Override
-    public int getPlayerScore(int player){
+    public int getPlayerScore(int player) {
         return this.players[player].getScore();
     }
 
     /**
      * Gibt die Anzahl der gewonnenen Legs des uebergebenen Spielers zurueck
+     *
      * @param player int
      * @return int - gewonnene Legs
      */
     @Override
-    public int getPlayerLegsWin(int player){
+    public int getPlayerLegsWin(int player) {
         return this.players[player].getLegsWin();
     }
 
     /**
      * Gibt die Anzahl der gewonnenen Sets des uebergebenen Spielers zurueck
+     *
      * @param player int
      * @return int - gewonnene Sets
      */
     @Override
-    public int getPlayerSetWin(int player){
+    public int getPlayerSetWin(int player) {
         return this.players[player].getSetsWin();
     }
 
     /**
      * Gibt die Namen der Spieler zurueck
+     *
      * @return String[] - Namen der Spieler
      */
     @Override
-    public String[] getPlayerNames(){
+    public String[] getPlayerNames() {
         return this.gameSettings.getPlayerNames();
     }
 
     /**
      * Gibt die Punkte des uebergebenen Spielers zurueck
+     *
      * @param player int
      * @return ArrayList<String> - Punkte des Spielers
      */
@@ -146,11 +153,12 @@ public class Game implements GameListener {
 
     /**
      * Setzt den Multiplikator des Spiels
+     *
      * @param state GameMultState
      */
     @Override
     public void setGameMultState(GameMultState state) {
-        if(this.state == state){
+        if (this.state == state) {
             this.state = GameMultState.NORMAL;
         } else {
             this.state = state;
@@ -159,6 +167,7 @@ public class Game implements GameListener {
 
     /**
      * Gibt den Multiplikator des Spiels zurueck
+     *
      * @return GameMultState
      */
     @Override
@@ -168,6 +177,7 @@ public class Game implements GameListener {
 
     /**
      * Gibt den Checkout Typ des Spiels zurueck
+     *
      * @return CheckoutType
      */
     @Override
@@ -177,6 +187,7 @@ public class Game implements GameListener {
 
     /**
      * Gibt die GameSettings des Spiels zurueck
+     *
      * @return GameSettings
      */
     @Override
@@ -186,6 +197,7 @@ public class Game implements GameListener {
 
     /**
      * Gibt die PlayerStats aller Spieler zurueck
+     *
      * @return ArrayList<PlayerStats>
      */
     @Override
@@ -202,18 +214,19 @@ public class Game implements GameListener {
      * Prueft ob ein Checkout des Spielers moeglich ist
      * Prueft ob der Spieler gewonnen hat
      * Prueft ob der Spieler gewechselt werden muss
+     *
      * @param point Der Punkt der hinzugefuegt werden soll
      */
     @Override
     public void concatBoardPoints(int point) {
-        if( !( this.players[this.currentPlayersTurn].addPoint(point, this.state) ) ){
+        if (!(this.players[this.currentPlayersTurn].addPoint(point, this.state))) {
             this.switchPlayer();
             return;
         }
 
         this.currentPlayMove++;
 
-        if(this.isCheckoutPossible()){
+        if (this.isCheckoutPossible()) {
             this.checkPartialWin();
             this.checkWin();
         }
@@ -224,63 +237,68 @@ public class Game implements GameListener {
      * Entfernt den letzten Punkt des aktuellen Spielers
      */
     @Override
-    public void removeLastBoardPoint(){
+    public void removeLastBoardPoint() {
         this.players[this.currentPlayersTurn].removePoint();
-        if(this.currentPlayMove > 0){
+        if (this.currentPlayMove > 0) {
             this.currentPlayMove--;
         }
     }
 
     /**
      * Gibt die Anzahl der Spieler zurueck
+     *
      * @return int - Anzahl der Spieler
      */
     @Override
-    public int getNumPlayers(){
+    public int getNumPlayers() {
         return gameSettings.getNumPlayers();
     }
 
     /**
      * Gibt zurueck ob das Spiel beendet ist
+     *
      * @return boolean, true wenn das Spiel beendet ist
      */
     @Override
-    public boolean getIsDone(){
+    public boolean getIsDone() {
         return this.isDone;
     }
 
     /**
      * Gibt den Gewinner des Spiels zurueck
+     *
      * @return int - Gewinner des Spiels, wenn Wert -1 dann ist das Spiel noch nicht beendet
      */
     @Override
-    public int getWinner(){
+    public int getWinner() {
         return this.winner;
     }
 
     /**
      * Gibt den Checkout Vorschlag des aktuellen Spielers zurueck
+     *
      * @return ArrayList<Integer> - Checkout Vorschlag
      */
     @Override
-    public ArrayList<Integer> getCheckoutSuggestion(){
+    public ArrayList<Integer> getCheckoutSuggestion() {
         return this.players[this.currentPlayersTurn].getCheckoutSuggestion();
     }
 
     /**
      * Gibt den aktuellen Spieler zurueck
+     *
      * @return int - aktueller Spieler
      */
     @Override
-    public int getCurrentPlayersTurn(){
+    public int getCurrentPlayersTurn() {
         return this.currentPlayersTurn;
     }
 
     /**
      * Prueft ob der aktuelle Spieler ein Leg gewonnen hat
      */
-    private void checkPartialWin(){
-        if(this.players[this.currentPlayersTurn].addPartialWin( this.gameSettings.getNumLegs() )){
+    private void checkPartialWin() {
+        if (this.players[this.currentPlayersTurn].addPartialWin(this.gameSettings.getNumLegs())) {
             this.restartLeg();
             this.legs++;
         }
@@ -291,24 +309,25 @@ public class Game implements GameListener {
      * Vergleich von gewonnenen Sets mit der Anzahl der benoetigten Sets
      * Setzt ggf. das Spiel auf beendet (isDone)
      */
-    private void checkWin(){
+    private void checkWin() {
         Arrays.asList(this.players).forEach(player -> {
-            if(player.checkWin( this.gameSettings.getNumSets()) ){
+            if (player.checkWin(this.gameSettings.getNumSets())) {
                 this.isDone = true;
                 this.winner = player.getPlayerNumber();
             }
         });
 
-        if(this.isDone){
+        if (this.isDone) {
             Arrays.asList(this.players).forEach(Player::serialize);
         }
     }
 
     /**
      * Prueft ob beim aktuellen Spieler ein Checkout moeglich ist
+     *
      * @return boolean, true wenn ein Checkout moeglich ist
      */
-    private boolean isCheckoutPossible(){
+    private boolean isCheckoutPossible() {
         return this.players[this.currentPlayersTurn].isCheckoutPossible();
     }
 
@@ -316,8 +335,8 @@ public class Game implements GameListener {
      * Prueft ob der aktuelle Spieler gewechselt werden muss
      * Wenn der aktuelle Spieler 3 mal geworfen hat, wird der Spieler gewechselt
      */
-    private void checkCurrentPlayMove(){
-        if(this.currentPlayMove >= 3){
+    private void checkCurrentPlayMove() {
+        if (this.currentPlayMove >= 3) {
             Log.i("Game", "switch player HIER");
             this.switchPlayer();
         }
@@ -327,15 +346,13 @@ public class Game implements GameListener {
      * Wechselt den aktuellen Spieler
      * Setzt den aktuellen Spielzug auf 0
      */
-    private void switchPlayer(){
+    private void switchPlayer() {
         this.currentPlayersTurn++;
         this.currentPlayMove = 0;
-        if(this.currentPlayersTurn >= this.gameSettings.getNumPlayers()){
+        if (this.currentPlayersTurn >= this.gameSettings.getNumPlayers()) {
             this.currentPlayersTurn = 0;
         }
     }
-
-
 
 
 }

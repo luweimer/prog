@@ -15,6 +15,7 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
  * Verwaltet die Anzeige und Interaktion des Spiels
  * View: GameActivityListener
  * Model: GameListener
+ *
  * @author Lucius Weimer
  */
 public class GameController implements ClickHandler {
@@ -22,7 +23,7 @@ public class GameController implements ClickHandler {
     private GameActivityListener view;
     private GameListener model;
 
-    public GameController(GameActivityListener view, GameSettings gameSettings){
+    public GameController(GameActivityListener view, GameSettings gameSettings) {
         this.view = view;
         this.view.registerController(this);
         new Game(this, gameSettings);
@@ -31,9 +32,10 @@ public class GameController implements ClickHandler {
 
     /**
      * Registrieren des Models am Controller
+     *
      * @param model GameListener
      */
-    private void registerModel(GameListener model){
+    private void registerModel(GameListener model) {
         this.model = model;
     }
 
@@ -41,35 +43,38 @@ public class GameController implements ClickHandler {
      * Initialisierung der View mit den Daten aus dem Model
      * Erstellung der Spieleruebersichten
      */
-    private void init(){
-        view.createPlayerHeader( this.model.getNumPlayers(), this.model.getPlayerNames()  );
+    private void init() {
+        view.createPlayerHeader(this.model.getNumPlayers(), this.model.getPlayerNames());
         this.updatePlayerHeader()
                 .updateActivePlayerHead();
     }
 
     /**
      * Verarbeitung der Punkte
+     *
      * @param point Punktewert
      */
-    private GameController handlePoints(int point){
+    private GameController handlePoints(int point) {
         this.model.concatBoardPoints(point);
         return this;
     }
 
     /**
      * Zuruecksetzen des BoardStates (Spezialfelder) im Model
+     *
      * @return GameController
      */
-    private GameController resetBoardState(){
+    private GameController resetBoardState() {
         model.setGameMultState(GameMultState.NORMAL);
         return this;
     }
 
     /**
      * Entfernen des letzten BoardPoints am Model
+     *
      * @return GameController
      */
-    private GameController removeLastBoardPoint(){
+    private GameController removeLastBoardPoint() {
         model.removeLastBoardPoint();
         return this;
     }
@@ -77,22 +82,23 @@ public class GameController implements ClickHandler {
     /**
      * Verarbeitung der Spezialfelder
      * Weiterleitung des Inputs an das Model
+     *
      * @param buttonValue Wert des Buttons (Double, Triple, B || Z)
      * @return GameController
      */
-    private GameController handleSpecial(String buttonValue){
-        switch(buttonValue){
-            case "DOUBLE" : {
+    private GameController handleSpecial(String buttonValue) {
+        switch (buttonValue) {
+            case "DOUBLE": {
                 model.setGameMultState(GameMultState.DOUBLE);
                 break;
             }
-            case "TRIPLE" : {
+            case "TRIPLE": {
                 model.setGameMultState(GameMultState.TRIPLE);
                 break;
             }
             //Language specific
-            case "B" :
-            case "Z" : {
+            case "B":
+            case "Z": {
                 this.removeLastBoardPoint();
                 break;
             }
@@ -109,6 +115,7 @@ public class GameController implements ClickHandler {
      * Weiterleitung des Inputs an die entsprechende Methode
      * ueberpruefung, ob das Spiel beendet ist
      * Gesamte Aktualisierung der View
+     *
      * @param view View, welche angeklickt wurde (Button)
      */
     @Override
@@ -116,15 +123,15 @@ public class GameController implements ClickHandler {
         Button button = (Button) view;
         String buttonValue = button.getText().toString();
 
-        try{
-            int point = Integer.parseInt( buttonValue );
+        try {
+            int point = Integer.parseInt(buttonValue);
             this.handlePoints(point).resetBoardState();
-        } catch ( NumberFormatException e ){
+        } catch (NumberFormatException e) {
             this.handleSpecial(buttonValue);
         }
 
-        if( this.model.getIsDone() ){
-            this.view.showGame(this.model.getWinner(), this.model.getPlayerStats(), this.model.getGameSettings() );
+        if (this.model.getIsDone()) {
+            this.view.showGame(this.model.getWinner(), this.model.getPlayerStats(), this.model.getGameSettings());
         }
 
         //Update the view complete, because not much datas changed
@@ -138,10 +145,11 @@ public class GameController implements ClickHandler {
     /**
      * Aktualisierung der Spieleruebersichten
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
+     *
      * @return GameController
      */
-    private GameController updatePlayerHeader(){
-        for(int i = 0; i < this.model.getNumPlayers(); i++){
+    private GameController updatePlayerHeader() {
+        for (int i = 0; i < this.model.getNumPlayers(); i++) {
             view.updatePlayerHeader(i, this.model.getPlayerScore(i), this.model.getPlayerPoints(i), this.model.getPlayerSetWin(i), this.model.getPlayerLegsWin(i));
         }
         return this;
@@ -150,9 +158,10 @@ public class GameController implements ClickHandler {
     /**
      * Aktualisierung der aktiven Spieleruebersicht
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
+     *
      * @return GameController
      */
-    private GameController updateActivePlayerHead(){
+    private GameController updateActivePlayerHead() {
         view.updateActivePlayerHead(this.model.getCurrentPlayersTurn());
         return this;
     }
@@ -160,9 +169,10 @@ public class GameController implements ClickHandler {
     /**
      * Aktualisierung des BoardStates (Spezialfelder)
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
+     *
      * @return GameController
      */
-    private GameController updateBoardState(){
+    private GameController updateBoardState() {
         view.updateGameState(this.model.getGameMultState());
         return this;
     }
@@ -170,26 +180,28 @@ public class GameController implements ClickHandler {
     /**
      * Aktualisierung der Checkout Vorschlaege fuer den aktuellen Spieler
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
+     *
      * @return GameController
      */
-    private GameController updateSuggestion(){
-        this.view.updateSuggestions( this.model.getCheckoutSuggestion(), this.model.getCheckoutType() );
+    private GameController updateSuggestion() {
+        this.view.updateSuggestions(this.model.getCheckoutSuggestion(), this.model.getCheckoutType());
         return this;
     }
 
     /**
      * Aktualisierung der Anzahl Legs
      * Abfragen der Daten aus dem Model und Weiterleitung an die View
+     *
      * @return GameController
      */
-    private GameController updateCurrentLegs(){
-        this.view.updateLegs( this.model.getLeg() );
+    private GameController updateCurrentLegs() {
+        this.view.updateLegs(this.model.getLeg());
         return this;
     }
 
     @Override
     public void registerController(Object controller) {
-        if(controller instanceof GameListener){
+        if (controller instanceof GameListener) {
             this.registerModel((GameListener) controller);
         }
     }

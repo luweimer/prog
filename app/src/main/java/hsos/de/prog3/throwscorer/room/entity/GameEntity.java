@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey;
  * Entity fuer Game
  * Column: gameID (String), gameName (String), winnerInt (int), winnerName (String), picture (String)
  * PrimaryKey: gameID
+ *
  * @author Lucius Weimer
  */
 @Entity(tableName = "GameEntity")

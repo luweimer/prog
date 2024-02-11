@@ -12,6 +12,7 @@ import hsos.de.prog3.throwscorer.room.entity.GameEntity;
 /**
  * GameDao
  * Data Access Object fuer GameEntity
+ *
  * @author Lucius Weimer
  */
 @Dao

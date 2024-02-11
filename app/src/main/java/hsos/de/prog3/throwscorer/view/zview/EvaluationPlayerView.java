@@ -13,6 +13,7 @@ import hsos.de.prog3.throwscorer.model.PlayerStats;
 /**
  * EvaluationPlayerView
  * View fuer die einzelnen Spielerstatistiken
+ *
  * @author Lucius Weimer
  */
 public class EvaluationPlayerView implements EvaluationPlayerViewListener {
@@ -35,10 +36,11 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
 
     /**
      * Konstruktor - Erstellt die View und fuegt sie dem GridLayout hinzu
-     * @param context - Context
+     *
+     * @param context      - Context
      * @param playerHeader - GridLayout
      */
-    public EvaluationPlayerView(Context context, GridLayout playerHeader){
+    public EvaluationPlayerView(Context context, GridLayout playerHeader) {
         this.gamePlayer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.evaluation_player, playerHeader, false);
         playerHeader.addView(this.gamePlayer);
         this.init();
@@ -47,15 +49,16 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
     /**
      * Initialisiert die View
      */
-    private void init(){
+    private void init() {
         this.registerViewElements();
     }
 
     /**
      * Registriert die einzelnen Elemente der View - TextViews
+     *
      * @return EvaluationPlayerView
      */
-    private EvaluationPlayerView registerViewElements(){
+    private EvaluationPlayerView registerViewElements() {
         this.name = this.gamePlayer.findViewById(R.id.tv_evap_player_name);
         this.sumScore = this.gamePlayer.findViewById(R.id.tv_evap_sum_score);
         this.avg = this.gamePlayer.findViewById(R.id.tv_evap_avg);
@@ -75,35 +78,37 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
 
     /**
      * Helper: Rundet eine Zahl auf zwei Nachkommastellen
+     *
      * @param val - Zahl
      * @return double
      */
-    private double roundTwoDecimal(double val){
+    private double roundTwoDecimal(double val) {
         return Math.round(val * 100.0) / 100.0;
     }
 
     /**
      * Setzt die Werte der View
-     * @param mame String - Name des Spielers
-     * @param sumScore int - Summe der Punkte
-     * @param avg double - Durchschnitt
-     * @param sumThrough int - Anzahl der Wuerfe
-     * @param bull int - Anzahl der erzielten Bulls
-     * @param sBull int - Anzahl der erzielten Single Bulls
-     * @param o180 int - Anzahl der erzielten 180er
-     * @param o160 int - Anzahl der erzielten 160er
-     * @param o140 int - Anzahl der erzielten 140er
-     * @param o120 int - Anzahl der erzielten 120er
-     * @param o100 int - Anzahl der erzielten 100er
+     *
+     * @param mame        String - Name des Spielers
+     * @param sumScore    int - Summe der Punkte
+     * @param avg         double - Durchschnitt
+     * @param sumThrough  int - Anzahl der Wuerfe
+     * @param bull        int - Anzahl der erzielten Bulls
+     * @param sBull       int - Anzahl der erzielten Single Bulls
+     * @param o180        int - Anzahl der erzielten 180er
+     * @param o160        int - Anzahl der erzielten 160er
+     * @param o140        int - Anzahl der erzielten 140er
+     * @param o120        int - Anzahl der erzielten 120er
+     * @param o100        int - Anzahl der erzielten 100er
      * @param singleThrow int - Anzahl der Single Wuerfe
      * @param doubleThrow int - Anzahl der Double Wuerfe
      * @param tripleThrow int - Anzahl der Triple Wuerfe
      */
     @Override
-    public void setViewValues(String mame, int sumScore, double avg, int sumThrough, int bull, int sBull,int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow) {
+    public void setViewValues(String mame, int sumScore, double avg, int sumThrough, int bull, int sBull, int o180, int o160, int o140, int o120, int o100, int singleThrow, int doubleThrow, int tripleThrow) {
         this.name.setText(mame);
         this.sumScore.setText(String.valueOf(sumScore));
-        this.avg.setText(String.valueOf( this.roundTwoDecimal( avg ) ));
+        this.avg.setText(String.valueOf(this.roundTwoDecimal(avg)));
         this.sumThrough.setText(String.valueOf(sumThrough));
         this.bull.setText(String.valueOf(bull));
         this.sBull.setText(String.valueOf(sBull));
@@ -119,6 +124,7 @@ public class EvaluationPlayerView implements EvaluationPlayerViewListener {
 
     /**
      * Bereitet das PlayerStats Objekt auf und leitet die Werte and die setViewValues Methode weiter
+     *
      * @param playerStats - PlayerStats
      */
     @Override

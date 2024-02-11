@@ -49,7 +49,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     /**
      * Initialisiert die Elemente der Activity
      */
-    private void init(){
+    private void init() {
         this.registerViewElements();
     }
 
@@ -57,8 +57,8 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
      * Registriert die Hauptfunktionen
      * Listener fuer die Buttons, wenn der Controller gesetzt ist
      */
-    private void initController(){
-        if(this.controller != null){
+    private void initController() {
+        if (this.controller != null) {
             this.cleanup.setOnClickListener(view -> this.controller.cleanDatabase());
             this.home.setOnClickListener(view -> startHomeActivity(this));
         }
@@ -67,7 +67,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     /**
      * Registriert die View-Elemente der Activity
      */
-    private void registerViewElements(){
+    private void registerViewElements() {
         this.gameTable = this.findViewById(R.id.tl_ov_games);
         this.cleanup = this.findViewById(R.id.btn_ov_clean);
         this.home = this.findViewById(R.id.btn_ov_home);
@@ -76,21 +76,22 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
     /**
      * Erstellt die Zeilen fuer die einzelnen Spiele
      * Loescht die alten Zeilen
+     *
      * @param name - Name der Spiele
-     * @param id - ID der Spiele
+     * @param id   - ID der Spiele
      */
     @Override
     public void createGameRows(String[] name, String[] id) {
-        if(this.rows != null){
-            for(OverviewRowListener row : this.rows){
+        if (this.rows != null) {
+            for (OverviewRowListener row : this.rows) {
                 row.destroy();
             }
         }
-        if(name.length != id.length){
+        if (name.length != id.length) {
             throw new IllegalArgumentException("Name and ID array must have the same length");
         }
         this.rows = new OverviewRowListener[name.length];
-        for(int i = 0; i < name.length; i++){
+        for (int i = 0; i < name.length; i++) {
             this.rows[i] = new OverviewRow(this, this.gameTable, this.controller);
             this.rows[i].setName(name[i]);
             this.rows[i].setID(id[i]);
@@ -101,9 +102,10 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
 
     /**
      * Startet die EvaluationActivity fuer ein ausgewaehltes Spiel
-     * @param player - Sieger des Spiels
+     *
+     * @param player      - Sieger des Spiels
      * @param playerStats - Statistiken der Spieler
-     * @param pic - Siegesbild des Spiels
+     * @param pic         - Siegesbild des Spiels
      */
     @Override
     public void showGame(int player, ArrayList<PlayerStats> playerStats, Bitmap pic) {
@@ -112,7 +114,7 @@ public class OverviewActivity extends AppCompatActivity implements OverviewActiv
 
     @Override
     public void registerController(Object controller) {
-        if(controller instanceof OverviewControllerListener){
+        if (controller instanceof OverviewControllerListener) {
             this.controller = (OverviewControllerListener) controller;
         }
     }

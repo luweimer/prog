@@ -12,14 +12,16 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
  * AppDatabase
  * Room Database
  * Entity: GameEntity, PlayerStatsEntity
+ *
  * @author Lucius Weimer
  */
 @Database(entities = {
-            GameEntity.class,
-            PlayerStatsEntity.class
-        },
+        GameEntity.class,
+        PlayerStatsEntity.class
+},
         version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract GameDao gameDao();
+
     public abstract PlayerStatsDao playerStatsDao();
 }

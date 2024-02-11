@@ -19,6 +19,7 @@ import hsos.de.prog3.throwscorer.view.zview.PlayerNameView;
 /**
  * PlayerNameActivity
  * Activity um die Spielernamen festzulegen
+ *
  * @author Lucius Weimer
  */
 public class PlayerNameActivity extends AppCompatActivity {
@@ -42,15 +43,16 @@ public class PlayerNameActivity extends AppCompatActivity {
     /**
      * Initialisiert die Elemente der Activity
      */
-    private void init(){
+    private void init() {
         this.registerViewElements().registerBtn();
     }
 
     /**
      * Registriert die Elemente der Activity
+     *
      * @return PlayerNameActivity
      */
-    private PlayerNameActivity registerViewElements(){
+    private PlayerNameActivity registerViewElements() {
         this.playerNames = findViewById(R.id.gl_pn_playername);
         this.submit = findViewById(R.id.btn_pn_submit);
         return this;
@@ -58,9 +60,10 @@ public class PlayerNameActivity extends AppCompatActivity {
 
     /**
      * Registriert den Button
+     *
      * @return
      */
-    private PlayerNameActivity registerBtn(){
+    private PlayerNameActivity registerBtn() {
         this.submit.setOnClickListener(v -> this.handleSubmit());
         return this;
     }
@@ -77,22 +80,22 @@ public class PlayerNameActivity extends AppCompatActivity {
      * ueberpruefung der Spielernamen nach Laenge und Inhalt
      * Laenge < 5, um die Darstellung in der GameActivity nicht zu beeintraechtigen
      */
-    private void handleSubmit(){
+    private void handleSubmit() {
         String[] names = new String[this.gameSettings.getNumPlayers()];
-        for(int i = 0; i < playerName.length; i++){
+        for (int i = 0; i < playerName.length; i++) {
             String name = playerName[i].getPlayerName();
-            if(name.equals("")){
+            if (name.equals("")) {
                 Toast.makeText(getApplicationContext(), "Please enter a valid name", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(name.length() > 5){
+            if (name.length() > 5) {
                 Toast.makeText(getApplicationContext(), "Please enter a valid name - Length max. 5", Toast.LENGTH_SHORT).show();
                 return;
             }
             names[i] = name;
         }
 
-        if(this.checkDuplicatedValues(this.playerName)){
+        if (this.checkDuplicatedValues(this.playerName)) {
             Toast.makeText(getApplicationContext(), "Please enter unique names", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -104,9 +107,9 @@ public class PlayerNameActivity extends AppCompatActivity {
     /**
      * Erstellt die Views fuer die Spielernamen
      */
-    private void createPlayerViews(){
+    private void createPlayerViews() {
         this.playerName = new PlayerNameViewListener[this.gameSettings.getNumPlayers()];
-        for(int i = 0; i < this.gameSettings.getNumPlayers(); i++){
+        for (int i = 0; i < this.gameSettings.getNumPlayers(); i++) {
             this.playerName[i] = new PlayerNameView(this, this.playerNames);
             this.playerName[i].setPlayerName(getResources().getString(R.string.pnt_playername) + " : " + i);
         }
@@ -114,10 +117,11 @@ public class PlayerNameActivity extends AppCompatActivity {
 
     /**
      * ueberprueft, ob die Spielernamen einzigartig sind
+     *
      * @param playerName Spielernamen
      * @return true, wenn die Spielernamen nicht einzigartig sind
      */
-    private boolean checkDuplicatedValues(PlayerNameViewListener[] playerName){
+    private boolean checkDuplicatedValues(PlayerNameViewListener[] playerName) {
         return Arrays.stream(playerName)
                 .distinct()
                 .count() < playerName.length;

@@ -16,6 +16,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.PlayerViewListener;
 /**
  * PlayerView
  * Stellt die einzelnen Spieler in der GameActivity dar.
+ *
  * @author Lucius Weimer
  */
 public class PlayerView implements PlayerViewListener {
@@ -29,10 +30,11 @@ public class PlayerView implements PlayerViewListener {
     /**
      * Konstruktor
      * Fuegt die View dem uebergeordneten GridLayout hinzu
-     * @param context Kontext der App
+     *
+     * @param context      Kontext der App
      * @param playerHeader uebergeordnetes GridLayout
      */
-    public PlayerView(Context context, GridLayout playerHeader){
+    public PlayerView(Context context, GridLayout playerHeader) {
         this.gamePlayer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.game_player, playerHeader, false);
         playerHeader.addView(this.gamePlayer);
         this.init();
@@ -41,15 +43,16 @@ public class PlayerView implements PlayerViewListener {
     /**
      * Initialisiert die View-Elemente
      */
-    private void init(){
+    private void init() {
         this.registerViewElements();
     }
 
     /**
      * Registriert die View-Elemente
+     *
      * @return PlayerView
      */
-    private PlayerView registerViewElements(){
+    private PlayerView registerViewElements() {
         this.tvGamePlayerScore = this.gamePlayer.findViewById(R.id.tv_game_player_score);
         this.tvGamePlayerPoints = this.gamePlayer.findViewById(R.id.tv_game_player_points);
         this.tvGamePlayerWin = this.gamePlayer.findViewById(R.id.tv_game_player_win);
@@ -59,6 +62,7 @@ public class PlayerView implements PlayerViewListener {
 
     /**
      * Setzt den Namen des Spielers
+     *
      * @param name Name des Spielers
      */
     @Override
@@ -68,6 +72,7 @@ public class PlayerView implements PlayerViewListener {
 
     /**
      * Setzt den Punktestand des Spielers
+     *
      * @param score Punktestand des Spielers
      */
     @Override
@@ -77,6 +82,7 @@ public class PlayerView implements PlayerViewListener {
 
     /**
      * Setzt die geworfenen Punkte des Spielers (Abbildung der 3 Wuerfe pro Runde)
+     *
      * @param points geworfene Punkte des Spielers
      */
     @Override
@@ -87,6 +93,7 @@ public class PlayerView implements PlayerViewListener {
 
     /**
      * Setzt die Anzahl der gewonnenen Legs und Sets des Spielers
+     *
      * @param sets Anzahl der gewonnenen Sets
      * @param legs Anzahl der gewonnenen Legs
      */
@@ -97,11 +104,12 @@ public class PlayerView implements PlayerViewListener {
 
     /**
      * Setzt die Hintergrundfarbe des Spielers, durch active
+     *
      * @param active true, wenn Spieler aktiv ist
      */
     @Override
     public void updateActivePlayer(boolean active) {
-        if(active){
+        if (active) {
             this.gamePlayer.setBackgroundColor(this.gamePlayer.getResources().getColor(R.color.black));
         } else {
             this.gamePlayer.setBackgroundColor(this.gamePlayer.getResources().getColor(R.color.primary));

@@ -43,6 +43,7 @@ import hsos.de.prog3.throwscorer.view.zview.EvaluationPlayerView;
 /**
  * EvaluationActivity
  * uebersicht ueber die Spielergebnisse
+ *
  * @author Lucius Weimer
  */
 public class EvaluationActivity extends AppCompatActivity implements EvaluationActivityListener {

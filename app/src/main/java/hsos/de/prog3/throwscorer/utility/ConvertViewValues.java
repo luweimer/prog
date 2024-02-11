@@ -15,19 +15,21 @@ import hsos.de.prog3.throwscorer.model.CheckoutType;
  * ArrayList<Integer> - Checkout String
  * ArrayList<String> - String
  * Drawable - Bitmap
+ *
  * @author Lucius Weimer
  */
 public class ConvertViewValues {
     /**
      * Konvertiert eine ArrayList zu einem Checkout String
-     * @param list ArrayList to convert
+     *
+     * @param list             ArrayList to convert
      * @param settingsCheckout CheckoutType
      * @return Checkout String
      */
-    public static String convertArrayListCheckout(ArrayList<Integer> list, CheckoutType settingsCheckout){
+    public static String convertArrayListCheckout(ArrayList<Integer> list, CheckoutType settingsCheckout) {
         StringBuilder output = new StringBuilder();
         list.forEach(p -> {
-            if(p == 0){
+            if (p == 0) {
                 return;
             }
 
@@ -62,10 +64,11 @@ public class ConvertViewValues {
 
     /**
      * Konvertiert eine ArrayList zu einem String
+     *
      * @param list ArrayList to convert
      * @return String
      */
-    public static String convertArrayList(ArrayList<String> list){
+    public static String convertArrayList(ArrayList<String> list) {
         StringBuilder output = new StringBuilder();
         list.forEach(p -> {
             output.append(p).append(" ");
@@ -76,6 +79,7 @@ public class ConvertViewValues {
 
     /**
      * Konvertiert ein Drawable zu einem Bitmap
+     *
      * @param drawable Drawable to convert
      * @return Bitmap
      */
@@ -100,15 +104,16 @@ public class ConvertViewValues {
      * Konvertiert standart Punkte
      * B - Bulls Eye
      * S - Single Bull
+     *
      * @param output StringBuilder
-     * @param point Punkte
+     * @param point  Punkte
      * @return true, wenn Konvertierung erfolgreich war
      */
-    private static boolean convertStandartPoints(StringBuilder output, int point){
-        if(point == 50){
+    private static boolean convertStandartPoints(StringBuilder output, int point) {
+        if (point == 50) {
             output.append("B").append(" ");
             return true;
-        } else if(point == 25){
+        } else if (point == 25) {
             output.append("S").append(" ");
             return true;
         }
@@ -117,12 +122,13 @@ public class ConvertViewValues {
 
     /**
      * Konvertiert Single Punkte
+     *
      * @param output StringBuilder
-     * @param p Punkte
+     * @param p      Punkte
      * @return true, wenn Konvertierung erfolgreich war
      */
-    private static boolean convertSingle(StringBuilder output, int p){
-        if(p < 20 && p > 0){
+    private static boolean convertSingle(StringBuilder output, int p) {
+        if (p < 20 && p > 0) {
             output.append(p).append(" ");
             return true;
         }
@@ -131,12 +137,13 @@ public class ConvertViewValues {
 
     /**
      * Konvertiert Double Punkte
+     *
      * @param output StringBuilder
-     * @param p Punkte
+     * @param p      Punkte
      * @return true, wenn Konvertierung erfolgreich war
      */
-    private static boolean convertDouble(StringBuilder output, int p){
-        if( checkDouble( p )){
+    private static boolean convertDouble(StringBuilder output, int p) {
+        if (checkDouble(p)) {
             output.append("D").append(p / 2).append(" ");
             return true;
         }
@@ -145,11 +152,12 @@ public class ConvertViewValues {
 
     /**
      * Konvertiert Triple Punkte
+     *
      * @param output StringBuilder
-     * @param p Punkte
+     * @param p      Punkte
      * @return true, wenn Konvertierung erfolgreich war
      */
-    private static boolean convertTriple(StringBuilder output, int p){
+    private static boolean convertTriple(StringBuilder output, int p) {
         if (checkTriple(p)) {
             output.append("T").append(p / 3).append(" ");
             return true;
@@ -159,19 +167,21 @@ public class ConvertViewValues {
 
     /**
      * Prueft ob der Punkt ein Double-Punkt sind
+     *
      * @param point Punkt zum pruefen
      * @return true, wenn Punkt ein Double-Punkt ist
      */
-    private static boolean checkDouble(int point){
+    private static boolean checkDouble(int point) {
         return point % 2 == 0 && point <= 40;
     }
 
     /**
      * Prueft ob der Punkt ein Triple-Punkt sind
+     *
      * @param point Punkt zum pruefen
      * @return true, wenn Punkt ein Triple-Punkt ist
      */
-    private static boolean checkTriple(int point){
+    private static boolean checkTriple(int point) {
         return point % 3 == 0;
     }
 

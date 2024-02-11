@@ -13,15 +13,17 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
  * Konvertiert die Entitys der Datenbank zu unabhaengigen Datentypen von Throwscorer
  * GameEntity -> GameDatabase
  * PlayerStatsEntity -> PlayerStats
+ *
  * @author Lucius Weimer
  */
 public class Converter {
     /**
      * Konvertiert GameEntity zu GameDatabase
+     *
      * @param gameEntity GameEntity
      * @return GameDatabase
      */
-    public static GameDatabase convertGameEntityToGameDatabase(GameEntity gameEntity){
+    public static GameDatabase convertGameEntityToGameDatabase(GameEntity gameEntity) {
         return new GameDatabase(
                 gameEntity.gameID,
                 gameEntity.gameName,
@@ -33,10 +35,11 @@ public class Converter {
 
     /**
      * Konvertiert PlayerStatsEntity zu PlayerStats
+     *
      * @param playerStatsEntity
      * @return
      */
-    public static PlayerStats convertPlayerStatsEntityToPlayerStats(PlayerStatsEntity playerStatsEntity){
+    public static PlayerStats convertPlayerStatsEntityToPlayerStats(PlayerStatsEntity playerStatsEntity) {
         return new PlayerStats(
                 playerStatsEntity.playerName,
                 playerStatsEntity.name,

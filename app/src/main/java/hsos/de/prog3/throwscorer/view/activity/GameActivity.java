@@ -34,6 +34,7 @@ import hsos.de.prog3.throwscorer.view.zview.PlayerView;
  * Unterscheidung zwischen Custom und Standard Buttons
  * Custom Buttons - double, triple, back
  * Standard Buttons - 1-20, 25, 50
+ *
  * @author Lucius Weimer
  */
 public class GameActivity extends AppCompatActivity implements GameActivityListener {
@@ -63,25 +64,26 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     /**
      * Initialisiert die Elemente der Activity
      */
-    private void init(){
+    private void init() {
         this.registerViewElements();
     }
 
     /**
      * Registriert die Listener fuer die Buttons, wenn der Controller gesetzt ist
      */
-    private void initController(){
-        if(this.controller != null){
-                this.registerBtn()
-                        .registerCustomBtn();
+    private void initController() {
+        if (this.controller != null) {
+            this.registerBtn()
+                    .registerCustomBtn();
         }
     }
 
     /**
      * Registriert die Elemente der Activity
+     *
      * @return GameActivity
      */
-    private GameActivity registerViewElements(){
+    private GameActivity registerViewElements() {
         this.playerHeader = findViewById(R.id.gl_game_playerheader);
         this.leg = findViewById(R.id.tv_game_leg);
         this.checkout = findViewById(R.id.tv_game_checkout);
@@ -90,12 +92,13 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Registriert die Standart Buttons der Activity
+     *
      * @return GameActivity
      */
-    private GameActivity registerBtn(){
-        for(int i = 0; i <= 20; i++){
+    private GameActivity registerBtn() {
+        for (int i = 0; i <= 20; i++) {
             Button btn = this.getButtonById("btn_game_" + i);
-            if(btn != null){
+            if (btn != null) {
                 this.setButton(btn);
                 this.gamePoints.add(btn);
             }
@@ -112,9 +115,10 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Registriert die Custom Buttons der Activity
+     *
      * @return GameActivity
      */
-    private GameActivity registerCustomBtn(){
+    private GameActivity registerCustomBtn() {
         String[] customBtns = {"double", "triple", "back"};
 
         Arrays.asList(customBtns).forEach(btnVal -> {
@@ -127,14 +131,15 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Setzt den OnClickListener fuer den Button im Controller
+     *
      * @param button Button
      * @return GameActivity
      */
-    private GameActivity setButton(Button button){
+    private GameActivity setButton(Button button) {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(controller != null){
+                if (controller != null) {
                     controller.handleOnClick(view);
                 }
             }
@@ -144,10 +149,11 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Gibt den Button anhand der ID zurueck
+     *
      * @param id String
      * @return Button
      */
-    private Button getButtonById(String id){
+    private Button getButtonById(String id) {
         Button btn = findViewById(getResources().getIdentifier(id, "id", getPackageName()));
         return btn;
     }
@@ -155,30 +161,32 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     /**
      * Setzt die Custom Buttons zurueck, auf den Standard Hintergrund
      */
-    private void resetSpecialButton(){
+    private void resetSpecialButton() {
         this.boardBtnSpecial.forEach((key, btn) -> {
-            btn.setBackgroundResource( R.drawable.button_game );
+            btn.setBackgroundResource(R.drawable.button_game);
         });
     }
 
     /**
      * Setzt die Farbe des Buttons
-     * @param btn Button
+     *
+     * @param btn   Button
      * @param color int
      */
-    private void setBtnColor(Button btn, int color){
-        btn.setBackgroundColor(getResources().getColor( color ));
+    private void setBtnColor(Button btn, int color) {
+        btn.setBackgroundColor(getResources().getColor(color));
     }
 
     /**
      * Erstellt die PlayerViews fuer die einzelnen PlayerHeader
+     *
      * @param numPlayers int
-     * @param player String[]
+     * @param player     String[]
      */
     @Override
-    public void createPlayerHeader(int numPlayers, String[] player){
+    public void createPlayerHeader(int numPlayers, String[] player) {
         this.playerViews = new PlayerView[numPlayers];
-        for(int i = 0; i < numPlayers; i++){
+        for (int i = 0; i < numPlayers; i++) {
             this.playerViews[i] = new PlayerView(this, this.playerHeader);
             this.playerViews[i].updatePlayerName(player[i]);
         }
@@ -187,11 +195,12 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Updated den gesamten PlayerHeader mit den neuen Werten
+     *
      * @param player int
-     * @param score int
+     * @param score  int
      * @param points ArrayList<String>
-     * @param sets int
-     * @param legs int
+     * @param sets   int
+     * @param legs   int
      */
     @Override
     public void updatePlayerHeader(int player, int score, ArrayList<String> points, int sets, int legs) {
@@ -202,11 +211,12 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Updated den aktiven Player im allen PlayerHeader
+     *
      * @param player int - aktiver Player
      */
     @Override
-    public void updateActivePlayerHead(int player){
-        for(int i = 0; i < this.playerViews.length; i++){
+    public void updateActivePlayerHead(int player) {
+        for (int i = 0; i < this.playerViews.length; i++) {
             this.playerViews[i].updateActivePlayer(i == player);
         }
     }
@@ -215,21 +225,23 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
      * Updated die Custom Buttons
      * Setzt alle Custom Buttons zurueck
      * Setzt den aktiven Custom Button
+     *
      * @param state GameMultState - aktiver Custom Button
      */
     @Override
     public void updateGameState(GameMultState state) {
         this.resetSpecialButton();
 
-        if(state == GameMultState.DOUBLE){
-            this.setBtnColor(Objects.requireNonNull(this.boardBtnSpecial.get("double")), R.color.primary );
-        } else if(state == GameMultState.TRIPLE){
-            this.setBtnColor(Objects.requireNonNull(this.boardBtnSpecial.get("triple")), R.color.primary );
+        if (state == GameMultState.DOUBLE) {
+            this.setBtnColor(Objects.requireNonNull(this.boardBtnSpecial.get("double")), R.color.primary);
+        } else if (state == GameMultState.TRIPLE) {
+            this.setBtnColor(Objects.requireNonNull(this.boardBtnSpecial.get("triple")), R.color.primary);
         }
     }
 
     /**
      * Updated das aktuelle Leg in der uebersicht
+     *
      * @param legs int - aktuelles Leg
      */
     @Override
@@ -241,8 +253,9 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
     /**
      * Updated die Checkout Suggestion in der uebersicht fuer den aktiven Spieler
      * Verwendung globaler Methode convertArrayListCheckout fuer Convertierung der ArrayList in String
+     *
      * @param suggestions ArrayList<Integer>
-     * @param checkout CheckoutType
+     * @param checkout    CheckoutType
      */
     @Override
     public void updateSuggestions(ArrayList<Integer> suggestions, CheckoutType checkout) {
@@ -253,8 +266,9 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     /**
      * Startet die EvaluationActivity, wenn ein Spieler gewonnen hat
-     * @param player int - Sieger
-     * @param playerStats ArrayList<PlayerStats> - Stats der Spieler
+     *
+     * @param player       int - Sieger
+     * @param playerStats  ArrayList<PlayerStats> - Stats der Spieler
      * @param gameSettings GameSettings - Einstellungen des Spiels
      */
     @Override
@@ -265,7 +279,7 @@ public class GameActivity extends AppCompatActivity implements GameActivityListe
 
     @Override
     public void registerController(Object controller) {
-        if(controller instanceof ClickHandler){
+        if (controller instanceof ClickHandler) {
             this.controller = (ClickHandler) controller;
         }
     }

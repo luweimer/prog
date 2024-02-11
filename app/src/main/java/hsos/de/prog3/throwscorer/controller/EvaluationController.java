@@ -18,6 +18,7 @@ import hsos.de.prog3.throwscorer.room.RoomAccess;
  * Verwaltet die Anzeige und Interaktion der Spielergebnisse mit der Speicherung in der Datenbank
  * View: EvaluationActivityListener
  * Datenbank: PersistensListener
+ *
  * @author Lucius Weimer
  */
 public class EvaluationController implements EvaluationControllerListener {
@@ -39,27 +40,30 @@ public class EvaluationController implements EvaluationControllerListener {
     /**
      * Initialisierung der View mit den Daten aus der Datenbank
      */
-    private void init(){
-        this.view.createPlayerViews( gameDatabase.getPlayerStats() );
-        this.view.setWinnerText( gameDatabase.getWinnerName() );
-        if(this.gameDatabase.getWinnerPic() != null) {
-            this.view.setWinnerPic( gameDatabase.getWinnerPic() );
+    private void init() {
+        this.view.createPlayerViews(gameDatabase.getPlayerStats());
+        this.view.setWinnerText(gameDatabase.getWinnerName());
+        if (this.gameDatabase.getWinnerPic() != null) {
+            this.view.setWinnerPic(gameDatabase.getWinnerPic());
         }
-    };
+    }
+
+    ;
 
     /**
      * Speichern des Spiels in der Datenbank
      * Ausgabe eines Toast ueber die View bei fehlenden Daten
+     *
      * @param name Name des Spiels
-     * @param pic Siegesbild
+     * @param pic  Siegesbild
      */
     @Override
     public void handleSave(String name, Bitmap pic) {
-        if(name.isEmpty()) {
+        if (name.isEmpty()) {
             this.view.showToast("Please enter a name the game!");
             return;
         }
-        if(pic == null) {
+        if (pic == null) {
             this.view.showToast("Please choose a picture!");
             return;
         }
@@ -73,11 +77,11 @@ public class EvaluationController implements EvaluationControllerListener {
      * Teilen des Siegers ueber die View
      */
     @Override
-    public void shareWinner(){
+    public void shareWinner() {
         double avg = 0;
         List<String> against = new ArrayList<>();
         for (PlayerStats p : this.gameDatabase.getPlayerStats()) {
-            if(! p.getWin()){
+            if (!p.getWin()) {
                 against.add(p.getPlayer());
             } else {
                 avg = p.getAvg();

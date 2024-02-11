@@ -19,6 +19,7 @@ import hsos.de.prog3.throwscorer.model.GameSettings;
  * IndividualGameActivity
  * Activity um Spieleinstellungen eines individuellen Spiels festzulegen
  * Parameter: StartScore, Spieleranzahl, Setanzahl, Leganzahl, CheckoutType
+ *
  * @author Lucius Weimer
  */
 public class IndividualGameActivity extends AppCompatActivity {
@@ -41,15 +42,16 @@ public class IndividualGameActivity extends AppCompatActivity {
     /**
      * Initialisiert die Elemente der Activity
      */
-    private void init(){
+    private void init() {
         this.registerViewElements();
     }
 
     /**
      * Registriert die Elemente der Activity
+     *
      * @return IndividualGameActivity
      */
-    private IndividualGameActivity registerViewElements(){
+    private IndividualGameActivity registerViewElements() {
         this.score = findViewById(R.id.et_ind_score);
         this.set = findViewById(R.id.et_ind_set);
         this.leg = findViewById(R.id.et_ind_leg);
@@ -66,7 +68,7 @@ public class IndividualGameActivity extends AppCompatActivity {
      * Textviews werden in Integer geparst
      * RadioButtons werden in CheckoutType geparst
      */
-    private void handleSubmit(){
+    private void handleSubmit() {
         int score;
         int set;
         int leg;
@@ -79,7 +81,7 @@ public class IndividualGameActivity extends AppCompatActivity {
             return;
         }
         int player = this.getPlayerSize();
-        if(player == -1){
+        if (player == -1) {
             return;
         }
         CheckoutType checkoutType = this.getCheckoutType();
@@ -89,13 +91,14 @@ public class IndividualGameActivity extends AppCompatActivity {
 
     /**
      * Liest die Spieleranzahl aus den RadioButtons aus
+     *
      * @return int - Spieleranzahl
      */
-    private int getPlayerSize(){
+    private int getPlayerSize() {
         int playerSize;
-        try{
-            playerSize = Integer.parseInt(this.getRadioButtonText( this.player.getCheckedRadioButtonId() ));
-        }catch (NumberFormatException e){
+        try {
+            playerSize = Integer.parseInt(this.getRadioButtonText(this.player.getCheckedRadioButtonId()));
+        } catch (NumberFormatException e) {
             Toast.makeText(this, "Please enter a valid player size", Toast.LENGTH_SHORT).show();
             return -1;
         }
@@ -104,13 +107,14 @@ public class IndividualGameActivity extends AppCompatActivity {
 
     /**
      * Liest den CheckoutType aus den RadioButtons aus
+     *
      * @return CheckoutType
      */
-    private CheckoutType getCheckoutType(){
-        String checkoutType = this.getRadioButtonText( this.checkoutType.getCheckedRadioButtonId() );
-        if(checkoutType.equals(this.getResources().getString(R.string.a_double))){
+    private CheckoutType getCheckoutType() {
+        String checkoutType = this.getRadioButtonText(this.checkoutType.getCheckedRadioButtonId());
+        if (checkoutType.equals(this.getResources().getString(R.string.a_double))) {
             return CheckoutType.DOUBLE;
-        } else if(checkoutType.equals(this.getResources().getString(R.string.a_triple))){
+        } else if (checkoutType.equals(this.getResources().getString(R.string.a_triple))) {
             return CheckoutType.TRIPLE;
         } else {
             return CheckoutType.SINGLE;
@@ -119,15 +123,14 @@ public class IndividualGameActivity extends AppCompatActivity {
 
     /**
      * Hilfsfunktion um RadioButtons auszulesen
+     *
      * @param id - RadioButton ID
      * @return String - RadioButton Text
      */
-    private String getRadioButtonText(int id){
-        RadioButton radioButton = (RadioButton) findViewById( id );
+    private String getRadioButtonText(int id) {
+        RadioButton radioButton = (RadioButton) findViewById(id);
         return radioButton.getText().toString();
     }
-
-
 
 
 }

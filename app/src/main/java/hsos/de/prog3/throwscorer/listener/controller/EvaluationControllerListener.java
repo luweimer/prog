@@ -9,8 +9,9 @@ import android.graphics.Bitmap;
 public interface EvaluationControllerListener {
     /**
      * Speichern eines Spieles
+     *
      * @param name Name des Spiels
-     * @param pic Siegesbild
+     * @param pic  Siegesbild
      */
     public void handleSave(String name, Bitmap pic);
 

@@ -24,6 +24,7 @@ import hsos.de.prog3.throwscorer.room.entity.PlayerStatsEntity;
 /**
  * RoomAccess
  * Zugriff auf die Room Datenbank
+ *
  * @author Lucius Weimer
  */
 public class RoomAccess implements PersistensListener {
@@ -32,13 +33,14 @@ public class RoomAccess implements PersistensListener {
     private Handler handler;
     private Context context;
 
-    public RoomAccess(){
+    public RoomAccess() {
         this.handler = new Handler(Looper.getMainLooper());
     }
 
 
     /**
      * Setzen des Kontextes fuer die Datenbank
+     *
      * @param context Context
      */
     @Override
@@ -51,12 +53,13 @@ public class RoomAccess implements PersistensListener {
      * Speichern eines Spiels in der Datenbank
      * Erstellt ein GameEntity Objekt von dem gameDatabase
      * Speicherung durch einen neuen Thread
+     *
      * @param gameDatabase GameEntity Object
      */
     @Override
     public void safeGame(GameDatabase gameDatabase) {
         this.DBOperation(() -> {
-            if(!checkValidGame(gameDatabase)){
+            if (!checkValidGame(gameDatabase)) {
                 return;
             }
             String gameID = createUUID();
@@ -73,12 +76,12 @@ public class RoomAccess implements PersistensListener {
                         playerStat.getWinLegs(),
                         playerStat.getWinSets(),
                         playerStat.getWin(),
-                        hashMapToJson( playerStat.getStats() )
+                        hashMapToJson(playerStat.getStats())
                 );
-                try{
+                try {
                     appDatabase.playerStatsDao().insertPlayerStats(playerStatsEntity);
-                } catch (Exception e){
-                    Log.e("RoomAccess", "safeGame: " + e.getMessage() );
+                } catch (Exception e) {
+                    Log.e("RoomAccess", "safeGame: " + e.getMessage());
                 }
 
             }
@@ -88,6 +91,7 @@ public class RoomAccess implements PersistensListener {
     /**
      * Loeschen eines Spiels aus der Datenbank und die dazugehoerigen PlayerStats
      * Loeschen durch einen neuen Thread
+     *
      * @param gameID Der eindeutige Identifier des Spiels
      */
     @Override
@@ -114,10 +118,11 @@ public class RoomAccess implements PersistensListener {
      * Ausfuehren einer Datenbankoperation in einem neuen Thread
      * Unabhaengig vom UI-Thread
      * Ausgabe eines Toasts ueber den Handler
+     *
      * @param runnable Runnable Objekt - Datenbankoperation die Ausgefuehrt wird
-     * @param output String - Ausgabe des Toasts, bei Erfolgreicher Ausfuehrung
+     * @param output   String - Ausgabe des Toasts, bei Erfolgreicher Ausfuehrung
      */
-    private void DBOperation(Runnable runnable, String output){
+    private void DBOperation(Runnable runnable, String output) {
         Log.i("RoomAccess", "DBOperation: ");
         new Thread(new Runnable() {
             @Override
@@ -138,7 +143,7 @@ public class RoomAccess implements PersistensListener {
                             Toast.makeText(context.getApplicationContext(), "Eingabe fehlgeschlagen!", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    Log.e("RoomAccess", "deleteAllGames: " + e.getMessage() );
+                    Log.e("RoomAccess", "deleteAllGames: " + e.getMessage());
                 }
             }
         }).start();
@@ -146,6 +151,7 @@ public class RoomAccess implements PersistensListener {
 
     /**
      * Laden eines Spiels aus der Datenbank
+     *
      * @param gameID Der eindeutige Identifier des Spiels
      * @return LiveData<GameEntity>
      */
@@ -156,7 +162,8 @@ public class RoomAccess implements PersistensListener {
 
     /**
      * Laden aller Spiele aus der Datenbank
-     * @return LiveData<List<GameEntity>>
+     *
+     * @return LiveData<List < GameEntity>>
      */
     @Override
     public LiveData<List<GameEntity>> getAllGames() {
@@ -165,8 +172,9 @@ public class RoomAccess implements PersistensListener {
 
     /**
      * Laden aller PlayerStats aus der Datenbank zu einem zugehoerigen Spiel
+     *
      * @param gameID Der eindeutige Identifier des Spiels
-     * @return LiveData<List<PlayerStatsEntity>>
+     * @return LiveData<List < PlayerStatsEntity>>
      */
     @Override
     public LiveData<List<PlayerStatsEntity>> getPlayerStats(String gameID) {
@@ -175,31 +183,33 @@ public class RoomAccess implements PersistensListener {
 
     /**
      * Erstellen eines eindeutigen Identifiers fuer ein Spiel
+     *
      * @return String
      */
-    private String createUUID(){
+    private String createUUID() {
         return (UUID.randomUUID()).toString();
     }
 
     /**
      * Pruefen ob ein GameDatabase Objekt valide bzw. vollstaendig ist
+     *
      * @param gameDatabase GameDatabase Objekt das geprueft werden soll
      * @return boolean, true wenn valide
      */
-    private boolean checkValidGame(GameDatabase gameDatabase){
-        if(gameDatabase.getGameName() == null || gameDatabase.getGameName().isEmpty()){
+    private boolean checkValidGame(GameDatabase gameDatabase) {
+        if (gameDatabase.getGameName() == null || gameDatabase.getGameName().isEmpty()) {
             return false;
         }
-        if(gameDatabase.getWinnerInt() < 0){
+        if (gameDatabase.getWinnerInt() < 0) {
             return false;
         }
-        if(gameDatabase.getWinnerName() == null || gameDatabase.getWinnerName().isEmpty()){
+        if (gameDatabase.getWinnerName() == null || gameDatabase.getWinnerName().isEmpty()) {
             return false;
         }
-        if(gameDatabase.getPlayerStats() == null || gameDatabase.getPlayerStats().isEmpty()){
+        if (gameDatabase.getPlayerStats() == null || gameDatabase.getPlayerStats().isEmpty()) {
             return false;
         }
-        if(gameDatabase.getWinnerPic() == null){
+        if (gameDatabase.getWinnerPic() == null) {
             return false;
         }
         return true;

@@ -20,6 +20,7 @@ import hsos.de.prog3.throwscorer.view.activity.PlayerNameActivity;
  * Router
  * Utility class um Activities zu starten
  * Activity zum starten: GameActivity, PlayerNameActivity, EvaluationActivity, HomeActivity, OverviewActivity, IndividualGameActivity
+ *
  * @author Lucius Weimer
  */
 public class Router {
@@ -29,7 +30,7 @@ public class Router {
      *
      * @param context Context der aktuellen Activity
      */
-    public static void startHome(Context context){
+    public static void startHome(Context context) {
         Intent mainIntent = new Intent(context, HomeActivity.class);
         context.startActivity(mainIntent);
     }
@@ -37,10 +38,10 @@ public class Router {
     /**
      * Startet die GameActivity
      *
-     * @param context Context der aktuellen Activity
+     * @param context      Context der aktuellen Activity
      * @param gameSettings GameSettings fuer das Spiel
      */
-    public static void startGame(Context context, GameSettings gameSettings){
+    public static void startGame(Context context, GameSettings gameSettings) {
         Intent intent = new Intent(context, GameActivity.class);
         if (gameSettings == null) {
             Log.e("Router", "GameSettings is null");
@@ -52,10 +53,11 @@ public class Router {
 
     /**
      * Startet die PlayerNameActivity
-     * @param context Context der aktuellen Activity
+     *
+     * @param context      Context der aktuellen Activity
      * @param gameSettings GameSettings fuer das Spiel
      */
-    public static void startPlayerNameActivity(Context context, GameSettings gameSettings){
+    public static void startPlayerNameActivity(Context context, GameSettings gameSettings) {
         Intent intent = new Intent(context, PlayerNameActivity.class);
         if (gameSettings == null) {
             Log.e("Router", "GameSettings is null");
@@ -67,21 +69,22 @@ public class Router {
 
     /**
      * Startet die EvaluationActivity
-     * @param context Context der aktuellen Activity
-     * @param winner Gewinner des Spiels
+     *
+     * @param context     Context der aktuellen Activity
+     * @param winner      Gewinner des Spiels
      * @param playerStats Spielerstatistiken
-     * @param winnerPic Siegesbild
+     * @param winnerPic   Siegesbild
      */
-    public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic, boolean deactivateBack){
+    public static void startEvaluationActivity(Context context, int winner, ArrayList<PlayerStats> playerStats, Bitmap winnerPic, boolean deactivateBack) {
         Intent intent = new Intent(context, EvaluationActivity.class);
-        if(playerStats == null || playerStats.isEmpty()){
+        if (playerStats == null || playerStats.isEmpty()) {
             Log.e("Router", "Unable to start EvaluationActitvity");
             return;
         }
         intent.putExtra("winner", winner);
         intent.putExtra("PlayerStats", new ArrayList<>(playerStats));
         intent.putExtra("winnerPic", winnerPic);
-        if(deactivateBack){
+        if (deactivateBack) {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         }
         context.startActivity(intent);
@@ -89,9 +92,10 @@ public class Router {
 
     /**
      * Startet die HomeActivity
+     *
      * @param context Context der aktuellen Activity
      */
-    public static void startHomeActivity(Context context){
+    public static void startHomeActivity(Context context) {
         Intent intent = new Intent(context, HomeActivity.class);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -100,18 +104,20 @@ public class Router {
 
     /**
      * Startet die OverviewActivity
+     *
      * @param context Context der aktuellen Activity
      */
-    public static void startOverviewActivity(Context context){
+    public static void startOverviewActivity(Context context) {
         Intent intent = new Intent(context, OverviewActivity.class);
         context.startActivity(intent);
     }
 
     /**
      * Startet die IndividualGameActivity
+     *
      * @param context Context der aktuellen Activity
      */
-    public static void startIndividualGame(Context context){
+    public static void startIndividualGame(Context context) {
         Intent intent = new Intent(context, IndividualGameActivity.class);
         context.startActivity(intent);
     }

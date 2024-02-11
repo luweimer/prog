@@ -49,7 +49,7 @@ public class OverviewController implements OverviewControllerListener {
      * Verwendung von LiveData fuer die Aktualisierung der Daten
      * Weiterleitung der Daten an die View -> createGameRows
      */
-    private void registerTableRows(){
+    private void registerTableRows() {
         LiveData<List<GameEntity>> liveDataGames = this.persistent.getAllGames();
         liveDataGames.observe((LifecycleOwner) this.view, games -> {
             if (games == null || games.isEmpty()) {
@@ -67,13 +67,16 @@ public class OverviewController implements OverviewControllerListener {
 
             this.view.createGameRows(names, ids);
         });
-    };
+    }
+
+    ;
 
     /**
      * Anzeigen eines ausgewaehlten Spiels, Trigger von OverviewRow (Einzelne Zeile)
      * Abfrage des Spiels und der Spielergebnisse aus der Datenbank via LiveData durch die ID
      * Zusammenfuehren der Daten in ein GameDatabase Objekt durch MediatorLiveData
      * Weiterleitung der Daten an die View -> showGame
+     *
      * @param id ID des Spiels
      */
     @Override
@@ -115,6 +118,7 @@ public class OverviewController implements OverviewControllerListener {
     /**
      * Loeschen eines Spiels, Trigger von OverviewRow (Einzelne Zeile)
      * Weiterleitung der ID an die Datenbank -> deleteGame
+     *
      * @param id ID des Spiels
      */
     @Override

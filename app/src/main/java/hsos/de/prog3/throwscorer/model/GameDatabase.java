@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * GameDatabase
  * Speicherung aller Informationen eines Spiels unabhaengig von tatsaechlichen Speicherung
+ *
  * @author Lucius Weimer
  */
 public class GameDatabase {
@@ -22,13 +23,14 @@ public class GameDatabase {
 
     /**
      * Konstruktor
-     * @param GameID ID des Spiels
-     * @param gameName Name des Spiels
-     * @param winnerInt Nummer des Gewinners
+     *
+     * @param GameID     ID des Spiels
+     * @param gameName   Name des Spiels
+     * @param winnerInt  Nummer des Gewinners
      * @param winnerName Name des Gewinners
-     * @param winnerPic Siegesbild
+     * @param winnerPic  Siegesbild
      */
-    public GameDatabase(String GameID, String gameName, int winnerInt, String winnerName, Bitmap winnerPic){
+    public GameDatabase(String GameID, String gameName, int winnerInt, String winnerName, Bitmap winnerPic) {
         this.playerStats = new ArrayList<>();
         this.GameID = GameID;
         this.gameName = gameName;
@@ -39,12 +41,13 @@ public class GameDatabase {
 
     /**
      * Konstruktor
-     * @param winnerInt Nummer des Gewinners
-     * @param winnerName Name des Gewinners
+     *
+     * @param winnerInt   Nummer des Gewinners
+     * @param winnerName  Name des Gewinners
      * @param playerStats Liste der Spielerstatistiken fuer alle Spieler
-     * @param winnerPic Siegesbild
+     * @param winnerPic   Siegesbild
      */
-    public GameDatabase(int winnerInt, String winnerName, List<PlayerStats> playerStats, Bitmap winnerPic){
+    public GameDatabase(int winnerInt, String winnerName, List<PlayerStats> playerStats, Bitmap winnerPic) {
         this.playerStats = new ArrayList<>();
         this.winnerInt = winnerInt;
         this.winnerName = winnerName;
@@ -55,11 +58,12 @@ public class GameDatabase {
 
     /**
      * Konstruktor
-     * @param winnerInt Nummer des Gewinners
-     * @param winnerName Name des Gewinners
+     *
+     * @param winnerInt   Nummer des Gewinners
+     * @param winnerName  Name des Gewinners
      * @param playerStats Liste der Spielerstatistiken fuer alle Spieler
      */
-    public GameDatabase(int winnerInt, String winnerName, List<PlayerStats> playerStats){
+    public GameDatabase(int winnerInt, String winnerName, List<PlayerStats> playerStats) {
         this.playerStats = new ArrayList<>();
         this.winnerInt = winnerInt;
         this.winnerName = winnerName;
@@ -69,65 +73,73 @@ public class GameDatabase {
 
     /**
      * Getter fuer WinnerInt
+     *
      * @return winnerInt - Nummer des Gewinners
      */
-    public int getWinnerInt(){
+    public int getWinnerInt() {
         return winnerInt;
     }
 
     /**
      * Getter fuer WinnerName
+     *
      * @return winnerName - Name des Gewinners
      */
-    public String getWinnerName(){
+    public String getWinnerName() {
         return winnerName;
     }
 
     /**
      * Getter fuer PlayerStats
+     *
      * @return playerStats - Liste der Spielerstatistiken fuer alle Spieler
      */
-    public List<PlayerStats> getPlayerStats(){
+    public List<PlayerStats> getPlayerStats() {
         return playerStats;
     }
 
     /**
      * Getter fuer GameName
+     *
      * @return gameName - Name des Spiels
      */
-    public String getGameName(){
+    public String getGameName() {
         return gameName;
     }
 
     /**
      * Getter fuer Siegesbild
+     *
      * @return winnerPic - Siegesbild
      */
-    public Bitmap getWinnerPic(){
+    public Bitmap getWinnerPic() {
         return winnerPic;
     }
 
     /**
      * Setter fuer GameName
+     *
      * @param name Name des Spiels
      */
-    public void setGameName(String name){
+    public void setGameName(String name) {
         this.gameName = name;
     }
 
     /**
      * Setter fuer Siegesbild
+     *
      * @param pic - Siegesbild
      */
-    public void setWinnerPic(Bitmap pic){
+    public void setWinnerPic(Bitmap pic) {
         this.winnerPic = pic;
     }
 
     /**
      * Setter fuer PlayerStats
+     *
      * @param playerStats - Liste der Spielerstatistiken fuer alle Spieler
      */
-    public void setPlayerStats(List<PlayerStats> playerStats){
+    public void setPlayerStats(List<PlayerStats> playerStats) {
         this.playerStats = playerStats;
     }
 

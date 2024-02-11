@@ -15,6 +15,7 @@ import hsos.de.prog3.throwscorer.listener.view.zview.OverviewRowListener;
 /**
  * OverviewRow
  * View-Klasse fuer eine Zeile in der uebersicht um ein Spiel darzustellen
+ *
  * @author Lucius Weimer
  */
 public class OverviewRow implements OverviewRowListener {
@@ -31,11 +32,12 @@ public class OverviewRow implements OverviewRowListener {
     /**
      * Konstruktor fuer eine neue Zeile in der uebersicht
      * Setzt den Controller und fuegt die Zeile dem uebergeordneten TableLayout hinzu
-     * @param context Kontext der App
+     *
+     * @param context     Kontext der App
      * @param tableLayout uebergeordnetes TableLayout
-     * @param controller Controller der uebersicht
+     * @param controller  Controller der uebersicht
      */
-    public OverviewRow(Context context, TableLayout tableLayout, OverviewControllerListener controller){
+    public OverviewRow(Context context, TableLayout tableLayout, OverviewControllerListener controller) {
         this.row = (TableRow) LayoutInflater.from(context).inflate(R.layout.overview_row, tableLayout, false);
         this.controller = controller;
         tableLayout.addView(this.row);
@@ -45,16 +47,17 @@ public class OverviewRow implements OverviewRowListener {
     /**
      * Initialisiert die View-Elemente und registriert die Listener
      */
-    private void init(){
+    private void init() {
         this.registerViewElements()
                 .registerListener();
     }
 
     /**
      * Registriert die View-Elemente
+     *
      * @return OverviewRow
      */
-    private OverviewRow registerViewElements(){
+    private OverviewRow registerViewElements() {
         this.gameName = this.row.findViewById(R.id.tv_ov_game_name);
         this.show = this.row.findViewById(R.id.ib_ov_show);
         this.delete = this.row.findViewById(R.id.ib_ov_delete);
@@ -63,9 +66,10 @@ public class OverviewRow implements OverviewRowListener {
 
     /**
      * Registriert die Listener
+     *
      * @return OverviewRow
      */
-    private OverviewRow registerListener(){
+    private OverviewRow registerListener() {
         this.show.setOnClickListener(v -> this.controller.showGame(this.id));
         this.delete.setOnClickListener(v -> this.controller.deleteGame(this.id));
         return this;
@@ -73,19 +77,21 @@ public class OverviewRow implements OverviewRowListener {
 
     /**
      * Setzt den Namen des Spiels
+     *
      * @param name Name des Spiels
      */
     @Override
-    public void setName(String name){
+    public void setName(String name) {
         this.gameName.setText(name);
     }
 
     /**
      * Setzt die ID des Spiels
+     *
      * @param id ID des Spiels
      */
     @Override
-    public void setID(String id){
+    public void setID(String id) {
         this.id = id;
     }
 
@@ -97,9 +103,6 @@ public class OverviewRow implements OverviewRowListener {
         // Entferne die Zeile aus dem uebergeordneten TableLayout
         ((ViewGroup) row.getParent()).removeView(row);
     }
-
-
-
 
 
 }
