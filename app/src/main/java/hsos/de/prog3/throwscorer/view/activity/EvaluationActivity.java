@@ -90,10 +90,11 @@ public class EvaluationActivity extends AppCompatActivity implements EvaluationA
      * @return EvaluationActivity
      */
     private EvaluationActivity registerButton() {
-        this.home.setOnClickListener(v -> this.handleHome());
         this.saveGame.setOnClickListener(v -> this.controller.handleSave(this.gameName.getText().toString(), this.getPicture()));
         this.shareWinner.setOnClickListener(v -> this.controller.shareWinner());
-        //TODO: Auslagern? Nur ein View Evenet?!
+
+        //View Events
+        this.home.setOnClickListener(v -> this.handleHome());
         this.home.setOnClickListener(v -> this.handleHome());
         this.winTakePic.setOnClickListener(v -> this.useCamera());
         this.winPic.setOnClickListener(v -> this.useCamera());
